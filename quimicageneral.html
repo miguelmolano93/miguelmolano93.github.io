@@ -4,132 +4,378 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</title>
-    <link rel="stylesheet" href="body.css">
+    <link rel="stylesheet" href="body.css"> <link rel="stylesheet" href="styles.css"> <style>
+        /* Estilos básicos para el submenú (se refinarán en CSS) */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .submenu a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .nav-item:hover .submenu {
+            display: block;
+        }
+        /* Estilos básicos para el carrusel de investigadores (se refinarán en CSS y JS) */
+        #investigadores-container {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        .investigador {
+            flex: 0 0 auto;
+            width: calc(25% - 20px); /* Para mostrar 4 inicialmente con algo de espacio */
+            margin: 10px;
+            text-align: center;
+        }
+        .foto-perfil {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 10px;
+        }
+        .foto-perfil img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .investigador-info {
+            margin-top: 10px;
+        }
+        .flecha {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: rgba(0, 0, 0, 0.3); /* Transparencia inicial */
+            cursor: pointer;
+            user-select: none;
+        }
+        .flecha-izquierda {
+            left: 10px;
+        }
+        .flecha-derecha {
+            right: 10px;
+        }
+        /* Estilos básicos para las modales (se refinarán en CSS y JS) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Estilos básicos para la sección de cursos (se refinarán en CSS) */
+        #cursos-tematicas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .curso-tema {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .curso-tema img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        /* Estilos básicos para la sección de proyectos (se refinarán en CSS) */
+        #proyectos-lista {
+            padding: 20px;
+        }
+        .proyecto {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+        .proyecto-imagen {
+            flex: 1;
+            max-width: 50%;
+        }
+        .proyecto-imagen img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .proyecto-texto {
+            flex: 1;
+            padding: 20px;
+        }
+        .proyecto-texto.izquierda {
+            margin-right: 20px;
+        }
+        .proyecto-texto.derecha {
+            margin-left: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <img src="logo1.png" alt="Banner de mi página web">
         <h1>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</h1>
         <nav>
-            <a href="#investigadores">Investigadores</a>
+            <a href="#">Inicio</a> <div class="nav-item">
+                <a href="#cursos">Cursos</a>
+                <div class="submenu">
+                    <a href="#quimica">Química</a>
+                    <a href="#fisica">Física</a>
+                    <a href="#matematica">Matemática</a>
+                    <a href="#ciencia-datos">Ciencia de Datos</a>
+                    <a href="#programacion">Programación</a>
+                </div>
+            </div>
             <a href="#proyectos">Proyectos</a>
-            <a href="#cursos">Cursos</a>
-            <a href="#Eventos">Eventos</a>
-            <a href="#Noticias">Noticias</a>
+            <a href="#eventos">Eventos</a>
+            <a href="#noticias">Noticias</a>
         </nav>
     </header>
 
-    <section id="hero">
-        <img src="banner1.png" alt="Banner1">
-        <h2>Desde 2022, hemos estado creando impacto. En el Semillero de Investigación
-            de Ciencias Aplicadas a Ingenierías de la UAN Duitama, no solo aprendemos,
-            ¡actuamos! Hemos desarrollado soluciones innovadoras para el tratamiento de aguas,
-            explorado el poder de la biotecnología para transformar residuos y estamos a la
-            vanguardia en la investigación de contaminantes emergentes.
-            ¿Nuestro objetivo? Generar conocimiento científico de alto nivel y formar
-            ingenieros capaces de enfrentar los desafíos ambientales y tecnológicos del mañana.
-            </h2>
-        <p>¡Descubre cómo puedes ser parte de este cambio!</p>
-        <a href="#cursos"class="btn">Explora los cursos que tenemos para tí</a>
-    </section>
-
     <section id="investigadores">
-        <h2>investigadores</h2>
-        <div class="Investigadores">
-            <h3>Areas del conocimiento</h3>
-            <p>Docentes vinculados</p>
-            <a href="tema-atomos.html">Aprender más</a>
+        <h2>NUESTRO EQUIPO PERFECTO</h2>
+        <p>Conoce a los investigadores que hacen posible este semillero.</p>
+        <div id="investigadores-container">
+            <div class="investigador">
+                <div class="foto-perfil"><img src="jeffrey-brown.jpg" alt="Jeffrey Brown" data-modal="modal-jeffrey"></div>
+                <div class="investigador-info">
+                    <h3 data-modal="modal-jeffrey">Jeffrey Brown</h3>
+                    <p class="cargo">LÍDER CREATIVO</p>
+                    <p class="descripcion">Breve descripción de Jeffrey.</p>
+                    <div class="redes-sociales">
+                        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+                        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="investigador">
+                <div class="foto-perfil"><img src="ann-richmond.jpg" alt="Ann Richmond" data-modal="modal-ann"></div>
+                <div class="investigador-info">
+                    <h3 data-modal="modal-ann">Ann Richmond</h3>
+                    <p class="cargo">GERENTE</p>
+                    <p class="descripcion">Breve descripción de Ann.</p>
+                    <div class="redes-sociales">
+                        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+                        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="investigador">
+                <div class="foto-perfil"><img src="alex-grinfield.jpg" alt="Alex Grinfield" data-modal="modal-alex"></div>
+                <div class="investigador-info">
+                    <h3 data-modal="modal-alex">Alex Grinfield</h3>
+                    <p class="cargo">GURÚ DE LA PROGRAMACIÓN</p>
+                    <p class="descripcion">Breve descripción de Alex.</p>
+                    <div class="redes-sociales">
+                        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+                        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="investigador">
+                <div class="foto-perfil"><img src="roxie-swanson.jpg" alt="Roxie Swanson" data-modal="modal-roxie"></div>
+                <div class="investigador-info">
+                    <h3 data-modal="modal-roxie">Roxie Swanson</h3>
+                    <p class="cargo">GERENTE DE VENTAS</p>
+                    <p class="descripcion">Breve descripción de Roxie.</p>
+                    <div class="redes-sociales">
+                        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+                        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="investigador">
+                <div class="foto-perfil"><img src="placeholder.jpg" alt="Investigador 5" data-modal="modal-investigador5"></div>
+                <div class="investigador-info">
+                    <h3 data-modal="modal-investigador5">Investigador 5</h3>
+                    <p class="cargo">Cargo</p>
+                    <p class="descripcion">Breve descripción.</p>
+                    <div class="redes-sociales">
+                        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+                        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="investigador">
+                <div class="foto-perfil"><img src="placeholder.jpg" alt="Investigador 6" data-modal="modal-investigador6"></div>
+                <div class="investigador-info">
+                    <h3 data-modal="modal-investigador6">Investigador 6</h3>
+                    <p class="cargo">Cargo</p>
+                    <p class="descripcion">Breve descripción.</p>
+                    <div class="redes-sociales">
+                        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+                        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="tema">
-            <h3>Tabla Periódica</h3>
-            <p>Descubre la organización y propiedades de los elementos.</p>
-            <a href="tema-tabla-periodica.html">Aprender más</a>
-        </div>
+        <div class="flecha flecha-izquierda">&lt;</div>
+        <div class="flecha flecha-derecha">&gt;</div>
     </section>
 
     <section id="proyectos">
-        <h2>proyectosl</h2>
-        <div class="proyectos">
-            <h3>Titulación Ácido-Base</h3>
-            <p>Realiza una titulación virtual y aprende sobre neutralización.</p>
-            <a href="simulacion-titulacion.html">Simular</a>
+        <h2>NUESTROS PROYECTOS</h2>
+        <div id="proyectos-lista">
+            <div class="proyecto">
+                <div class="proyecto-texto izquierda">
+                    <h3>Proyecto 1</h3>
+                    <p>Descripción del Proyecto 1. Aquí irá el texto detallado sobre los objetivos, la metodología y los resultados esperados o alcanzados.</p>
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="proyecto1.jpg" alt="Proyecto 1">
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="proyecto2.jpg" alt="Proyecto 2">
+                </div>
+                <div class="proyecto-texto derecha">
+                    <h3>Proyecto 2</h3>
+                    <p>Descripción del Proyecto 2. Similar al anterior, con la información relevante sobre este proyecto.</p>
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="proyecto-texto izquierda">
+                    <h3>Proyecto 3</h3>
+                    <p>Descripción del Proyecto 3.</p>
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="proyecto3.jpg" alt="Proyecto 3">
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="proyecto4.jpg" alt="Proyecto 4">
+                </div>
+                <div class="proyecto-texto derecha">
+                    <h3>Proyecto 4</h3>
+                    <p>Descripción del Proyecto 4.</p>
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="proyecto-texto izquierda">
+                    <h3>Proyecto 5</h3>
+                    <p>Descripción del Proyecto 5.</p>
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="proyecto5.jpg" alt="Proyecto 5">
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="proyecto6.jpg" alt="Proyecto 6">
+                </div>
+                <div class="proyecto-texto derecha">
+                    <h3>Proyecto 6</h3>
+                    <p>Descripción del Proyecto 6.</p>
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="proyecto-texto izquierda">
+                    <h3>Proyecto 7</h3>
+                    <p>Descripción del Proyecto 7.</p>
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="proyecto7.jpg" alt="Proyecto 7">
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="proyecto8.jpg" alt="Proyecto 8">
+                </div>
+                <div class="proyecto-texto derecha">
+                    <h3>Proyecto 8</h3>
+                    <p>Descripción del Proyecto 8.</p>
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="proyecto-texto izquierda">
+                    <h3>Proyecto 9</h3>
+                    <p>Descripción del Proyecto 9.</p>
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="proyecto9.jpg" alt="Proyecto 9">
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="proyecto10.jpg" alt="Proyecto 10">
+                </div>
+                <div class="proyecto-texto derecha">
+                    <h3>Proyecto 10</h3>
+                    <p>Descripción del Proyecto 10.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="cursos">
-        <h2>Recursos Didácticos</h2>
-        <div class="cursos">
-            <h3>Videos Explicativos</h3>
-            <a href="videos.html">Ver videos</a>
-        </div>
-        <div class="recurso">
-            <h3>Ejercicios Resueltos</h3>
-            <a href="ejercicios.html">Practicar</a>
+        <h2>NUESTROS CURSOS</h2>
+        <div id="cursos-tematicas">
+            <div class="curso-tema" data-modal="modal-quimica">
+                <img src="quimica.jpg" alt="Química">
+                <h3>Química</h3>
+                <p>Explora los fundamentos de la química y sus diversas ramas.</p>
+            </div>
+            <div class="curso-tema" data-modal="modal-fisica">
+                <img src="fisica.jpg" alt="Física">
+                <h3>Física</h3>
+                <p>Descubre las leyes que rigen el universo, desde lo más pequeño a lo más grande.</p>
+            </div>
+            <div class="curso-tema" data-modal="modal-matematica">
+                <img src="matematica.jpg" alt="Matemática">
+                <h3>Matemática</h3>
+                <p>Desarrolla tu pensamiento lógico y habilidades de resolución de problemas.</p>
+            </div>
+            <div class="curso-tema" data-modal="modal-ciencia-datos">
+                <img src="ciencia-datos.jpg" alt="Ciencia de Datos">
+                <h3>Ciencia de Datos</h3>
+                <p>Aprende a extraer conocimiento valioso a partir de grandes conjuntos de datos.</p>
+            </div>
+            <div class="curso-tema" data-modal="modal-programacion">
+                <img src="programacion.jpg" alt="Programación">
+                <h3>Programación</h3>
+                <p>Adquiere las habilidades para crear software y automatizar tareas.</p>
+            </div>
         </div>
     </section>
-
-    <section id="vida-diaria">
-        <h2>Química en la Vida Diaria</h2>
-        <div class="articulo">
-            <h3>Química en la Alimentación</h3>
-            <p>Descubre cómo la química influye en los alimentos que consumimos.</p>
-            <a href="articulo-alimentacion.html">Leer más</a>
-        </div>
-    </section>
-
-    <section id="equipo">
-        <h2>NUESTRO EQUIPO PERFECTO</h2>
-        <p>Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-        <div class="equipo-contenedor">
-            <div class="miembro-equipo">
-                <div class="foto-perfil">
-                    <img src="jeffrey-brown.jpg" alt="Jeffrey Brown">
-                </div>
-                <h3>Jeffrey Brown</h3>
-                <p class="cargo">LÍDER CREATIVO</p>
-                <p class="descripcion">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-                <div class="redes-sociales">
-                    <a href="#"><img src="facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="twitter.png" alt="Twitter"></a>
-                    <a href="#"><img src="instagram.png" alt="Instagram"></a>
-                </div>
-            </div>
-
-            <div class="miembro-equipo">
-                <div class="foto-perfil">
-                    <img src="ann-richmond.jpg" alt="Ann Richmond">
-                </div>
-                <h3>Ann Richmond</h3>
-                <p class="cargo">GERENTE</p>
-                <p class="descripcion">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-                <div class="redes-sociales">
-                    <a href="#"><img src="facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="twitter.png" alt="Twitter"></a>
-                    <a href="#"><img src="instagram.png" alt="Instagram"></a>
-                </div>
-            </div>
-
-            <div class="miembro-equipo">
-                <div class="foto-perfil">
-                    <img src="alex-grinfield.jpg" alt="Alex Grinfield">
-                </div>
-                <h3>Alex Grinfield</h3>
-                <p class="cargo">GURÚ DE LA PROGRAMACIÓN</p>
-                <p class="descripcion">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-                <div class="redes-sociales">
-                    <a href="#"><img src="facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="twitter.png" alt="Twitter"></a>
-                    <a href="#"><img src="instagram.png" alt="Instagram"></a>
-                </div>
-            </div>
-
-            <div class="miembro-equipo">
-                <div class="foto-perfil">
-                    <img src="roxie-swanson.jpg" alt="Roxie Swanson">
-                </div>
-                <h3>Roxie Swanson</h3>
-                <p class="cargo">GERENTE DE VENTAS</p>
-                <p class="descripcion">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-                
-</body>
-</html>

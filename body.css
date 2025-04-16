@@ -1,250 +1,467 @@
+/* Estilos Generales */
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #181818; /* Un fondo oscuro general */
-    color: #fff; /* Texto blanco por defecto */
-}
-
-header {
-    background-color: #222; /* Un tono más oscuro para el header */
-    color: white;
-    padding: 1rem 20px; /* Añadido padding horizontal */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header img {
-    max-height: 50px; /* Ajusta la altura del logo si es necesario */
-}
-
-header h1 {
-    font-size: 1.5rem; /* Reduce el tamaño del título si es muy grande */
-    margin: 0 1rem 0 0; /* Espacio a la derecha del título */
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 1rem;
-}
-
-#hero {
-    text-align: center;
-    padding: 4rem 20px; /* Añadido padding horizontal */
-    background-color: #222; /* Un fondo oscuro para la sección hero */
-}
-
-#hero img {
-    max-width: 100%;
-    margin-bottom: 1rem; /* Espacio debajo del banner */
-}
-
-#hero h2 {
-    font-size: 1.8rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-}
-
-.btn {
-    background-color: #007bff;
-    color: white;
-    padding: 0.7rem 1.5rem; /* Aumentado el padding del botón */
-    text-decoration: none;
-    border-radius: 5px; /* Añadido bordes redondeados al botón */
-}
-
-.btn:hover {
-    background-color: #0056b3; /* Un tono más oscuro al pasar el ratón */
-}
-
-#investigadores,
-#laboratorio,
-#recursos,
-#vida-diaria {
-    padding: 30px 20px; /* Espaciado interno similar */
-    color: #eee; /* Color de texto un poco más claro */
-}
-
-#investigadores h2,
-#laboratorio h2,
-#recursos h2,
-#vida-diaria h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #fff; /* Títulos en blanco */
-}
-
-.Investigadores,
-.tema,
-.simulacion,
-.recurso,
-.articulo {
-    background-color: #2c2c2c; /* Fondo similar a las tarjetas de equipo */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px;
-    margin: 1rem auto; /* Centrado horizontal y margen */
-    max-width: 600px; /* Ancho máximo para las secciones */
-}
-
-.Investigadores h3,
-.tema h3,
-.simulacion h3,
-.recurso h3,
-.articulo h3 {
-    color: #fff;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.Investigadores p,
-.tema p,
-.simulacion p,
-.recurso p,
-.articulo p {
-    color: #ccc;
+    background-color: #f4f4f4;
+    color: #333;
     line-height: 1.6;
 }
 
-.Investigadores a,
-.tema a,
-.simulacion a,
-.recurso a,
-.articulo a {
-    color: #ffc107; /* Un color de acento como el amarillo */
+header {
+    background-color: #fff;
+    color: #333;
+    padding: 1em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+    max-height: 50px;
+    margin-right: 1em;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    flex-grow: 1;
+}
+
+nav a {
+    color: #333;
     text-decoration: none;
-    font-weight: bold;
+    padding: 0.5em 1em;
+    margin-left: 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.Investigadores a:hover,
-.tema a:hover,
-.simulacion a:hover,
-.recurso a:hover,
-.articulo a:hover {
-    text-decoration: underline;
+nav a:hover {
+    background-color: #ddd;
 }
 
-footer {
-    background-color: #333; /* Un fondo oscuro para el footer */
-    color: #eee;
+/* Estilos para el menú desplegable de Cursos */
+.nav-item {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    top: 100%;
+    left: 0;
+    padding: 0.5em 0;
+}
+
+.submenu a {
+    color: black;
+    padding: 0.7em 1.2em;
+    text-decoration: none;
+    display: block;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+}
+
+.submenu a:last-child {
+    border-bottom: none;
+}
+
+.nav-item:hover .submenu {
+    display: block;
+}
+
+/* Sección de Investigadores (Banner) */
+#investigadores {
+    background-color: #cbe5c0; /* color2 */
+    padding: 2em;
     text-align: center;
-    padding: 1rem;
-    font-size: 0.9em;
+    position: relative;
+    overflow: hidden; /* Para las flechas */
 }
 
-/* Estilos para la sección del equipo (añadidos) */
-#equipo {
-    background-color: #1e1e1e; /* Fondo oscuro como en la imagen */
-    color: #fff; /* Texto blanco */
-    padding: 40px 20px; /* Espaciado interno */
-    text-align: center; /* Centrar el contenido */
+#investigadores h2 {
+    color: #84407b; /* color5 */
+    margin-bottom: 0.5em;
 }
 
-#equipo h2 {
-    margin-bottom: 20px;
+#investigadores p {
+    color: #555;
+    margin-bottom: 1.5em;
 }
 
-.equipo-contenedor {
-    display: flex; /* Para organizar a los miembros en fila (horizontal) */
-    flex-wrap: wrap; /* Permite que los miembros pasen a la siguiente línea en pantallas pequeñas */
-    justify-content: center; /* Centrar los miembros horizontalmente */
-    gap: 20px; /* Espacio entre los miembros */
-    margin-bottom: 30px;
+#investigadores-container {
+    display: flex;
+    overflow-x: auto; /* Permite el scroll horizontal si hay muchos investigadores */
+    scroll-snap-type: x mandatory; /* Para un desplazamiento suave con las flechas (experimental) */
+    padding: 10px 0;
 }
 
-.miembro-equipo {
-    background-color: #2c2c2c; /* Fondo para cada miembro */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px;
-    width: 300px; /* Ancho aproximado de cada tarjeta */
+.investigador {
+    flex: 0 0 auto;
+    width: calc(25% - 20px); /* Muestra 4 inicialmente */
+    margin: 10px;
     text-align: center;
+    scroll-snap-align: start; /* Alinea cada investigador al inicio del contenedor */
+}
+
+@media (max-width: 960px) {
+    .investigador {
+        width: calc(50% - 20px); /* Muestra 2 en pantallas medianas */
+    }
+}
+
+@media (max-width: 600px) {
+    .investigador {
+        width: calc(100% - 20px); /* Muestra 1 en pantallas pequeñas */
+    }
+    #investigadores-container {
+        scroll-snap-type: none; /* Desactiva el scroll snap en pantallas pequeñas */
+        overflow-x: scroll;
+    }
 }
 
 .foto-perfil {
-    width: 120px; /* Tamaño de la foto de perfil */
+    width: 120px;
     height: 120px;
-    border-radius: 50%; /* Para hacerla circular */
-    overflow: hidden; /* Recorta la imagen para que sea circular */
-    margin: 0 auto 15px; /* Centrar la imagen y espacio inferior */
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.foto-perfil:hover {
+    transform: scale(1.05);
 }
 
 .foto-perfil img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ajusta la imagen para cubrir el círculo sin deformarla */
+    height: auto;
+    display: block;
+    object-fit: cover; /* Asegura que la imagen cubra el círculo */
 }
 
-.miembro-equipo h3 {
+.investigador-info h3 {
+    color: #333;
     margin-top: 0;
-    margin-bottom: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-.miembro-equipo .cargo {
-    color: #bbb; /* Color del cargo */
+.investigador-info h3:hover {
+    color: #84407b; /* color5 */
+}
+
+.investigador-info .cargo {
+    color: #777;
     font-size: 0.9em;
-    margin-bottom: 10px;
+    margin-bottom: 0.5em;
 }
 
-.miembro-equipo .descripcion {
+.investigador-info .descripcion {
+    color: #555;
     font-size: 0.85em;
-    color: #ccc;
-    margin-bottom: 15px;
+    margin-bottom: 1em;
 }
 
-.redes-sociales {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.redes-sociales a {
+    display: inline-block;
+    margin: 0 0.5em;
 }
 
 .redes-sociales img {
     width: 25px;
     height: 25px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
-.llama-ahora {
-    background-color: #ffc107; /* Color amarillo del botón */
-    color: #000; /* Texto negro */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+.redes-sociales img:hover {
+    opacity: 1;
+}
+
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em;
+    color: rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    font-weight: bold;
-    text-decoration: none; /* Por si lo envuelves en un <a> */
+    user-select: none;
+    transition: opacity 0.3s ease;
 }
 
-.llama-ahora:hover {
-    background-color: #e0a800; /* Un tono más oscuro al pasar el ratón */
+.flecha:hover {
+    opacity: 0.7;
 }
 
-/* Ajustes para pantallas más pequeñas */
+.flecha-izquierda {
+    left: 10px;
+}
+
+.flecha-derecha {
+    right: 10px;
+}
+
+/* Sección de Proyectos */
+#proyectos {
+    padding: 2em;
+    background-color: #fcf9c2; /* color3 */
+}
+
+#proyectos h2 {
+    color: #84407b; /* color5 */
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#proyectos-lista {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.proyecto {
+    display: flex;
+    margin-bottom: 2em;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.proyecto:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.proyecto-imagen {
+    flex: 1;
+    overflow: hidden;
+}
+
+.proyecto-imagen img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.proyecto:hover .proyecto-imagen img {
+    transform: scale(1.05);
+}
+
+.proyecto-texto {
+    flex: 1;
+    padding: 2em;
+}
+
+.proyecto-texto h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.proyecto-texto p {
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Transición difuminada (se puede lograr con un gradiente en CSS si es solo visual) */
+.proyecto-imagen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px; /* Ancho del difuminado */
+    /* El gradiente se ajustará según la dirección de la imagen */
+}
+
+.proyecto:nth-child(odd) .proyecto-imagen::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.proyecto:nth-child(even) .proyecto-imagen::before {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
 @media (max-width: 768px) {
-    .equipo-contenedor {
-        flex-direction: column; /* Apilar los miembros en pantallas pequeñas */
-        align-items: center; /* Centrar los miembros horizontalmente */
+    .proyecto {
+        flex-direction: column;
     }
-
-    .miembro-equipo {
-        width: 90%; /* Ocupar más ancho en pantallas pequeñas */
+    .proyecto:nth-child(even) {
+        flex-direction: column;
     }
-
-    #hero {
-        padding: 4rem 1rem; /* Reducir el padding en pantallas pequeñas */
+    .proyecto-imagen {
+        width: 100%;
+        max-height: 300px;
     }
-
-    #investigadores,
-    #laboratorio,
-    #recursos,
-    #vida-diaria {
-        padding: 20px 10px; /* Reducir el padding en pantallas pequeñas */
+    .proyecto-texto {
+        padding: 1.5em;
     }
+    .proyecto-texto.izquierda, .proyecto-texto.derecha {
+        margin: 0;
+    }
+    .proyecto-imagen::before {
+        display: none; /* Ocultar el difuminado en pantallas pequeñas */
+    }
+}
 
-    .Investigadores,
-    .tema,
-    .simulacion,
-    .recurso,
-    .articulo {
-        padding: 15px; /* Reducir el padding en pantallas pequeñas */
+/* Sección de Cursos */
+#cursos {
+    padding: 2em;
+    background-color: #edc5bd; /* color4 */
+    text-align: center;
+}
+
+#cursos h2 {
+    color: #84407b; /* color5 */
+    margin-bottom: 1em;
+}
+
+#cursos-tematicas {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.curso-tema {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.curso-tema:hover {
+    transform: scale(1.03);
+}
+
+.curso-tema img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 200px;
+}
+
+.curso-tema h3 {
+    color: #333;
+    margin: 1em 0.5em 0.5em;
+}
+
+.curso-tema p {
+    color: #555;
+    font-size: 0.9em;
+    padding: 0 1em 1em;
+}
+
+/* Estilos para las ventanas modales */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 8px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+}
+
+/* Estilos para la sección de Eventos y Noticias (puedes agregar más según el diseño específico) */
+#eventos, #noticias {
+    padding: 2em;
+    background-color: #fff;
+    text-align: center;
+}
+
+#eventos h2, #noticias h2 {
+    color: #84407b; /* color5 */
+    margin-bottom: 1em;
+}
+
+/* Media Queries para Responsive Design (puedes ajustarlos según necesites) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header h1 {
+        margin-bottom: 0.5em;
+    }
+    nav {
+        margin-top: 0.5em;
+    }
+    nav a {
+        margin-left: 0;
+        margin-right: 1em;
+    }
+    .nav-item {
+        width: 100%;
+    }
+    .submenu {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .nav-item:hover .submenu {
+        display: block;
+    }
+    .submenu a {
+        border-left: 3px solid #84407b; /* color5 */
+        padding-left: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.2em;
+    }
+    nav a {
+        padding: 0.5em;
+        margin-right: 0.5em;
     }
 }
