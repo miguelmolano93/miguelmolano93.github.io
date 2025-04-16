@@ -4,38 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="preload" href="images/LOGO3.webp" as="image">
+    <link rel="preload" href="images/jeffrey-brown-perfil.webp" as="image">
+    <link rel="preload" href="images/ann-richmond-perfil.webp" as="image">
+    <link rel="preload" href="images/alex-grinfield-perfil.webp" as="image">
+    <link rel="preload" href="images/roxie-swanson-perfil.webp" as="image">
+    <link rel="preload" href="images/investigador5-perfil.webp" as="image">
+    <link rel="preload" href="images/investigador6-perfil.webp" as="image">
     <style>
-        /* Estilos básicos para el submenú (se refinarán en CSS) */
+        /* Estilos básicos para el submenú */
+        .nav-item {
+            position: relative;
+        }
+
         .submenu {
             display: none;
             position: absolute;
+            top: 100%;
+            left: 0;
             background-color: #f9f9f9;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
+
         .submenu a {
             color: black;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
         }
+
         .nav-item:hover .submenu {
             display: block;
         }
-        /* Estilos básicos para el carrusel de investigadores (se refinarán en CSS y JS) */
+
+        /* Estilos básicos para el carrusel de investigadores */
         #investigadores-container {
             display: flex;
-            overflow: hidden;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
             position: relative;
+            padding: 20px 0;
         }
+
         .investigador {
-            flex: 0 0 auto;
-            width: calc(25% - 20px); /* Para mostrar 4 inicialmente con algo de espacio */
-            margin: 10px;
+            flex: 0 0 250px;
+            margin: 0 10px;
             text-align: center;
+            scroll-snap-align: start;
         }
+
         .foto-perfil {
             width: 100px;
             height: 100px;
@@ -43,70 +63,83 @@
             overflow: hidden;
             margin: 0 auto 10px;
         }
+
         .foto-perfil img {
             width: 100%;
             height: auto;
             display: block;
             object-fit: cover;
         }
+
         .investigador-info {
             margin-top: 10px;
         }
+
         .flecha {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             font-size: 2em;
-            color: rgba(0, 0, 0, 0.3); /* Transparencia inicial */
+            color: rgba(0, 0, 0, 0.3);
             cursor: pointer;
             user-select: none;
         }
+
         .flecha-izquierda {
             left: 10px;
         }
+
         .flecha-derecha {
             right: 10px;
         }
-        /* Estilos básicos para las modales (se refinarán en CSS y JS) */
+
+        /* Estilos básicos para las modales */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
+            display: none;
+            position: fixed;
+            z-index: 1;
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
         }
+
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
+            margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
+            width: 80%;
             border-radius: 8px;
             position: relative;
         }
+
         .close-button {
             color: #aaa;
-            float: right;
+            position: absolute;
+            top: 0;
+            right: 0;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
         }
+
         .close-button:hover,
         .close-button:focus {
             color: black;
             text-decoration: none;
         }
-        /* Estilos básicos para la sección de cursos (se refinarán en CSS) */
+
+        /* Estilos básicos para la sección de cursos */
         #cursos-tematicas {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
         }
+
         .curso-tema {
             border: 1px solid #ccc;
             padding: 15px;
@@ -114,302 +147,343 @@
             text-align: center;
             cursor: pointer;
         }
+
         .curso-tema img {
             max-width: 100%;
             height: auto;
             margin-bottom: 10px;
         }
-        /* Estilos básicos para la sección de proyectos (se refinarán en CSS) */
+
+        /* Estilos básicos para la sección de proyectos */
         #proyectos-lista {
             padding: 20px;
         }
+
         .proyecto {
             display: flex;
+            flex-direction: column;
             margin-bottom: 30px;
             align-items: center;
         }
+
         .proyecto-imagen {
-            flex: 1;
-            max-width: 50%;
+            max-width: 100%;
         }
+
         .proyecto-imagen img {
             width: 100%;
             height: auto;
             display: block;
         }
+
         .proyecto-texto {
-            flex: 1;
             padding: 20px;
+            text-align: center;
         }
-        .proyecto-texto.izquierda {
-            margin-right: 20px;
-        }
-        .proyecto-texto.derecha {
-            margin-left: 20px;
+
+        @media (min-width: 768px) {
+            .proyecto {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .proyecto-texto {
+                text-align: left;
+            }
+
+            .proyecto-texto.izquierda {
+                margin-right: 20px;
+            }
+
+            .proyecto-texto.derecha {
+                margin-left: 20px;
+            }
+
+            .proyecto-imagen {
+                max-width: 50%;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="images/LOGO3.png" alt="Logo del Semillero">
+        <a href="/" aria-label="Ir a la página de inicio">
+            <img src="images/LOGO3.webp" alt="Logo del Semillero" width="200" height="50">
+        </a>
         <h1>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</h1>
         <nav>
-            <a href="#">Inicio</a>
+            <a href="/" aria-label="Ir a la sección de inicio">Inicio</a>
             <div class="nav-item">
-                <a href="#cursos">Cursos</a>
-                <div class="submenu">
-                    <a href="#quimica">Química</a>
-                    <a href="#fisica">Física</a>
-                    <a href="#matematica">Matemática</a>
-                    <a href="#ciencia-datos">Ciencia de Datos</a>
-                    <a href="#programacion">Programación</a>
+                <a href="#cursos" aria-expanded="false" aria-controls="submenu-cursos">Cursos</a>
+                <div class="submenu" id="submenu-cursos">
+                    <a href="#quimica" aria-label="Ir a la sección de Química">Química</a>
+                    <a href="#fisica" aria-label="Ir a la sección de Física">Física</a>
+                    <a href="#matematica" aria-label="Ir a la sección de Matemática">Matemática</a>
+                    <a href="#ciencia-datos" aria-label="Ir a la sección de Ciencia de Datos">Ciencia de Datos</a>
+                    <a href="#programacion" aria-label="Ir a la sección de Programación">Programación</a>
                 </div>
             </div>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#eventos">Eventos</a>
-            <a href="#noticias">Noticias</a>
+            <a href="#proyectos" aria-label="Ir a la sección de Proyectos">Proyectos</a>
+            <a href="#eventos" aria-label="Ir a la sección de Eventos">Eventos</a>
+            <a href="#noticias" aria-label="Ir a la sección de Noticias">Noticias</a>
         </nav>
-        <div class="menu-toggle">
+        <button class="menu-toggle" aria-label="Alternar menú" aria-expanded="false">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
-        </div>
+        </button>
     </header>
 
-    <section id="investigadores">
-        <h2>NUESTRO EQUIPO PERFECTO</h2>
-        <p>Conoce a los investigadores que hacen posible este semillero.</p>
-        <div id="investigadores-container">
-            <div class="investigador">
-                <div class="foto-perfil"><img src="images/jeffrey-brown-perfil.jpg" alt="Jeffrey Brown" data-modal="modal-jeffrey"></div>
-                <div class="investigador-info">
-                    <h3 data-modal="modal-jeffrey">Jeffrey Brown</h3>
-                    <p class="cargo">LÍDER DEL SEMILLERO</p>
-                    <p class="descripcion">Apasionado por la innovación y la aplicación de la ciencia básica en proyectos de ingeniería.</p>
-                    <div class="redes-sociales">
-                        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-                        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+    <main>
+        <section id="investigadores">
+            <h2>NUESTRO EQUIPO PERFECTO</h2>
+            <p>Conoce a los investigadores que hacen posible este semillero.</p>
+            <div id="investigadores-container">
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/jeffrey-brown-perfil.webp" alt="Jeffrey Brown" width="100" height="100" data-modal="modal-jeffrey" role="button" tabindex="0" aria-labelledby="jeffrey-brown-name">
+                    </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-jeffrey" id="jeffrey-brown-name" role="button" tabindex="0">Jeffrey Brown</h3>
+                        <p class="cargo">LÍDER DEL SEMILLERO</p>
+                        <p class="descripcion">Apasionado por la innovación y la aplicación de la ciencia básica en proyectos de ingeniería.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook de Jeffrey Brown"><img loading="lazy" src="images/facebook.svg" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter de Jeffrey Brown"><img loading="lazy" src="images/twitter.svg" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de Jeffrey Brown"><img loading="lazy" src="images/instagram.svg" alt="Instagram" width="30" height="30"></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="investigador">
-                <div class="foto-perfil"><img src="images/ann-richmond-perfil.jpg" alt="Ann Richmond" data-modal="modal-ann"></div>
-                <div class="investigador-info">
-                    <h3 data-modal="modal-ann">Ann Richmond</h3>
-                    <p class="cargo">COORDINADORA DE PROYECTOS</p>
-                    <p class="descripcion">Encargada de la gestión y el seguimiento de todas las iniciativas del semillero.</p>
-                    <div class="redes-sociales">
-                        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-                        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/ann-richmond-perfil.webp" alt="Ann Richmond" width="100" height="100" data-modal="modal-ann" role="button" tabindex="0" aria-labelledby="ann-richmond-name">
+                    </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-ann" id="ann-richmond-name" role="button" tabindex="0">Ann Richmond</h3>
+                        <p class="cargo">COORDINADORA DE PROYECTOS</p>
+                        <p class="descripcion">Encargada de la gestión y el seguimiento de todas las iniciativas del semillero.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook de Ann Richmond"><img loading="lazy" src="images/facebook.svg" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter de Ann Richmond"><img loading="lazy" src="images/twitter.svg" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de Ann Richmond"><img loading="lazy" src="images/instagram.svg" alt="Instagram" width="30" height="30"></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="investigador">
-                <div class="foto-perfil"><img src="images/alex-grinfield-perfil.jpg" alt="Alex Grinfield" data-modal="modal-alex"></div>
-                <div class="investigador-info">
-                    <h3 data-modal="modal-alex">Alex Grinfield</h3>
-                    <p class="cargo">ESPECIALISTA EN PROGRAMACIÓN Y MODELADO</p>
-                    <p class="descripcion">Aporta su experiencia en el desarrollo de herramientas computacionales para la investigación.</p>
-                    <div class="redes-sociales">
-                        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-                        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/alex-grinfield-perfil.webp" alt="Alex Grinfield" width="100" height="100" data-modal="modal-alex" role="button" tabindex="0" aria-labelledby="alex-grinfield-name">
+                    </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-alex" id="alex-grinfield-name" role="button" tabindex="0">Alex Grinfield</h3>
+                        <p class="cargo">ESPECIALISTA EN PROGRAMACIÓN Y MODELADO</p>
+                        <p class="descripcion">Aporta su experiencia en el desarrollo de herramientas computacionales para la investigación.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook de Alex Grinfield"><img loading="lazy" src="images/facebook.svg" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter de Alex Grinfield"><img loading="lazy" src="images/twitter.svg" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de Alex Grinfield"><img loading="lazy" src="images/instagram.svg" alt="Instagram" width="30" height="30"></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="investigador">
-                <div class="foto-perfil"><img src="images/roxie-swanson-perfil.jpg" alt="Roxie Swanson" data-modal="modal-roxie"></div>
-                <div class="investigador-info">
-                    <h3 data-modal="modal-roxie">Roxie Swanson</h3>
-                    <p class="cargo">ENLACE CON LA INDUSTRIA</p>
-                    <p class="descripcion">Responsable de establecer colaboraciones con empresas y organizaciones del sector.</p>
-                    <div class="redes-sociales">
-                        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-                        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/roxie-swanson-perfil.webp" alt="Roxie Swanson" width="100" height="100" data-modal="modal-roxie" role="button" tabindex="0" aria-labelledby="roxie-swanson-name">
+                    </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-roxie" id="roxie-swanson-name" role="button" tabindex="0">Roxie Swanson</h3>
+                        <p class="cargo">ENLACE CON LA INDUSTRIA</p>
+                        <p class="descripcion">Responsable de establecer colaboraciones con empresas y organizaciones del sector.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook de Roxie Swanson"><img loading="lazy" src="images/facebook.svg" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter de Roxie Swanson"><img loading="lazy" src="images/twitter.svg" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de Roxie Swanson"><img loading="lazy" src="images/instagram.svg" alt="Instagram" width="30" height="30"></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="investigador">
-                <div class="foto-perfil"><img src="images/investigador5-perfil.jpg" alt="Investigador 5" data-modal="modal-investigador5"></div>
-                <div class="investigador-info">
-                    <h3 data-modal="modal-investigador5">Nombre Investigador 5</h3>
-                    <p class="cargo">Cargo Investigador 5</p>
-                    <p class="descripcion">Breve descripción del Investigador 5.</p>
-                    <div class="redes-sociales">
-                        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-                        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/investigador5-perfil.webp" alt="Nombre Investigador 5" width="100" height="100" data-modal="modal-investigador5" role="button" tabindex="0" aria-labelledby="investigador5-name">
+                    </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-investigador5" id="investigador5-name" role="button" tabindex="0">Nombre Investigador 5</h3>
+                        <p class="cargo">Cargo Investigador 5</p>
+                        <p class="descripcion">Breve descripción del Investigador 5.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook del Investigador 5"><img loading="lazy" src="images/facebook.svg" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter del Investigador 5"><img loading="lazy" src="images/twitter.svg" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram del Investigador 5"><img loading="lazy" src="images/instagram.svg" alt="Instagram" width="30" height="30"></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="investigador">
-                <div class="foto-perfil"><img src="images/investigador6-perfil.jpg" alt="Investigador 6" data-modal="modal-investigador6"></div>
-                <div class="investigador-info">
-                    <h3 data-modal="modal-investigador6">Nombre Investigador 6</h3>
-                    <p class="cargo">Cargo Investigador 6</p>
-                    <p class="descripcion">Breve descripción del Investigador 6.</p>
-                    <div class="redes-sociales">
-                        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-                        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/investigador6-perfil.webp" alt="Nombre Investigador 6" width="100" height="100" data-modal="modal-investigador6" role="button" tabindex="0" aria-labelledby="investigador6-name">
                     </div>
-                </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-investigador6" id="investigador6-name" role="button" tabindex="0">Nombre Investigador 6</h3>
+                        <p class="cargo">Cargo Investigador 6</p>
+                        <p class="descripcion">Breve descripción del Investigador 6.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook del Investigador 6"><img loading="lazy" src="images/facebook.svg" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter del Investigador 6"><img loading="lazy" src="images/twitter.svg" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram del Investigador 6"><img loading="lazy" src="images/instagram.svg" alt="Instagram" width="30" height="30"></a>
+                      </div>
             </div>
-        </div>
-        <div class="flecha flecha-izquierda">&lt;</div>
-        <div class="flecha flecha-derecha">&gt;</div>
-    </section>
+            <button class="flecha flecha-izquierda" aria-label="Mostrar investigadores anteriores">&lt;</button>
+            <button class="flecha flecha-derecha" aria-label="Mostrar siguientes investigadores">&gt;</button>
+        </section>
 
-    <section id="proyectos">
-        <h2>NUESTROS PROYECTOS</h2>
-        <div id="proyectos-lista">
-            <div class="proyecto">
-                <div class="proyecto-texto izquierda">
-                    <h3>Desarrollo de un Sistema Inteligente para el Diagnóstico Temprano de Enfermedades</h3>
-                    <p>Este proyecto se centra en la aplicación de técnicas de inteligencia artificial y aprendizaje automático para analizar datos médicos y facilitar la detección precoz de diversas enfermedades, mejorando así las tasas de supervivencia y la calidad de vida de los pacientes.</p>
+        <section id="proyectos">
+            <h2>NUESTROS PROYECTOS</h2>
+            <div id="proyectos-lista">
+                <div class="proyecto">
+                    <div class="proyecto-texto izquierda">
+                        <h3>Desarrollo de un Sistema Inteligente para el Diagnóstico Temprano de Enfermedades</h3>
+                        <p>Este proyecto se centra en la aplicación de técnicas de inteligencia artificial y aprendizaje automático para analizar datos médicos y facilitar la detección precoz de diversas enfermedades, mejorando así las tasas de supervivencia y la calidad de vida de los pacientes.</p>
+                    </div>
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto1.webp" alt="Sistema Inteligente para Diagnóstico" width="500" height="300">
+                    </div>
                 </div>
-                <div class="proyecto-imagen">
-                    <img src="images/proyecto1.jpg" alt="Sistema Inteligente para Diagnóstico">
+                <div class="proyecto">
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto2.webp" alt="Nuevos Materiales para la Construcción Sostenible" width="500" height="300">
+                    </div>
+                    <div class="proyecto-texto derecha">
+                        <h3>Investigación y Desarrollo de Nuevos Materiales para la Construcción Sostenible</h3>
+                        <p>El objetivo de este proyecto es explorar y desarrollar materiales de construcción innovadores que sean ecológicos, económicos y eficientes en términos de energía, contribuyendo a la creación de edificaciones más sostenibles y amigables con el medio ambiente.</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div class="proyecto-texto izquierda">
+                        <h3>Optimización de Procesos Industriales Mediante la Ciencia de Datos</h3>
+                        <p>A través del análisis de grandes volúmenes de datos generados en entornos industriales, este proyecto busca identificar patrones, predecir fallos y optimizar la eficiencia de los procesos productivos, reduciendo costos y minimizando el impacto ambiental.</p>
+                    </div>
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto3.webp" alt="Optimización de Procesos Industriales" width="500" height="300">
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto4.webp" alt="Modelado Matemático de Sistemas Complejos" width="500" height="300">
+                    </div>
+                    <div class="proyecto-texto derecha">
+                        <h3>Modelado Matemático y Simulación de Sistemas Complejos en Ingeniería</h3>
+                        <p>Este proyecto se enfoca en el desarrollo de modelos matemáticos y simulaciones computacionales para comprender y predecir el comportamiento de sistemas complejos en diversas áreas de la ingeniería, desde la mecánica de fluidos hasta la dinámica de estructuras.</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div class="proyecto-texto izquierda">
+                        <h3>Aplicación de la Programación en la Automatización de Tareas Repetitivas</h3>
+                        <p>El proyecto explora el uso de diferentes lenguajes de programación y herramientas de software para automatizar tareas repetitivas en entornos de ingeniería, aumentando la productividad y reduciendo la posibilidad de errores humanos.</p>
+                    </div>
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto5.webp" alt="Automatización de Tareas con Programación" width="500" height="300">
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto6.webp" alt="Análisis Químico para la Identificación de Contaminantes" width="500" height="300">
+                    </div>
+                    <div class="proyecto-texto derecha">
+                        <h3>Desarrollo de Metodologías de Análisis Químico para la Identificación de Contaminantes Ambientales</h3>
+                        <p>Este proyecto se dedica a la investigación y desarrollo de métodos analíticos avanzados para la detección y cuantificación de diversos contaminantes presentes en el aire, el agua y el suelo, contribuyendo a la protección del medio ambiente y la salud pública.</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div class="proyecto-texto izquierda">
+                        <h3>Estudio de las Propiedades Físicas de Nuevos Materiales para Aplicaciones Energéticas</h3>
+                        <p>El proyecto se centra en la investigación de las propiedades físicas (térmicas, eléctricas, mecánicas) de materiales emergentes con potencial para su aplicación en dispositivos de almacenamiento y conversión de energía.</p>
+                    </div>
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto7.webp" alt="Propiedades Físicas de Materiales Energéticas" width="500" height="300">
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto8.webp" alt="Predicción de Fallos en Maquinaria Industrial" width="500" height="300">
+                    </div>
+                    <div class="proyecto-texto derecha">
+                        <h3>Implementación de Modelos Estadísticos para la Predicción de Fallos en Maquinaria Industrial</h3>
+                        <p>Mediante el análisis estadístico de datos de sensores y registros de mantenimiento, este proyecto busca desarrollar modelos predictivos que permitan anticipar fallos en maquinaria industrial, facilitando el mantenimiento preventivo y reduciendo los tiempos de inactividad.</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div class="proyecto-texto izquierda">
+                        <h3>Desarrollo de Algoritmos de Aprendizaje Profundo para el Reconocimiento de Imágenes en Ingeniería Civil</h3>
+                        <p>El proyecto explora la aplicación de algoritmos de aprendizaje profundo (Deep Learning) para el análisis y reconocimiento de imágenes en el contexto de la ingeniería civil, como la inspección de infraestructuras y la identificación de daños.</p>
+                    </div>
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto9.webp" alt="Reconocimiento de Imágenes en Ingeniería Civil" width="500" height="300">
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto10.webp" alt="Simulación de Fenómenos de Transporte en Procesos Químicos" width="500" height="300">
+                    </div>
+                    <div class="proyecto-texto derecha">
+                        <h3>Simulación Computacional de Fenómenos de Transporte en Procesos Químicos</h3>
+                        <p>Este proyecto se dedica al desarrollo y aplicación de modelos de simulación computacional para estudiar y optimizar los fenómenos de transporte de masa, calor y momento en diversos procesos químicos industriales.</p>
+                    </div>
                 </div>
             </div>
-            <div class="proyecto">
-                <div class="proyecto-imagen">
-                    <img src="images/proyecto2.jpg" alt="Nuevos Materiales para la Construcción Sostenible">
-                </div>
-                <div class="proyecto-texto derecha">
-                    <h3>Investigación y Desarrollo de Nuevos Materiales para la Construcción Sostenible</h3>
-                    <p>El objetivo de este proyecto es explorar y desarrollar materiales de construcción innovadores que sean ecológicos, económicos y eficientes en términos de energía, contribuyendo a la creación de edificaciones más sostenibles y amigables con el medio ambiente.</p>
-                </div>
-            </div>
-            <div class="proyecto">
-                <div class="proyecto-texto izquierda">
-                    <h3>Optimización de Procesos Industriales Mediante la Ciencia de Datos</h3>
-                    <p>A través del análisis de grandes volúmenes de datos generados en entornos industriales, este proyecto busca identificar patrones, predecir fallos y optimizar la eficiencia de los procesos productivos, reduciendo costos y minimizando el impacto ambiental.</p>
-                </div>
-                <div class="proyecto-imagen">
-                    <img src="images/proyecto3.jpg" alt="Optimización de Procesos Industriales">
-                </div>
-            </div>
-            <div class="proyecto">
-                <div class="proyecto-imagen">
-                    <img src="images/proyecto4.jpg" alt="Modelado Matemático de Sistemas Complejos">
-                </div>
-                <div class="proyecto-texto derecha">
-                    <h3>Modelado Matemático y Simulación de Sistemas Complejos en Ingeniería</h3>
-                    <p>Este proyecto se enfoca en el desarrollo de modelos matemáticos y simulaciones computacionales para comprender y predecir el comportamiento de sistemas complejos en diversas áreas de la ingeniería, desde la mecánica de fluidos hasta la dinámica de estructuras.</p>
-                </div>
-            </div>
-            <div class="proyecto">
-                <div class="proyecto-texto izquierda">
-                    <h3>Aplicación de la Programación en la Automatización de Tareas Repetitivas</h3>
-                    <p>El proyecto explora el uso de diferentes lenguajes de programación y herramientas de software para automatizar tareas repetitivas en entornos de ingeniería, aumentando la productividad y reduciendo la posibilidad de errores humanos.</p>
-                </div>
-                <div class="proyecto-imagen">
-                    <img src="images/proyecto5.jpg" alt="Automatización de Tareas con Programación">
-                </div>
-            </div>
-            <div class="proyecto">
-                <div class="proyecto-imagen">
-                    <img src="images/proyecto6.jpg" alt="Análisis Químico para la Identificación de Contaminantes">
-                </div>
-                <div class="proyecto-texto derecha">
-                    <h3>Desarrollo de Metodologías de Análisis Químico para la Identificación de Contaminantes Ambientales</h3>
-                    <p>Este proyecto se dedica a la investigación y desarrollo de métodos analíticos avanzados para la detección y cuantificación de diversos contaminantes presentes en el aire, el agua y el suelo, contribuyendo a la protección del medio ambiente y la salud pública.</p>
-                </div>
-            </div>
-            <div class="proyecto">
-                <div class="proyecto-texto izquierda">
-                    <h3>Estudio de las Propiedades Físicas de Nuevos Materiales para Aplicaciones Energéticas</h3>
-                    <p>El proyecto se centra en la investigación de las propiedades físicas (térmicas, eléctricas, mecánicas) de materiales emergentes con potencial para su aplicación en dispositivos de almacenamiento y conversión de energía.</p>
-                </div>
-                <div class="proyecto-imagen">
-                    <img src="images/proyecto7.jpg" alt="Propiedades Físicas de Materiales Energéticas">
-                </div>
-            </div>
-            <div class="proyecto">
-                <div class="proyecto-imagen">
-                    <img src="images/proyecto8.jpg" alt="Modelado Estadístico para la Predicción de Fallos en Maquinaria">
-                </div>
-                <div class="proyecto-texto derecha">
-                    <h3>Implementación de Modelos Estadísticos para la Predicción de Fallos en Maquinaria Industrial</h3>
-                    <p>Mediante el análisis estadístico de datos de sensores y registros de mantenimiento, este proyecto busca desarrollar modelos predictivos que permitan anticipar fallos en maquinaria industrial, facilitando el mantenimiento preventivo y reduciendo los tiempos de inactividad.</p>
-                </div>
-            </div>
-            <div class="proyecto">
-                <div class="proyecto-texto izquierda">
-                    <h3>Desarrollo de Algoritmos de Aprendizaje Profundo para el Reconocimiento de Imágenes en Ingeniería Civil</h3>
-   <p>El proyecto explora la aplicación de algoritmos de aprendizaje profundo (Deep Learning) para el análisis y reconocimiento de imágenes en el contexto de la ingeniería civil, como la inspección de infraestructuras y la identificación de daños.</p>
-                </div>
-                <div class="proyecto-imagen">
-                    <img src="images/proyecto9.jpg" alt="Reconocimiento de Imágenes con Deep Learning">
-                </div>
-            </div>
-            <div class="proyecto">
-                <div class="proyecto-imagen">
-                    <img src="images/proyecto10.jpg" alt="Simulación Computacional de Fenómenos de Transporte en Procesos Químicos">
-                </div>
-                <div class="proyecto-texto derecha">
-                    <h3>Simulación Computacional de Fenómenos de Transporte en Procesos Químicos</h3>
-                    <p>Este proyecto se dedica al desarrollo y aplicación de modelos de simulación computacional para estudiar y optimizar los fenómenos de transporte de masa, calor y momento en diversos procesos químicos industriales.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="cursos">
-        <h2>NUESTROS CURSOS</h2>
-        <div id="cursos-tematicas">
-            <div class="curso-tema" data-modal="modal-quimica">
-                <img src="images/quimica.jpg" alt="Química">
-                <h3>Química</h3>
-                <p>Explora los fundamentos de la química y sus diversas ramas.</p>
-            </div>
-            <div class="curso-tema" data-modal="modal-fisica">
-                <img src="images/fisica.jpg" alt="Física">
-                <h3>Física</h3>
-                <p>Descubre las leyes que rigen el universo, desde lo más pequeño a lo más grande.</p>
-            </div>
-            <div class="curso-tema" data-modal="modal-matematica">
-                <img src="images/matematica.jpg" alt="Matemática">
-                <h3>Matemática</h3>
-                <p>Desarrolla tu pensamiento lógico y habilidades de resolución de problemas.</p>
-            </div>
-            <div class="curso-tema" data-modal="modal-ciencia-datos">
-                <img src="images/ciencia-datos.jpg" alt="Ciencia de Datos">
-                <h3>Ciencia de Datos</h3>
-                <p>Aprende a extraer conocimiento valioso a partir de grandes conjuntos de datos.</p>
-            </div>
-            <div class="curso-tema" data-modal="modal-programacion">
-                <img src="images/programacion.jpg" alt="Programación">
-                <h3>Programación</h3>
-                <p>Adquiere las habilidades para crear software y automatizar tareas.</p>
-            </div>
-        </div>
-    </section>
+        <section id="cursos">
+            <h2>NUESTROS CURSOS</h2>
+            <div id="cursos-tematicas">
+                <div class="curso-tema" data-modal="modal-quimica" role="button" tabindex="0" aria-labelledby="quimica-title">
+                    <img loading="lazy" src="images/quimica.webp" alt="Química" width="300" height="200">
+                    <h3 id="quimica-title">Química</h3>
+                    <p>Explora los fundamentos de la química y sus diversas ramas.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-fisica" role="button" tabindex="0" aria-labelledby="fisica-title">
+                    <img loading="lazy" src="images/fisica.webp" alt="Física" width="300" height="200">
+                    <h3 id="fisica-title">Física</h3>
+                    <p>Descubre las leyes que rigen el universo.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-matematica" role="button" tabindex="0" aria-labelledby="matematica-title">
+                    <img loading="lazy" src="images/matematica.webp" alt="Matemática" width="300" height="200">
+                    <h3 id="matematica-title">Matemática</h3>
+                    <p>Desarrolla tu pensamiento lógico y habilidades de resolución de problemas.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-ciencia-datos" role="button" tabindex="0" aria-labelledby="ciencia-datos-title">
+                    <img loading="lazy" src="images/ciencia-datos.webp" alt="Ciencia de Datos" width="300" height="200">
+                    <h3 id="ciencia-datos-title">Ciencia de Datos</h3>
+                    <p>Aprende a extraer conocimiento valioso a partir de grandes conjuntos de datos.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-programacion" role="button" tabindex="0" aria-labelledby="programacion-title">
+                    <img loading="lazy" src="images/programacion.webp" alt="Programación" width="300" height="200">
+                    <h3 id="programacion-title">Programación</h3>
+                    <p>Adquiere las habilidades para crear software y automatizar tareas.</p>
+                </div>
+                </div>
+        </section>
 
-    <section id="eventos">
-        <h2>EVENTOS</h2>
-        <p>Próximos eventos y conferencias importantes para nuestro semillero:</p>
-        <ul>
-            <li><strong>Congreso Nacional de Ingeniería y Ciencias Básicas</strong> - [Fecha] - [Lugar]</li>
-            <li><strong>Taller de Ciencia de Datos Aplicada a la Ingeniería</strong> - [Fecha] - [Lugar]</li>
-            <li><strong>Seminario sobre Nuevas Tecnologías en Materiales de Construcción</strong> - [Fecha] - [Lugar]</li>
+        <section id="eventos">
+            <h2>EVENTOS</h2>
+            <p>Próximos eventos y conferencias importantes para nuestro semillero:</p>
+            <ul>
+                <li><strong>Congreso Nacional de Ingeniería y Ciencias Básicas</strong> - [Fecha] - [Lugar]</li>
+                <li><strong>Taller de Ciencia de Datos Aplicada a la Ingeniería</strong> - [Fecha] - [Lugar]</li>
+                <li><strong>Seminario sobre Nuevas Tecnologías en Materiales de Construcción</strong> - [Fecha] - [Lugar]</li>
             </ul>
-    </section>
+        </section>
 
-    <section id="noticias">
-        <h2>NOTICIAS</h2>
-        <p>Últimas noticias y actualizaciones del semillero:</p>
-        <ul>
-            <li><strong>Nuevo Proyecto de Investigación Aprobado</strong> - [Fecha] - Hemos recibido financiación para un nuevo proyecto sobre [tema del proyecto].</li>
-            <li><strong>Participación en la Feria de Ciencia y Tecnología</strong> - [Fecha] - Miembros del semillero presentaron sus avances en la reciente feria.</li>
-            <li><strong>Publicación de Artículo Científico</strong> - [Fecha] - Se publicó un nuevo artículo en la revista [nombre de la revista].</li>
-        </ul>
-    </section>
+        <section id="noticias">
+            <h2>NOTICIAS</h2>
+            <p>Últimas noticias y actualizaciones del semillero:</p>
+            <ul>
+                <li><strong>Nuevo Proyecto de Investigación Aprobado</strong> - [Fecha] - Hemos recibido financiación para un nuevo proyecto sobre [tema del proyecto].</li>
+                <li><strong>Participación en la Feria de Ciencia y Tecnología</strong> - [Fecha] - Miembros del semillero presentaron sus avances en la reciente feria.</li>
+                <li><strong>Publicación de Artículo Científico</strong> - [Fecha] - Se publicó un nuevo artículo en la revista [nombre de la revista].</li>
+            </ul>
+        </section>
+    </main>
 
-    <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2025 Semillero de Ciencias Básicas Aplicadas a Ingenierías</p>
+    </footer>
+
+    <script src="script.min.js" defer></script>
 </body>
 </html>
