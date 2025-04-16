@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cargo: 'LÍDER CREATIVO',
             descripcion: 'Descripción detallada de Jeffrey Brown y su experiencia.',
             redes: { facebook: '#', twitter: '#', instagram: '#' },
-            imagen: 'jeffrey-brown-large.jpg'
+            imagen: 'images/jeffrey-brown-large.jpg'
         },
         {
             id: 'modal-ann',
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cargo: 'GERENTE',
             descripcion: 'Información completa sobre Ann Richmond y sus responsabilidades.',
             redes: { facebook: '#', twitter: '#', instagram: '#' },
-            imagen: 'ann-richmond-large.jpg'
+            imagen: 'images/ann-richmond-large.jpg'
         },
         {
             id: 'modal-alex',
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cargo: 'GURÚ DE LA PROGRAMACIÓN',
             descripcion: 'Detalles sobre la experiencia de Alex Grinfield en programación.',
             redes: { facebook: '#', twitter: '#', instagram: '#' },
-            imagen: 'alex-grinfield-large.jpg'
+            imagen: 'images/alex-grinfield-large.jpg'
         },
         {
             id: 'modal-roxie',
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cargo: 'GERENTE DE VENTAS',
             descripcion: 'Descripción del rol y logros de Roxie Swanson.',
             redes: { facebook: '#', twitter: '#', instagram: '#' },
-            imagen: 'roxie-swanson-large.jpg'
+            imagen: 'images/roxie-swanson-large.jpg'
         },
         {
             id: 'modal-investigador5',
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cargo: 'Cargo del Investigador 5',
             descripcion: 'Descripción detallada del Investigador 5.',
             redes: { facebook: '#', twitter: '#', instagram: '#' },
-            imagen: 'placeholder-large.jpg'
+            imagen: 'images/placeholder-large.jpg'
         },
         {
             id: 'modal-investigador6',
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cargo: 'Cargo del Investigador 6',
             descripcion: 'Descripción detallada del Investigador 6.',
             redes: { facebook: '#', twitter: '#', instagram: '#' },
-            imagen: 'placeholder-large.jpg'
+            imagen: 'images/placeholder-large.jpg'
         }
         // Agrega más datos de investigadores aquí
     ];
@@ -78,9 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="cargo">${data.cargo}</p>
                 <p class="descripcion">${data.descripcion}</p>
                 <div class="redes-sociales">
-                    <a href="${data.redes.facebook}" target="_blank"><img src="facebook.png" alt="Facebook"></a>
-                    <a href="${data.redes.twitter}" target="_blank"><img src="twitter.png" alt="Twitter"></a>
-                    <a href="${data.redes.instagram}" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+                    <a href="${data.redes.facebook}" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="${data.redes.twitter}" target="_blank"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="${data.redes.instagram}" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
                 </div>
             </div>
         `;
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li>Química Analítica (Gravimetría, Volumetría...)</li>
                                     <li>Fisicoquímica (Termodinámica química, Cinética química...)</li>
                                 </ul>
-                                <img src="quimica-detalle.jpg" alt="Detalles de Química">
+                                <img src="images/quimica-detalle.jpg" alt="Detalles de Química">
                             </div>
                         `;
                         break;
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li>Electricidad y Magnetismo (Ley de Ohm...)</li>
                                     <li>Física Moderna (Teoría cuántica, Relatividad...)</li>
                                 </ul>
-                                <img src="fisica-detalle.jpg" alt="Detalles de Física">
+                                <img src="images/fisica-detalle.jpg" alt="Detalles de Física">
                             </div>
                         `;
                         break;
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li>Álgebra Lineal (Vectores, Matrices...)</li>
                                     <li>Ecuaciones Diferenciales (Ecuaciones de primer orden...)</li>
                                 </ul>
-                                <img src="matematica-detalle.jpg" alt="Detalles de Matemática">
+                                <img src="images/matematica-detalle.jpg" alt="Detalles de Matemática">
                             </div>
                         `;
                         break;
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li>Big Data (Hadoop, Spark...)</li>
                                     <li>Proyectos de Ciencia de Datos (Finanzas, Salud...)</li>
                                 </ul>
-                                <img src="ciencia-datos-detalle.jpg" alt="Detalles de Ciencia de Datos">
+                                <img src="images/ciencia-datos-detalle.jpg" alt="Detalles de Ciencia de Datos">
                             </div>
                         `;
                         break;
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li>Estructuras de Datos y Algoritmos (Listas, pilas...)</li>
                                     <li>Automatización y Web Scraping (Selenium, BeautifulSoup...)</li>
                                 </ul>
-                                <img src="programacion-detalle.jpg" alt="Detalles de Programación">
+                                <img src="images/programacion-detalle.jpg" alt="Detalles de Programación">
                             </div>
                         `;
                         break;
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <span class="close-button">&times;</span>
                                 <h3>${modalId.replace('modal-', '').replace('-', ' ')}</h3>
                                 <p>Contenido específico para este curso.</p>
-                                <img src="curso-default.jpg" alt="Detalles del Curso">
+                                <img src="images/curso-default.jpg" alt="Detalles del Curso">
                             </div>
                         `;
                         break;
