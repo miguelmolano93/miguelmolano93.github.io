@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</title>
-    <link rel="stylesheet" href="body.css"> <link rel="stylesheet" href="styles.css"> <style>
+    <link rel="stylesheet" href="styles.css">
+    <style>
         /* Estilos básicos para el submenú (se refinarán en CSS) */
         .submenu {
             display: none;
@@ -46,6 +47,7 @@
             width: 100%;
             height: auto;
             display: block;
+            object-fit: cover;
         }
         .investigador-info {
             margin-top: 10px;
@@ -83,18 +85,20 @@
             padding: 20px;
             border: 1px solid #888;
             width: 80%; /* Could be more or less, depending on screen size */
+            border-radius: 8px;
+            position: relative;
         }
         .close-button {
             color: #aaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
+            cursor: pointer;
         }
         .close-button:hover,
         .close-button:focus {
             color: black;
             text-decoration: none;
-            cursor: pointer;
         }
         /* Estilos básicos para la sección de cursos (se refinarán en CSS) */
         #cursos-tematicas {
@@ -150,7 +154,8 @@
         <img src="logo1.png" alt="Banner de mi página web">
         <h1>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</h1>
         <nav>
-            <a href="#">Inicio</a> <div class="nav-item">
+            <a href="#">Inicio</a>
+            <div class="nav-item">
                 <a href="#cursos">Cursos</a>
                 <div class="submenu">
                     <a href="#quimica">Química</a>
@@ -164,6 +169,11 @@
             <a href="#eventos">Eventos</a>
             <a href="#noticias">Noticias</a>
         </nav>
+        <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </header>
 
     <section id="investigadores">
@@ -379,3 +389,17 @@
             </div>
         </div>
     </section>
+
+    <section id="eventos">
+        <h2>EVENTOS</h2>
+        <p>Próximos eventos y conferencias.</p>
+        </section>
+
+    <section id="noticias">
+        <h2>NOTICIAS</h2>
+        <p>Últimas noticias y actualizaciones del semillero.</p>
+        </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
