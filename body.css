@@ -1,617 +1,76 @@
-/* styles.css - Archivo CSS optimizado */
-
-/* --- Generales --- */
-body {
-    font-family: sans-serif;
-    margin: 0;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+/* Estilos básicos para el submenú */
+.nav-item { position: relative; }
+.submenu { display: none; position: absolute; top: 100%; left: 0; background-color: #f9f9f9; [cite: 3, 4]
+    min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; [cite: 4, 5]
 }
+.submenu a { color: black; padding: 12px 16px; text-decoration: none; display: block; }
+.nav-item:hover .submenu { display: block; }
 
-header {
-    background-color: #fff;
-    padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+/* Estilos básicos para el carrusel de investigadores */
+#investigadores-container { display: flex;
+    overflow-x: auto; scroll-snap-type: x mandatory; position: relative;
+    padding: 20px 0;
 }
-
-header a {
-    color: #333;
-    text-decoration: none;
-}
-
-header img {
-    max-height: 40px;
-    margin-right: 1rem;
-}
-
-header h1 {
-    margin: 0 1rem 0 0;
-    font-size: 1.5rem;
-    flex-grow: 1;
-}
-
-nav a {
-    margin: 0 0.75rem;
-    font-weight: 500;
-}
-
-nav a:hover {
-    color: #007bff;
-}
-
-main {
-    padding: 1.5rem;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: #333;
-}
-
-p {
-    margin-bottom: 1rem;
-    line-height: 1.7;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 1rem;
-}
-
-ul li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-}
-
-ul li:last-child {
-    border-bottom: none;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 0.9rem;
-    position: sticky;
-    bottom: 0;
-    width: 100%;
-}
-
-/* --- Menú Hamburguesa --- */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    padding: 0.5rem;
-    border: none;
-    background: transparent;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 3px 0;
-    transition: 0.4s;
-}
-
-nav.active {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-}
-
-nav.active a {
-    margin: 0.5rem 0;
-    display: block;
-}
-
-nav.active .nav-item .submenu {
-    position: static;
-    display: block;
-    box-shadow: none;
-    background-color: #f9f9f9;
-    padding-left: 1rem;
-    margin-top: 0.5rem;
-    border-left: 2px solid #ccc;
-}
-
-nav.active .nav-item .submenu a {
-    margin: 0.25rem 0;
-}
-
-/* --- Submenú --- */
-.nav-item {
-    position: relative;
-}
-
-.submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.submenu a {
-    color: black;
-    padding: 0.75rem 1rem;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s ease;
-}
-
-.submenu a:hover {
-    background-color: #eee;
-}
-
-.nav-item:hover .submenu {
-    display: block;
-}
-
-/* --- Sección de Investigadores --- */
-#investigadores {
-    padding: 2rem 1.5rem;
-    background-color: #fff;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-#investigadores h2 {
-    margin-bottom: 1.5rem;
-}
-
-#investigadores p {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #666;
-}
-
-#investigadores-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    position: relative;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-}
-
-.investigador {
-    flex: 0 0 200px;
-    margin: 0 15px;
-    text-align: center;
+.investigador { flex: 0 0 250px; margin: 0 10px; text-align: center;
     scroll-snap-align: start;
 }
+.foto-perfil { width: 100px; height: 100px; border-radius: 50%; overflow: hidden;
+    margin: 0 auto 10px;
+}
+.foto-perfil img { width: 100%; height: auto;
+    display: block; object-fit: cover;
+}
+.investigador-info { margin-top: 10px;
+}
+.flecha { position: absolute; top: 50%; transform: translateY(-50%); font-size: 2em;
+    color: rgba(0, 0, 0, 0.3); cursor: pointer; user-select: none; background: none;
+    border: none; outline: none;
+}
+.flecha-izquierda { left: 10px; }
+.flecha-derecha { right: 10px; }
 
-.foto-perfil {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+/* Estilos básicos para las modales */
+.modal { display: none;
+    position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+    overflow: auto; background-color: rgba(0,0,0,0.4);
+}
+.modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px;
+    border: 1px solid #888; width: 80%; border-radius: 8px; position: relative;
+}
+.close-button { color: #aaa; position: absolute; top: 0; right: 0; font-size: 28px;
+    font-weight: bold; cursor: pointer; background: none; border: none; outline: none;
+}
+.close-button:hover, .close-button:focus { color: black; text-decoration: none;
 }
 
-.foto-perfil img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    transition: transform 0.3s ease-in-out;
+/* Estilos básicos para la sección de cursos */
+#cursos-tematicas { display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;
+    padding: 20px;
+}
+.curso-tema { border: 1px solid #ccc;
+    padding: 15px; border-radius: 8px; text-align: center; cursor: pointer;
+}
+.curso-tema img { max-width: 100%;
+    height: auto; margin-bottom: 10px;
 }
 
-.foto-perfil:hover img {
-    transform: scale(1.05);
+/* Estilos básicos para la sección de proyectos */
+#proyectos-lista { padding: 20px;
 }
-
-.investigador-info h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.25rem;
-    cursor: pointer;
-}
-
-.investigador-info .cargo {
-    font-size: 0.9rem;
-    color: #777;
-    margin-bottom: 0.5rem;
-}
-
-.investigador-info .descripcion {
-    font-size: 0.85rem;
-    color: #555;
-}
-
-.redes-sociales {
-    margin-top: 0.75rem;
-}
-
-.redes-sociales a {
-    display: inline-block;
-    margin: 0 0.5rem;
-}
-
-.redes-sociales img {
-    width: 25px;
-    height: 25px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-}
-
-.redes-sociales img:hover {
-    opacity: 1;
-}
-
-.flecha {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    color: rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    user-select: none;
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    outline: none;
-    transition: color 0.3s ease;
-}
-
-.flecha:hover {
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.flecha-izquierda {
-    left: 10px;
-}
-
-.flecha-derecha {
-    right: 10px;
-}
-
-/* --- Sección de Proyectos --- */
-#proyectos {
-    padding: 2rem 1.5rem;
-    background-color: #f9f9f9;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-}
-
-#proyectos h2 {
-    margin-bottom: 1.5rem;
-}
-
-#proyectos-lista {
-    padding: 1rem 0;
-}
-
-.proyecto {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
+.proyecto { display: flex; flex-direction: column; margin-bottom: 30px;
     align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 2rem;
 }
-
-.proyecto:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
+.proyecto-imagen { max-width: 100%;
 }
-
-.proyecto-imagen {
-    max-width: 100%;
-    margin-bottom: 1rem;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.proyecto-imagen img { width: 100%; height: auto; display: block;
 }
-
-.proyecto-imagen img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    transition: transform 0.3s ease-in-out;
+.proyecto-texto { padding: 20px; text-align: center;
 }
-
-.proyecto:hover .proyecto-imagen img {
-    transform: scale(1.02);
-}
-
-.proyecto-texto {
-    padding: 1rem;
-    text-align: center;
-}
-
-.proyecto-texto h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.proyecto-texto p {
-    color: #555;
-}
-
 @media (min-width: 768px) {
-    .proyecto {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .proyecto-imagen {
-        max-width: 40%;
-        margin-bottom: 0;
-        margin-right: 1.5rem;
-    }
-
-    .proyecto-texto {
-        text-align: left;
-        flex-grow: 1;
-    }
-
-    .proyecto:nth-child(even) {
-        flex-direction: row-reverse;
-    }
-
-    .proyecto:nth-child(even) .proyecto-imagen {
-        margin-left: 1.5rem;
-        margin-right: 0;
-    }
-
-    .proyecto-texto.izquierda {
-        margin-right: 1.5rem;
-    }
-
-    .proyecto-texto.derecha {
-        margin-left: 1.5rem;
-    }
-}
-
-/* --- Sección de Cursos --- */
-#cursos {
-    padding: 2rem 1.5rem;
-    background-color: #fff;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-#cursos h2 {
-    margin-bottom: 1.5rem;
-}
-
-#cursos-tematicas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding-top: 1rem;
-}
-
-.curso-tema {
-    border: 1px solid #ddd;
-    padding: 1.25rem;
-    border-radius: 6px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    background-color: #f9f9f9;
-}
-
-.curso-tema:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.curso-tema img {
-    max-width: 80%;
-    height: auto;
-    margin-bottom: 0.75rem;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.curso-tema h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.curso-tema p {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-/* --- Ventanas Modales --- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 1.5rem;
-    border: 1px solid #888;
-    width: 80%;
-    border-radius: 8px;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.close-button {
-    color: #aaa;
-    position: absolute;
-    top: 0.5rem;
-    right: 0.75rem;
-    font-size: 1.75rem;
-    font-weight: bold;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    outline: none;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-}
-
-.modal-content img {
-    max-width: 150px;
-    height: auto;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.modal-content h3 {
-    text-align: center;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.modal-content .cargo {
-    text-align: center;
-    font-style: italic;
-    color: #777;
-    margin-bottom: 1rem;
-}
-
-.modal-content .descripcion {
-    line-height: 1.7;
-    color: #555;
-    margin-bottom: 1rem;
-}
-
-.modal-content .redes-sociales {
-    text-align: center;
-}
-
-/* --- Sección de Eventos y Noticias --- */
-#eventos,
-#noticias {
-    padding: 2rem 1.5rem;
-    background-color: #fff;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-#eventos h2,
-#noticias h2 {
-    margin-bottom: 1.5rem;
-}
-
-#eventos ul,
-#noticias ul {
-    padding-left: 1rem;
-    list-style-type: disc;
-}
-
-#eventos li,
-#noticias li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-    color: #555;
-}
-
-#eventos li:last-child,
-#noticias li:last-child {
-    border-bottom: none;
-}
-
-/* --- Media Queries para Responsividad --- */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    header h1 {
-        margin-bottom: 0.5rem;
-    }
-
-    nav {
-        display: none;
-        width: 100%;
-        margin-top: 1rem;
-    }
-
-    nav a {
-        margin: 0.5rem 0;
-        display: block;
-    }
-
-    .menu-toggle {
-        display: flex;
-        position: absolute;
-        top: 1rem;
-        right: 1.5rem;
-    }
-
-    #investigadores-container {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-
-    .investigador {
-        flex: 0 0 150px;
-        margin: 0 10px;
-    }
-
-    .proyecto {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .proyecto-imagen {
-        max-width: 80%;
-        margin-bottom: 1rem;
-    }
-
-    .proyecto-texto {
-        text-align: center;
-    }
-
-    #cursos-tematicas {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-    }
+    .proyecto { flex-direction: row; align-items: center; }
+    .proyecto-texto { text-align: left; }
+    .proyecto-texto.izquierda { margin-right: 20px; }
+    .proyecto-texto.derecha { margin-left: 20px; }
+    .proyecto-imagen { max-width: 50%; }
 }
