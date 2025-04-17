@@ -6,52 +6,69 @@ document.addEventListener('DOMContentLoaded', function() {
     const investigadoresContainer = document.getElementById('investigadores-container');
     const modalTriggers = document.querySelectorAll('[data-modal]');
     const closeButtons = document.querySelectorAll('.close-button');
-    const investigadorCards = document.querySelectorAll('#investigadores-container .investigador');
-    let investigadorIndex = 0;
-    const investigadoresVisible = 3; // Adjust based on your layout
 
+    // Toggle Mobile Menu
     if (menuToggle && nav) {
         menuToggle.addEventListener('click', () => {
             const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
             menuToggle.setAttribute('aria-expanded', !expanded);
-            nav.style.display = expanded ? 'none' : 'flex'; /* Adjust to 'block' if stacking */
-        });
-    }
+            nav.style.display = expanded ? 'none' : 'flex'; // Or 'block
+// Investigator Carousel Navigation
+if (investigadoresContainer && flechaIzquierda && flechaDerecha) {
+    flechaIzquierda.addEventListener('click', () => {
+        investigadoresContainer.scrollLeft -= 320; // Adjust scroll amount based on investigator width + margin
+    });
 
-    if (investigadoresContainer && flechaIzquierda && flechaDerecha) {
-        flechaIzquierda.addEventListener('click', () => {
-            investigadoresContainer.scrollLeft -= 300; // Adjust scroll amount as needed
-        });
+    flechaDerecha.addEventListener('click', () => {
+        investigadoresContainer.scrollLeft += 320; // Adjust scroll amount based on investigator width + margin
+    });
+}
 
-        flechaDerecha.addEventListener('click', () => {
-            investigadoresContainer.scrollLeft += 300; // Adjust scroll amount as needed
-        });
-    }
+// Modal Interactions
+modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        const modalId = trigger.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'block';
+        }
+    });
 
-    modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (event) => {
+    // Also handle keyboard accessibility for elements acting as buttons
+    trigger.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             const modalId = trigger.getAttribute('data-modal');
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.style.display = 'block';
             }
-        });
-    });
-
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = button.closest('.modal');
-            if (modal) {
-                modal.style.display = 'none';
-            }
-        });
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target.classList.contains('modal')) {
-            event.target.style.display = 'none';
         }
     });
 });
-}
+
+closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = button.closest('.modal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+    }
+});
+
+// Basic keyboard navigation for modals
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        const openModals = document.querySelectorAll('.modal[style*="display: block;"]');
+        openModals.forEach(modal => {
+            modal.style.display = 'none';
+        });
+    }
+});
