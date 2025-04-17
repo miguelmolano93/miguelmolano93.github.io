@@ -1,72 +1,212 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</title>
     <link rel="stylesheet" href="styles.min.css">
     <link rel="preload" href="images/LOGO3.png" as="image">
-    <link rel="preload" href="images/miguelmolano.png" as="image">
-    <link rel="preload" href="images/josedavid.png" as="image">
-    <link rel="preload" href="images/gustavo.png" as="image">
-    <link rel="preload" href="images/isaura.png" as="image">
-    <link rel="preload" href="images/cristian-perfil.png" as="image">
-    <link rel="preload" href="images/daniel-perfil.png" as="image">
-    <link rel="preload" href="images/facebook.png" as="image">
-    <link rel="preload" href="images/twitter.png" as="image">
-    <link rel="preload" href="images/instagram.png" as="image">
-    <link rel="preload" href="images/proyecto1.png" as="image">
-    <link rel="preload" href="images/proyecto2.png" as="image">
-    <link rel="preload" href="images/proyecto3.png" as="image">
-    <link rel="preload" href="images/proyecto4.png" as="image">
-    <link rel="preload" href="images/proyecto5.png" as="image">
-    <link rel="preload" href="images/proyecto6.png" as="image">
-    <link rel="preload" href="images/proyecto7.png" as="image">
-    <link rel="preload" href="images/proyecto8.png" as="image">
-    <link rel="preload" href="images/proyecto9.png" as="image">
-    <link rel="preload" href="images/proyecto10.png" as="image">
-    <link rel="preload" href="images/quimica.png" as="image">
-    <link rel="preload" href="images/fisica.png" as="image">
-    <link rel="preload" href="images/matematica.png" as="image">
-    <link rel="preload" href="images/ciencia-datos.png" as="image">
-    <link rel="preload" href="images/programacion.png" as="image">
     <style>
         /* Estilos básicos para el submenú */
-        .nav-item { position: relative; }
-        .submenu { display: none; position: absolute; top: 100%; left: 0; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; }
-        .submenu a { color: black; padding: 12px 16px; text-decoration: none; display: block; }
-        .nav-item:hover .submenu { display: block; }
+        .nav-item {
+            position: relative;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .submenu a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .nav-item:hover .submenu {
+            display: block;
+        }
 
         /* Estilos básicos para el carrusel de investigadores */
-        #investigadores-container { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; position: relative; padding: 20px 0; }
-        .investigador { flex: 0 0 250px; margin: 0 10px; text-align: center; scroll-snap-align: start; }
-        .foto-perfil { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; margin: 0 auto 10px; }
-        .foto-perfil img { width: 100%; height: auto; display: block; object-fit: cover; }
-        .investigador-info { margin-top: 10px; }
-        .flecha { position: absolute; top: 50%; transform: translateY(-50%); font-size: 2em; color: rgba(0, 0, 0, 0.3); cursor: pointer; user-select: none; background: none; border: none; outline: none; }
-        .flecha-izquierda { left: 10px; }
-        .flecha-derecha { right: 10px; }
+        #investigadores-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .investigador {
+            flex: 0 0 250px;
+            margin: 0 10px;
+            text-align: center;
+            scroll-snap-align: start;
+        }
+
+        .foto-perfil {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 10px;
+        }
+
+        .foto-perfil img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .investigador-info {
+            margin-top: 10px;
+        }
+
+        .flecha {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            user-select: none;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        .flecha-izquierda {
+            left: 10px;
+        }
+
+        .flecha-derecha {
+            right: 10px;
+        }
 
         /* Estilos básicos para las modales */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
-        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; border-radius: 8px; position: relative; }
-        .close-button { color: #aaa; position: absolute; top: 0; right: 0; font-size: 28px; font-weight: bold; cursor: pointer; background: none; border: none; outline: none; }
-        .close-button:hover, .close-button:focus { color: black; text-decoration: none; }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+        }
 
         /* Estilos básicos para la sección de cursos */
-        #cursos-tematicas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
-        .curso-tema { border: 1px solid #ccc; padding: 15px; border-radius: 8px; text-align: center; cursor: pointer; }
-        .curso-tema img { max-width: 100%; height: auto; margin-bottom: 10px; }
+        #cursos-tematicas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .curso-tema {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .curso-tema img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
 
         /* Estilos básicos para la sección de proyectos */
-        #proyectos-lista { padding: 20px; }
-        .proyecto { display: flex; flex-direction: column; margin-bottom: 30px; align-items: center; }
-        .proyecto-imagen { max-width: 100%; }
-        .proyecto-imagen img { width: 100%; height: auto; display: block; }
-        .proyecto-texto { padding: 20px; text-align: center; }
-        @media (min-width: 768px) { .proyecto { flex-direction: row; align-items: center; } .proyecto-texto { text-align: left; } .proyecto-texto.izquierda { margin-right: 20px; } .proyecto-texto.derecha { margin-left: 20px; } .proyecto-imagen { max-width: 50%; } }
+        #proyectos-lista {
+            padding: 20px;
+        }
+
+        .proyecto {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .proyecto-imagen {
+            max-width: 100%;
+        }
+
+        .proyecto-imagen img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .proyecto-texto {
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .proyecto {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .proyecto-texto {
+                text-align: left;
+            }
+
+            .proyecto-texto.izquierda {
+                margin-right: 20px;
+            }
+
+            .proyecto-texto.derecha {
+                margin-left: 20px;
+            }
+
+            .proyecto-imagen {
+                max-width: 50%;
+            }
+        }
     </style>
 </head>
+
 <body>
     <header>
         <a href="/" aria-label="Ir a la página de inicio">
@@ -75,21 +215,28 @@
         <h1>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</h1>
         <nav>
             <a href="/" aria-label="Ir a la sección de inicio">Inicio</a>
+
             <div class="nav-item">
                 <a href="#cursos" aria-expanded="false" aria-controls="submenu-cursos">Cursos</a>
                 <div class="submenu" id="submenu-cursos">
                     <a href="#quimica" aria-label="Ir a la sección de Química" data-modal="modal-quimica-detalle">Química</a>
                     <a href="#fisica" aria-label="Ir a la sección de Física" data-modal="modal-fisica-detalle">Física</a>
-                    <a href="#matematica" aria-label="Ir a la sección de Matemática" data-modal="modal-matematica-detalle">Matemática</a>
-                    <a href="#ciencia-datos" aria-label="Ir a la sección de Ciencia de Datos" data-modal="modal-ciencia-datos-detalle">Ciencia de Datos</a>
-                    <a href="#programacion" aria-label="Ir a la sección de Programación" data-modal="modal-programacion-detalle">Programación</a>
+
+                    <a href="#matematica" aria-label="Ir a la sección de Matemática"
+                        data-modal="modal-matematica-detalle">Matemática</a>
+                    <a href="#ciencia-datos" aria-label="Ir a la sección de Ciencia de Datos"
+                        data-modal="modal-ciencia-datos-detalle">Ciencia de Datos</a>
+                    <a href="#programacion" aria-label="Ir a la sección de Programación"
+                        data-modal="modal-programacion-detalle">Programación</a>
                 </div>
+
             </div>
             <a href="#proyectos" aria-label="Ir a la sección de Proyectos">Proyectos</a>
             <a href="#eventos" aria-label="Ir a la sección de Eventos">Eventos</a>
             <a href="#noticias" aria-label="Ir a la sección de Noticias">Noticias</a>
         </nav>
         <button class="menu-toggle" aria-label="Alternar menú" aria-expanded="false">
+
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -100,334 +247,314 @@
         <section id="investigadores">
             <h2>NUESTRO EQUIPO DE TRABAJO</h2>
             <p>Conoce a los investigadores que hacen parte de este semillero.</p>
+
             <div id="investigadores-container">
                 <div class="investigador">
                     <div class="foto-perfil">
-                        <img loading="lazy" src="images/miguelmolano.png" alt="Miguel  Molano " width="100" height="100" data-modal="modal-miguel" role="button" tabindex="0" aria-labelledby="miguel-molano-name">
+                        <img loading="lazy" src="images/miguelmolano.png" alt="Miguel  Molano" width="100" height="100"
+                            data-modal="modal-miguel" role="button" tabindex="0" aria-labelledby="miguel-molano-name">
                     </div>
+
                     <div class="investigador-info">
                         <h3 data-modal="modal-miguel" id="Miguel" role="button" tabindex="0">Miguel Fernando Molano Cabrejo</h3>
                         <p class="cargo">LÍDER DEL SEMILLERO</p>
-                        <p class="descripcion">Químico con amplia experiencia en formulación y ejecucion de proyectos.</p>
+                        <p class="descripcion">Químico
+                            con amplia experiencia en formulación y ejecucion de proyectos.</p>
                         <div class="redes-sociales">
-                            <a href="#" aria-label="Enlace a Facebook de Miguel  Molano"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Twitter de Miguel  Molano"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Instagram de Miguel  Molano"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Facebook de Miguel  Molano"><img loading="lazy"
+                                    src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+
+                            <a href="#" aria-label="Enlace a Twitter de Miguel  Molano"><img loading="lazy"
+                                    src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de Miguel  Molano"><img loading="lazy"
+                                    src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
                         </div>
+
                     </div>
                 </div>
                 <div class="investigador">
                     <div class="foto-perfil">
-                        <img loading="lazy" src="images/josedavid.png" alt="jose david" width="100" height="100" data-modal="modal-jose" role="button" tabindex="0" aria-labelledby="jose-david-name">
+                        <img loading="lazy" src="images/josedavid.png" alt="jose david" width="100" height="100"
+                            data-modal="modal-jose" role="button" tabindex="0" aria-labelledby="jose-david-name">
+
                     </div>
                     <div class="investigador-info">
-                        <h3 data-modal="modal-jose" id="jose-david-name" role="button" tabindex="0">José David Tamára Jaramillo</h3>
+                        <h3 data-modal="modal-jose" id="jose-david-name" role="button" tabindex="0">José David Tamára
+                            Jaramillo</h3>
                         <p class="cargo">COORDINADORA DE PROYECTOS</p>
+
                         <p class="descripcion">Fíisco con amplia experiencia en la gestión y el seguimiento de proyectos.</p>
                         <div class="redes-sociales">
-                            <a href="#" aria-label="Enlace a Facebook de jose david"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Twitter de jose david"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Instagram de jose david"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Facebook de jose david"><img loading="lazy"
+                                    src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+
+                            <a href="#" aria-label="Enlace a Twitter de jose david"><img loading="lazy"
+                                    src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de jose david"><img loading="lazy"
+                                    src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
                         </div>
+
                     </div>
                 </div>
                 <div class="investigador">
                     <div class="foto-perfil">
-                        <img loading="lazy" src="images/alex-grinfield-perfil.png" alt="Alex Grinfield" width="100" height="100" data-modal="modal-alex" role="button" tabindex="0" aria-labelledby="alex-grinfield-name">
+                        <img loading="lazy" src="images/alex-grinfield-perfil.png" alt="Alex Grinfield" width="100"
+                            height="100" data-modal="modal-alex" role="button" tabindex="0"
+                            aria-labelledby="alex-grinfield-name">
                     </div>
                     <div class="investigador-info">
                         <h3 data-modal="modal-alex" id="alex-grinfield-name" role="button" tabindex="0">Alex Grinfield</h3>
                         <p class="cargo">ESPECIALISTA EN PROGRAMACIÓN Y MODELADO</p>
-                        <p class="descripcion">Aporta su experiencia en el desarrollo de herramientas computacionales para la investigación.</p>
+
+                        <p class="descripcion">Aporta su experiencia en el desarrollo de herramientas computacionales para la
+                            investigación.</p>
                         <div class="redes-sociales">
-                            <a href="#" aria-label="Enlace a Facebook de Alex Grinfield"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Twitter de Alex Grinfield"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Instagram de Alex Grinfield"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Facebook de Alex Grinfield"><img loading="lazy"
+                                    src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter de Alex Grinfield"><img loading="lazy"
+                                    src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de Alex Grinfield"><img loading="lazy"
+                                    src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+
                         </div>
                     </div>
                 </div>
                 <div class="investigador">
                     <div class="foto-perfil">
-                        <img loading="lazy" src="images/roxie-swanson-perfil.png" alt="Roxie Swanson" width="100" height="100" data-modal="modal-roxie" role="button" tabindex="0" aria-labelledby="roxie-swanson-name">
+
+                        <img loading="lazy" src="images/roxie-swanson-perfil.png" alt="Roxie Swanson" width="100"
+                            height="100" data-modal="modal-roxie" role="button" tabindex="0"
+                            aria-labelledby="roxie-swanson-name">
                     </div>
                     <div class="investigador-info">
                         <h3 data-modal="modal-roxie" id="roxie-swanson-name" role="button" tabindex="0">Roxie Swanson</h3>
+
                         <p class="cargo">ENLACE CON LA INDUSTRIA</p>
-                        <p class="descripcion">Responsable de establecer colaboraciones con empresas y organizaciones del sector.</p>
+                        <p class="descripcion">Responsable de establecer colaboraciones con empresas y organizaciones del
+                            sector.</p>
                         <div class="redes-sociales">
-                            <a href="#" aria-label="Enlace a Facebook de Roxie Swanson"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Twitter de Roxie Swanson"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Instagram de Roxie Swanson"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace
+                            a Facebook de Roxie Swanson"><img loading="lazy" src="images/facebook.png" alt="Facebook"
+                                    width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter de Roxie Swanson"><img loading="lazy"
+                                    src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de Roxie Swanson"><img loading="lazy"
+                                    src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+
                         </div>
                     </div>
                 </div>
                 <div class="investigador">
                     <div class="foto-perfil">
-                        <img loading="lazy" src="images/investigador5-perfil.png" alt="Nombre Investigador 5" width="100" height="100" data-modal="modal-investigador5" role="button" tabindex="0" aria-labelledby="investigador5-name">
+
+                        <img loading="lazy" src="images/investigador5-perfil.png" alt="Nombre Investigador 5" width="100"
+                            height="100" data-modal="modal-investigador5" role="button" tabindex="0"
+                            aria-labelledby="investigador5-name">
                     </div>
                     <div class="investigador-info">
-                        <h3 data-modal="modal-investigador5" id="investigador5-name" role="button" tabindex="0">Nombre Investigador 5</h3>
+                        <h3 data-modal="modal-investigador5" id="investigador5-name" role="button" tabindex="0">Nombre
+                            Investigador 5</h3>
+
                         <p class="cargo">Cargo Investigador 5</p>
                         <p class="descripcion">Breve descripción del Investigador 5.</p>
                         <div class="redes-sociales">
-                            <a href="#" aria-label="Enlace a Facebook del Investigador 5"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Twitter del Investigador 5"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Instagram del Investigador 5"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+
+                            <a href="#" aria-label="Enlace a Facebook del Investigador 5"><img loading="lazy"
+                                    src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter del Investigador 5"><img loading="lazy"
+                                    src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram del Investigador 5"><img loading="lazy"
+                                    src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
                         </div>
                     </div>
                 </div>
-                <div class="investigador">
-                    <div class="foto-perfil">
-                        <img loading="lazy" src="images/investigador5-perfil.png" alt="Nombre Investigador 6" width="100" height="100" data-modal="modal-investigador6" role="button" tabindex="0" aria-labelledby="investigador5-name">
+ <img loading="lazy" src="images/investigador5-perfil.png" alt="Nombre Investigador 7" width="100"
+                            height="100" data-modal="modal-investigador7" role="button" tabindex="0"
+                            aria-labelledby="investigador5-name">
                     </div>
-               <div class="investigador-info">
-                        <h3 data-modal="modal-investigador6" id="investigador6-name" role="button" tabindex="0">Nombre Investigador 6</h3>
-                        <p class="cargo">Cargo Investigador 6</p>
-                        <p class="descripcion">Breve descripción del Investigador 6.</p>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-investigador7" id="investigador7-name" role="button" tabindex="0">Nombre
+                            Investigador 7</h3>
+
+                        <p class="cargo">Cargo Investigador 7</p>
+                        <p class="descripcion">Breve descripción del Investigador 7.</p>
                         <div class="redes-sociales">
-                            <a href="#" aria-label="Enlace a Facebook del Investigador 6"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Twitter del Investigador 6"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
-                            <a href="#" aria-label="Enlace a Instagram del Investigador 6"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+
+                            <a href="#" aria-label="Enlace a Facebook del Investigador 7"><img loading="lazy"
+                                    src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter del Investigador 7"><img loading="lazy"
+                                    src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram del Investigador 7"><img loading="lazy"
+                                    src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
                         </div>
                     </div>
                 </div>
-                <button class="flecha flecha-izquierda" aria-label="Mostrar investigadores anteriores">&lt;</button>
-                <button class="flecha flecha-derecha" aria-label="Mostrar siguientes investigadores">&gt;</button>
+
+            </div>
+
+            <div id="modal-miguel" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Miguel Fernando Molano Cabrejo</h2>
+                    <p>Información detallada sobre Miguel Fernando Molano Cabrejo.</p>
+                </div>
+            </div>
+
+            <div id="modal-jose" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>José David Tamára Jaramillo</h2>
+                    <p>Información detallada sobre José David Tamára Jaramillo.</p>
+                </div>
+            </div>
+
+            <div id="modal-alex" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Alex Grinfield</h2>
+                    <p>Información detallada sobre Alex Grinfield.</p>
+                </div>
+            </div>
+
+            <div id="modal-roxie" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Roxie Swanson</h2>
+                    <p>Información detallada sobre Roxie Swanson.</p>
+                </div>
+            </div>
+
+            <div id="modal-investigador5" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Nombre Investigador 5</h2>
+                    <p>Información detallada sobre el Investigador 5.</p>
+                </div>
+            </div>
+            <div id="modal-investigador6" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Nombre Investigador 6</h2>
+                    <p>Información detallada sobre el Investigador 6.</p>
+                </div>
+            </div>
+            <div id="modal-investigador7" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Nombre Investigador 7</h2>
+                    <p>Información detallada sobre el Investigador 7.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cursos">
+            <h2>CURSOS Y TEMÁTICAS</h2>
+            <p>Explora los diferentes cursos y temáticas que abordamos en nuestro semillero:</p>
+            <div id="cursos-tematicas">
+                <div class="curso-tema" data-modal="modal-quimica-detalle">
+                    <img loading="lazy" src="images/quimica.png" alt="Química" width="100" height="100">
+                    <h3>Química</h3>
+                    <p>Estudio de la materia y sus propiedades, así como de los cambios que experimenta.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-fisica-detalle">
+                    <img loading="lazy" src="images/fisica.png" alt="Física" width="100" height="100">
+                    <h3>Física</h3>
+                    <p>Análisis de los fenómenos naturales y las leyes que los rigen.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-matematica-detalle">
+                    <img loading="lazy" src="images/matematica.png" alt="Matemática" width="100" height="100">
+                    <h3>Matemática</h3>
+                    <p>Desarrollo del pensamiento lógico y la resolución de problemas mediante el uso de números y
+                        símbolos.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-ciencia-datos-detalle">
+                    <img loading="lazy" src="images/ciencia-datos.png" alt="Ciencia de Datos" width="100" height="100">
+                    <h3>Ciencia de Datos</h3>
+                    <p>Extracción de conocimiento e información valiosa a partir de grandes volúmenes de datos.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-programacion-detalle">
+                    <img loading="lazy" src="images/programacion.png" alt="Programación" width="100" height="100">
+                    <h3>Programación</h3>
+                    <p>Creación de software y aplicaciones mediante la escritura de código.</p>
+                </div>
+            </div>
+
+            <div id="modal-quimica-detalle" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Química</h2>
+                    <p>Información detallada sobre el curso de Química.</p>
+                </div>
+            </div>
+
+            <div id="modal-fisica-detalle" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Física</h2>
+                    <p>Información detallada sobre el curso de Física.</p>
+                </div>
+            </div>
+
+            <div id="modal-matematica-detalle" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Matemática</h2>
+                    <p>Información detallada sobre el curso de Matemática.</p>
+                </div>
+            </div>
+
+            <div id="modal-ciencia-datos-detalle" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Ciencia de Datos</h2>
+                    <p>Información detallada sobre el curso de Ciencia de Datos.</p>
+                </div>
+            </div>
+
+            <div id="modal-programacion-detalle" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>Programación</h2>
+                    <p>Información detallada sobre el curso de Programación.</p>
+                </div>
             </div>
         </section>
 
         <section id="proyectos">
-            <h2>NUESTROS PROYECTOS</h2>
+            <h2>PROYECTOS</h2>
+            <p>Conoce algunos de los proyectos más destacados en los que estamos trabajando:</p>
             <div id="proyectos-lista">
                 <div class="proyecto">
-                    <div class="proyecto-texto izquierda">
-                        <h2>Evaluación de la eficiencia de un prototipo de humedal artificial de flujo subsuperficial para el tratamiento de aguas residuales domésticas provenientes de un pozo séptico</h2>
-                        <h3>Autora</h3>
-                        <p><strong>Gina Marcela Quintana Tibaduiza</strong><br>
-                          Trabajo de grado presentado para optar al título de Ingeniera Ambiental<br>
-                          Universidad Antonio Nariño – Programa de Ingeniería Ambiental – Sede Duitama (Boyacá)<br>
-                          Año: 2022
-                        </p>
-                      
-                        <h3>Directores</h3>
-                        <ul>
-                          <li>Mag. Stella Carolina Carvajal Rincón</li>
-                          <li>Mag. Miguel Fernando Molano Cabrejo</li>
-                        </ul>
-                      
-                        <h3>Objetivo General</h3>
-                        <p>Evaluar la eficiencia de un prototipo de humedal artificial de flujo subsuperficial a escala laboratorio para el tratamiento de aguas residuales domésticas provenientes de un pozo séptico.</p>
-                      
-                        <h3>Objetivos Específicos</h3>
-                        <ul>
-                          <li>Analizar estudios existentes para el diseño del prototipo.</li>
-                          <li>Caracterizar fisicoquímica y microbiológicamente el agua residual.</li>
-                          <li>Observar y monitorear indicadores clave como DBO₅, SST, pH, OD y parámetros microbiológicos.</li>
-                          <li>Evaluar la eficiencia del humedal a través de dichas mediciones.</li>
-                        </ul>
-                      
-                        <h3>Impacto del Proyecto</h3>
-                        <p>Este trabajo propone una solución económica, sustentable y de bajo mantenimiento para el tratamiento de aguas residuales domésticas en zonas rurales sin acceso a sistemas de alcantarillado, particularmente en el departamento de Boyacá, Colombia.</p>
-                      
-                        <h4>Principales logros:</h4>
-                        <ul>
-                          <li>Reducción de DBO₅, DQO, SST y turbidez a valores incluso mejores que los exigidos por la Resolución 631 de 2015 del Ministerio de Ambiente colombiano.</li>
-                          <li>Eliminación del 99.99% de microorganismos patógenos como <em>Escherichia coli</em>, <em>Shigella dysenteriae</em> y <em>Salmonella typhimurium</em> tras 8 días de tratamiento.</li>
-                          <li>Validación de un sistema de tratamiento funcional y replicable, hecho con materiales accesibles y vegetación local (<em>junco - Juncus effusus</em>), que puede ser implementado en comunidades rurales.</li>
-                          <li>Contribuye al cumplimiento del derecho al acceso a saneamiento básico y a un ambiente sano, según lo establecido en la Constitución Política de Colombia y en acuerdos internacionales.</li>
-                          <li>Este tipo de tecnologías representa una alternativa de tratamiento descentralizado que puede escalarse y adaptarse a distintas comunidades rurales, impactando positivamente la salud pública, la seguridad alimentaria y la protección de fuentes hídricas.</li>
-                    </div>
                     <div class="proyecto-imagen">
-                        <img loading="lazy" src="images/proyecto1.png" alt="Sistema Inteligente para Diagnóstico" width="500" height="300">
+                        <img loading="lazy" src="images/proyecto1.png" alt="Proyecto 1" width="500" height="300">
+                    </div>
+                    <div class="proyecto-texto izquierda">
+                        <h3>Proyecto 1: Desarrollo de Nuevos Materiales</h3>
+                        <p>Investigación sobre la creación de materiales innovadores con aplicaciones en la industria
+                            automotriz y la construcción.</p>
                     </div>
                 </div>
                 <div class="proyecto">
                     <div class="proyecto-imagen">
-                        <img loading="lazy" src="images/proyecto2.png" alt="Implementación biotecnológica en pacas digestoras" width="400" height="500">
+                        <img loading="lazy" src="images/proyecto2.png" alt="Proyecto 2" width="500" height="300">
                     </div>
                     <div class="proyecto-texto derecha">
-                        <h2>Implementación biotecnológica en pacas digestoras</h2>
-                        <em>Biotechnological Implementation in Digester Bales</em>
-                        </p>
-                        <h3>Autores</h3>
-                        <ul>
-                            <li>Jhon Edison Perez Loaiza</li>
-                            <li>Erika Lorena Becerra Becerra</li>
-                            <li>Miguel Fernando Molano Cabrejo</li>
-                            <li>Carlos Andrés Palacio Gómez</li>
-                            <li>Ana Rocío Salamanca</li>
-                        </ul>
-                        <p><strong>Afiliación:</strong> Universidad Antonio Nariño – Facultad de Ingeniería Ambiental y Civil, Colombia</p>
-                
-                        <h3>Objetivo General</h3>
-                         <p>Implementar un método biotecnológico en pacas digestoras que permita reducir los tiempos de espera para la obtención de sustrato (abono orgánico)
-                         <p>a partir de residuos orgánicos, optimizando la descomposición y mejorando su calidad nutricional.</p>
-                
-                          <h3>Objetivos Específicos</h3>
-                          <ul>
-                            <li>Analizar fisicoquímica, microbiológica y bioquímicamente el sustrato obtenido.</li>
-                            <li>Evaluar el efecto de la incorporación de estiércol y microorganismos en la calidad del abono.</li>
-                            <li>Determinar la viabilidad de técnicas como la fluorescencia de rayos X frente a la espectroscopía de absorción atómica para analizar los abonos.</li>
-                          </ul>
-                
-                          <h3>Impacto del Proyecto</h3>
-                          <p>Este proyecto propone una <strong>solución sostenible</strong> al manejo de residuos orgánicos en zonas rurales como el municipio de Iza (Boyacá), </p>
-                          <p>reduciendo la carga sobre los rellenos sanitarios y promoviendo la economía circular mediante la producción de abonos orgánicos de alta calidad.</p>
-                
-                          <h4>Resultados y beneficios destacados:</h4>
-                          <ul>
-                            <li>Reducción del tiempo de procesamiento de abono de <strong>10 meses a 4 meses</strong> mediante la incorporación de microorganismos.</li>
-                            <li>Incremento estimado de ingresos para empresas de compostaje hasta <strong>$41.000.000 COP adicionales por año</strong>.</li>
-                            <li>Aprovechamiento del 40% de residuos orgánicos generados en Boyacá para producir más de <strong>2.160 toneladas mensuales de abono</strong>.</li>
-                            <li>Contribución directa a los <strong>Objetivos de Desarrollo Sostenible (ODS)</strong>: Hambre Cero, Producción y Consumo Responsable, Acción por el Clima y Vida de Ecosistemas Terrestres.</li>
-                            <li>Generación de sustratos con <strong>bajo contenido de patógenos</strong> y ricos en <strong>macro y micronutrientes</strong>, esenciales para la agricultura regenerativa.</li>
-                            <li>Validación del uso de técnicas como la <strong>fluorescencia de rayos-X</strong> como alternativa eficiente frente a métodos tradicionales.</li>
-                          </ul>
+                        <h3>Proyecto 2: Modelado Computacional de Sistemas Complejos</h3>
+                        <p>Uso de simulaciones y modelos matemáticos para entender y predecir el comportamiento de sistemas
+                            complejos en la naturaleza y la sociedad.</p>
                     </div>
                 </div>
-        </section>
-
-        <section id="cursos">
-            <h2>NUESTROS CURSOS</h2>
-            <div id="cursos-tematicas">
-                <div class="curso-tema" data-modal="modal-quimica-detalle" role="button" tabindex="0" aria-labelledby="quimica-title">
-                    <img loading="lazy" src="images/quimica.png" alt="Química" width="300" height="200">
-                    <h3 id="quimica-title">Química</h3>
-                    <p>Explora los fundamentos de la química y sus diversas ramas.</p>
-                </div>
-                <div class="curso-tema" data-modal="modal-fisica-detalle" role="button" tabindex="0" aria-labelledby="fisica-title">
-                    <img loading="lazy" src="images/fisica.png" alt="Física" width="300" height="200">
-                    <h3 id="fisica-title">Física</h3>
-                    <p>Descubre las leyes que rigen el universo.</p>
-                </div>
-                <div class="curso-tema" data-modal="modal-matematica-detalle" role="button" tabindex="0" aria-labelledby="matematica-title">
-                    <img loading="lazy" src="images/matematica.png" alt="Matemática" width="300" height="200">
-                    <h3 id="matematica-title">Matemática</h3>
-                    <p>Desarrolla tu pensamiento lógico y habilidades de resolución de problemas.</p>
-                </div>
-                <div class="curso-tema" data-modal="modal-ciencia-datos-detalle" role="button" tabindex="0" aria-labelledby="ciencia-datos-title">
-                    <img loading="lazy" src="images/ciencia-datos.png" alt="Ciencia de Datos" width="300" height="200">
-                    <h3 id="ciencia-datos-title">Ciencia de Datos</h3>
-                    <p>Aprende a extraer conocimiento valioso a partir de grandes conjuntos de datos.</p>
-                </div>
-                <div class="curso-tema" data-modal="modal-programacion-detalle" role="button" tabindex="0" aria-labelledby="programacion-title">
-                    <img loading="lazy" src="images/programacion.png" alt="Programación" width="300" height="200">
-                    <h3 id="programacion-title">Programación</h3>
-                    <p>Adquiere las habilidades para crear software y automatizar tareas.</p>
+                <div class="proyecto">
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto3.png" alt="Proyecto 3" width="500" height="300">
+                    </div>
+                    <div class="proyecto-texto izquierda">
+                        <h3>Proyecto 3: Aplicaciones de la Inteligencia Artificial</h3>
+                        <p>Desarrollo de algoritmos y sistemas inteligentes para resolver problemas en diversas áreas, como la
+                            salud y la energía.</p>
+                    </div>
                 </div>
             </div>
-        </section>
-        
-        <div id="modal-quimica-detalle" class="modal">
-            <div class="modal-content">
-                <button class="close-button" aria-label="Cerrar ventana">&times;</button>
-                <h2>🧪 Curso de Química General para Ingeniería</h2>
-                <p><strong>🎯 Objetivo general:</strong><br>
-                Brindar al estudiante los fundamentos de la química general con un enfoque aplicado a las ingenierías, desarrollando competencias en el análisis y solución de problemas relacionados con materiales, energía, reacciones químicas, y propiedades de la materia.</p>
-        
-                <h3>📚 Módulo 1: Introducción a la Química y su Rol en la Ingeniería</h3>
-                <ul>
-                    <li>Concepto de materia y energía</li>
-                    <li>Estados de la materia</li>
-                    <li>Cambios físicos y químicos</li>
-                    <li>Unidades de medida (SI), factores de conversión, notación científica, cifras significativas</li>
-                    <li><strong>Ejemplo aplicado:</strong> Conversión de unidades en caudal de una tubería (m³/s a L/min)</li>
-                </ul>
-        
-                <h3>⚛️ Módulo 2: Estructura Atómica</h3>
-                <ul>
-                    <li>Teoría atómica</li>
-                    <li>Partículas subatómicas</li>
-                    <li>Número atómico y másico</li>
-                    <li>Isótopos</li>
-                    <li>Modelo cuántico y números cuánticos</li>
-                    <li>Configuraciones electrónicas</li>
-                    <li><strong>Ejemplo aplicado:</strong> Elección de materiales según estructura electrónica (conductividad, semiconductores)</li>
-                </ul>
-        
-                <h3>🧬 Módulo 3: Tabla Periódica y Propiedades Periódicas</h3>
-                <ul>
-                    <li>Organización y bloques</li>
-                    <li>Radio atómico, energía de ionización, afinidad electrónica, electronegatividad</li>
-                    <li><strong>Ejemplo aplicado:</strong> Selección de materiales resistentes a la corrosión en función de su posición en la tabla periódica</li>
-                </ul>
-        
-                <h3>🔗 Módulo 4: Enlace Químico</h3>
-                <ul>
-                    <li>Enlaces iónicos, covalentes y metálicos</li>
-                    <li>Teoría del octeto</li>
-                    <li>Estructuras de Lewis</li>
-                    <li>Geometría molecular (VSEPR)</li>
-                    <li>Polaridad de enlaces y moléculas</li>
-                    <li><strong>Ejemplo aplicado:</strong> Propiedades térmicas de materiales según tipo de enlace (aislantes vs conductores)</li>
-                </ul>
-        
-                <h3>🧮 Módulo 5: Estequiometría</h3>
-                <ul>
-                    <li>Leyes ponderales</li>
-                    <li>Ecuaciones químicas</li>
-                    <li>Cálculos moleculares, masa molar</li>
-                    <li>Reacciones químicas (combustión, redox, etc.)</li>
-                    <li>Reactivo limitante y rendimiento</li>
-                    <li><strong>Ejemplo aplicado:</strong> Cálculo de combustibles necesarios para un motor de combustión interna</li>
-                </ul>
-        
-                <h3>🌡️ Módulo 6: Estados de la Materia y Gases</h3>
-                <ul>
-                    <li>Gases ideales y reales</li>
-                    <li>Ley de los gases</li>
-                    <li>Ley de Dalton, ley de Avogadro</li>
-                    <li>Mezclas de gases</li>
-                    <li><strong>Ejemplo aplicado:</strong> Comportamiento de gases en procesos de soldadura o sistemas neumáticos</li>
-                </ul>
-        
-                <h3>💧 Módulo 7: Soluciones y Concentraciones</h3>
-                <ul>
-                    <li>Tipos de soluciones</li>
-                    <li>Unidades de concentración (M, m, %, ppm)</li>
-                    <li>Diluciones</li>
-                    <li>Propiedades coligativas</li>
-                    <li><strong>Ejemplo aplicado:</strong> Tratamiento de aguas industriales y control de contaminantes (ppm)</li>
-                </ul>
-        
-                <h3>♻️ Módulo 8: Termoquímica</h3>
-                <ul>
-                    <li>Calor y trabajo</li>
-                    <li>Entalpía</li>
-                    <li>Ley de Hess</li>
-                    <li>Cambios de estado</li>
-                    <li>Capacidad calorífica</li>
-                    <li><strong>Ejemplo aplicado:</strong> Diseño de intercambiadores de calor en procesos industriales</li>
-                </ul>
-        
-                <h3>⚡ Módulo 9: Cinética Química y Equilibrio</h3>
-                <ul>
-                    <li>Velocidad de reacción</li>
-                    <li>Factores que afectan la velocidad</li>
-                    <li>Constante de equilibrio</li>
-                    <li>Principio de Le Châtelier</li>
-                    <li><strong>Ejemplo aplicado:</strong> Control de velocidad de reacciones en procesos industriales (ej. producción de amoníaco)</li>
-                </ul>
-        
-                <h3>⚗️ Módulo 10: Ácidos, Bases y pH</h3>
-                <ul>
-                    <li>Teorías de ácidos y bases (Arrhenius, Brønsted, Lewis)</li>
-                    <li>pH y pOH</li>
-                    <li>Neutralización</li>
-                    <li>Soluciones tampón</li>
-                    <li><strong>Ejemplo aplicado:</strong> Control del pH en procesos industriales o en tratamiento de aguas</li>
-                </ul>
-        
-                <h3>🧲 Módulo 11: Electroquímica</h3>
-                <ul>
-                    <li>Celdas galvánicas y electrolíticas</li>
-                    <li>Potenciales de electrodo</li>
-                    <li>Corrosión</li>
-                    <li>Electrólisis</li>
-                    <li><strong>Ejemplo aplicado:</strong> Prevención de corrosión en estructuras metálicas (puentes, barcos, tuberías)</li>
-                </ul>
-            </div>
-        </div>
         </section>
 
         <section id="eventos">
@@ -444,9 +571,12 @@
             <h2>NOTICIAS</h2>
             <p>Últimas noticias y actualizaciones del semillero:</p>
             <ul>
-                <li><strong>Nuevo Proyecto de Investigación Aprobado</strong> - [Fecha] - Hemos recibido financiación para un nuevo proyecto sobre [tema del proyecto].</li>
-                <li><strong>Participación en la Feria de Ciencia y Tecnología</strong> - [Fecha] - Miembros del semillero presentaron sus avances en la reciente feria.</li>
-                <li><strong>Publicación de Artículo Científico</strong> - [Fecha] - Se publicó un nuevo artículo en la revista [nombre de la revista].</li>
+                <li><strong>Nuevo Proyecto de Investigación Aprobado</strong> - [Fecha] - Hemos recibido financiación para un
+                    nuevo proyecto sobre [tema del proyecto].</li>
+                <li><strong>Participación en la Feria de Ciencia y Tecnología</strong> - [Fecha] - Miembros del semillero
+                    presentaron sus avances en la reciente feria.</li>
+                <li><strong>Publicación de Artículo Científico</strong> - [Fecha] - Se publicó un nuevo artículo en la revista
+                    [nombre de la revista].</li>
             </ul>
         </section>
     </main>
@@ -457,4 +587,5 @@
 
     <script src="script.min.js" defer></script>
 </body>
+
 </html>
