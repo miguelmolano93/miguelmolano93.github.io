@@ -3,23 +3,24 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fcfcd7; /* .color3 - Fondo crema vintage */
-    color: #333;
+    background-color: #E5EDF1; /* Gris azulado claro */
+    color: #1D1D1; /* Negro */
     line-height: 1.6;
 }
 
 header {
-    background-color: #67be9b; /* .color1 - Verde vibrante vanguardista */
-    color: #fcfcd7;
+    background-color: #FFFFFF; /* Blanco */
+    color: #1D1D1; /* Negro */
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #96C2DB; /* Gris azulado oscuro */
 }
 
 header a {
-    color: #fcfcd7;
+    color: #1D1D1; /* Negro */
     text-decoration: none;
     font-weight: bold;
 }
@@ -34,10 +35,11 @@ nav a {
     margin-left: 20px;
     font-size: 1.1em;
     transition: color 0.3s ease;
+    color: #1D1D1; /* Negro */
 }
 
 nav a:hover {
-    color: #f1db42; /* .color4 - Amarillo mostaza vintage */
+    color: #2272FF; /* Azul neón */
 }
 
 .menu-toggle {
@@ -51,7 +53,7 @@ nav a:hover {
 .bar {
     width: 25px;
     height: 3px;
-    background-color: #fcfcd7;
+    background-color: #1D1D1; /* Negro */
     margin: 5px 0;
     transition: transform 0.3s ease;
 }
@@ -66,15 +68,16 @@ nav a:hover {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #95d0b8; /* .color2 - Verde suave vintage */
+    background-color: #E5EDF1; /* Gris azulado claro */
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-radius: 4px;
+    border: 1px solid #96C2DB; /* Gris azulado oscuro */
 }
 
 .submenu a {
-    color: #333;
+    color: #1D1D1; /* Negro */
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -82,8 +85,8 @@ nav a:hover {
 }
 
 .submenu a:hover {
-    background-color: #f1db42; /* .color4 */
-    color: #fcfcd7;
+    background-color: #96C2DB; /* Gris azulado oscuro */
+    color: #FFFFFF; /* Blanco */
 }
 
 .nav-item:hover .submenu {
@@ -94,18 +97,18 @@ nav a:hover {
 #investigadores {
     padding: 40px 20px;
     text-align: center;
-    background-color: #fcfcd7;
+    background-color: #FFFFFF; /* Blanco */
 }
 
 #investigadores h2 {
-    color: #f04158; /* .color5 - Rojo vibrante vanguardista */
+    color: #1D1D1; /* Negro */
     font-size: 2.2em;
     margin-bottom: 15px;
     letter-spacing: 0.03em;
 }
 
 #investigadores p {
-    color: #555;
+    color: #1D1D1; /* Negro */
     margin-bottom: 20px;
 }
 
@@ -124,7 +127,7 @@ nav a:hover {
     text-align: center;
     scroll-snap-align: start;
     padding: 20px;
-    background-color: #fff;
+    background-color: #E5EDF1; /* Gris azulado claro */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -135,7 +138,7 @@ nav a:hover {
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto 15px;
-    border: 3px solid #95d0b8; /* .color2 */
+    border: 3px solid #96C2DB; /* Gris azulado oscuro */
 }
 
 .foto-perfil img {
@@ -146,19 +149,19 @@ nav a:hover {
 }
 
 .investigador-info h3 {
-    color: #333;
+    color: #1D1D1; /* Negro */
     margin-top: 10px;
     font-size: 1.3em;
 }
 
 .investigador-info .cargo {
-    color: #777;
+    color: #1D1D1; /* Negro */
     font-size: 0.9em;
     margin-bottom: 5px;
 }
 
 .investigador-info .descripcion {
-    color: #555;
+    color: #1D1D1; /* Negro */
     font-size: 1em;
     margin-bottom: 10px;
 }
@@ -208,12 +211,12 @@ nav a:hover {
 /* Sección de Proyectos */
 #proyectos {
     padding: 40px 20px;
-    background-color: #95d0b8; /* .color2 */
-    color: #333;
+    background-color: #96C2DB; /* Gris azulado oscuro */
+    color: #1D1D1; /* Negro */
 }
 
 #proyectos h2 {
-    color: #f04158; /* .color5 */
+    color: #1D1D1; /* Negro */
     font-size: 2.2em;
     margin-bottom: 20px;
     text-align: center;
@@ -229,7 +232,7 @@ nav a:hover {
     flex-direction: column;
     margin-bottom: 40px;
     align-items: center;
-    background-color: #fcfcd7; /* .color3 */
+    background-color: #E5EDF1; /* Gris azulado claro */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
@@ -253,19 +256,19 @@ nav a:hover {
 
 .proyecto-texto h2 {
     font-size: 1.8em;
-    color: #333;
+    color: #1D1D1; /* Negro */
     margin-bottom: 10px;
 }
 
 .proyecto-texto h3 {
     font-size: 1.2em;
-    color: #555;
+    color: #1D1D1; /* Negro */
     margin-top: 15px;
     margin-bottom: 8px;
 }
 
 .proyecto-texto p, .proyecto-texto ul {
-    color: #666;
+    color: #1D1D1; /* Negro */
     line-height: 1.7;
     margin-bottom: 15px;
     text-align: left;
@@ -276,11 +279,11 @@ nav a:hover {
 }
 
 .proyecto-texto strong {
-    color: #333;
+    color: #1D1D1; /* Negro */
 }
 
 .proyecto-texto em {
-    color: #777;
+    color: #1D1D1; /* Negro */
     font-style: italic;
 }
 
@@ -316,11 +319,11 @@ nav a:hover {
 #cursos {
     padding: 40px 20px;
     text-align: center;
-    background-color: #fcfcd7; /* .color3 */
+    background-color: #FFFFFF; /* Blanco */
 }
 
 #cursos h2 {
-    color: #f04158; /* .color5 */
+    color: #1D1D1; /* Negro */
     font-size: 2.2em;
     margin-bottom: 20px;
     letter-spacing: 0.03em;
@@ -334,12 +337,12 @@ nav a:hover {
 }
 
 .curso-tema {
-    border: 1px solid #ddd;
+    border: 1px solid #96C2DB; /* Gris azulado oscuro */
     padding: 25px;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
-    background-color: #fff;
+    background-color: #E5EDF1; /* Gris azulado claro */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -357,13 +360,13 @@ nav a:hover {
 }
 
 .curso-tema h3 {
-    color: #333;
+    color: #1D1D1; /* Negro */
     font-size: 1.5em;
     margin-bottom: 10px;
 }
 
 .curso-tema p {
-    color: #555;
+    color: #1D1D1; /* Negro */
     font-size: 1.1em;
 }
 
@@ -381,18 +384,19 @@ nav a:hover {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #FFFFFF; /* Blanco */
     margin: 10% auto; /* Ajustar la posición vertical */
     padding: 30px;
-    border: 1px solid #888;
+    border: 1px solid #96C2DB; /* Gris azulado oscuro */
     width: 85%; /* Ampliar el ancho */
     border-radius: 12px; /* Bordes más redondeados */
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #1D1D1; /* Negro */
 }
 
 .close-button {
-    color: #aaa;
+    color: #96C2DB; /* Gris azulado oscuro */
     position: absolute;
     top: 15px;
     right: 20px;
@@ -407,26 +411,26 @@ nav a:hover {
 
 .close-button:hover,
 .close-button:focus {
-    color: #333;
+    color: #1D1D1; /* Negro */
     text-decoration: none;
 }
 
 .modal-content h2 {
-    color: #f04158; /* .color5 */
+    color: #1D1D1; /* Negro */
     font-size: 2em;
     margin-bottom: 20px;
     letter-spacing: 0.02em;
 }
 
 .modal-content h3 {
-    color: #67be9b; /* .color1 */
+    color: #96C2DB; /* Gris azulado oscuro */
     font-size: 1.6em;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
 .modal-content p, .modal-content ul {
-    color: #444;
+    color: #1D1D1; /* Negro */
     line-height: 1.7;
     margin-bottom: 15px;
     text-align: left;
@@ -439,19 +443,19 @@ nav a:hover {
 
 .modal-content strong {
     font-weight: bold;
-    color: #333;
+    color: #1D1D1; /* Negro */
 }
 
 /* Sección de Eventos y Noticias */
 #eventos, #noticias {
     padding: 40px 20px;
     text-align: center;
-    background-color: #95d0b8; /* .color2 */
-    color: #333;
+    background-color: #E5EDF1; /* Gris azulado claro */
+    color: #1D1D1; /* Negro */
 }
 
 #eventos h2, #noticias h2 {
-    color: #f04158; /* .color5 */
+    color: #1D1D1; /* Negro */
     font-size: 2.2em;
     margin-bottom: 20px;
     letter-spacing: 0.03em;
@@ -459,8 +463,8 @@ nav a:hover {
 
 /* Footer */
 footer {
-    background-color: #333;
-    color: #fcfcd7;
+    background-color: #1D1D1; /* Negro */
+    color: #E5EDF1; /* Gris azulado claro */
     text-align: center;
     padding: 20px;
     font-size: 0.9em;
@@ -513,7 +517,7 @@ footer {
         flex-direction: column;
         width: 100%;
         text-align: center;
-        background-color: #67be9b;
+        background-color: #FFFFFF; /* Blanco */
         padding-bottom: 20px;
     }
 
