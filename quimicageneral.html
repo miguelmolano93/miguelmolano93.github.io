@@ -1,1310 +1,741 @@
+@ -1,587 +1,634 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciencias Básicas Aplicadas a Ingenierías - Grupo de Investigación</title>
-    <meta name="description" content="Grupo de investigación especializado en ciencias básicas aplicadas a ingenierías con enfoque en química, física, matemáticas y ciencias de datos">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</title>
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="preload" href="images/LOGO3.png" as="image">
+    <link rel="preload" href="images/miguelmolano.png" as="image">
+    <link rel="preload" href="images/josedavid.png" as="image">
+    <link rel="preload" href="images/gustavo.png" as="image">
+    <link rel="preload" href="images/isaura.png" as="image">
+    <link rel="preload" href="images/cristian-perfil.png" as="image">
+    <link rel="preload" href="images/daniel-perfil.png" as="image">
+    <link rel="preload" href="images/facebook.png" as="image">
+    <link rel="preload" href="images/twitter.png" as="image">
+    <link rel="preload" href="images/instagram.png" as="image">
+    <link rel="preload" href="images/proyecto1.png" as="image">
+    <link rel="preload" href="images/proyecto2.png" as="image">
+    <link rel="preload" href="images/proyecto3.png" as="image">
+    <link rel="preload" href="images/proyecto4.png" as="image">
+    <link rel="preload" href="images/proyecto5.png" as="image">
+    <link rel="preload" href="images/proyecto6.png" as="image">
+    <link rel="preload" href="images/proyecto7.png" as="image">
+    <link rel="preload" href="images/proyecto8.png" as="image">
+    <link rel="preload" href="images/proyecto9.png" as="image">
+    <link rel="preload" href="images/proyecto10.png" as="image">
+    <link rel="preload" href="images/quimica.png" as="image">
+    <link rel="preload" href="images/fisica.png" as="image">
+    <link rel="preload" href="images/matematica.png" as="image">
+    <link rel="preload" href="images/ciencia-datos.png" as="image">
+    <link rel="preload" href="images/programacion.png" as="image">
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #3b82f6;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --background: #ffffff;
-            --surface: #f8fafc;
-            --border: #e5e7eb;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--background);
-            overflow-x: hidden;
-        }
-
-        /* Header Styles */
-        header {
-            background: var(--background);
-            box-shadow: var(--shadow-sm);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 80px;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-section img {
-            width: 60px;
-            height: auto;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            line-height: 1.2;
-        }
-
-        .logo-subtitle {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        /* Navigation */
-        .main-nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            margin: 0;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.5rem 0;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Dropdown Menu */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--background);
-            min-width: 220px;
-            border-radius: 8px;
-            box-shadow: var(--shadow-lg);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .nav-item:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            display: block;
-            padding: 0.75rem 1rem;
-            text-decoration: none;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-item:hover {
-            background: var(--surface);
-            color: var(--primary-color);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .hamburger-line {
-            width: 24px;
-            height: 3px;
-            background: var(--text-primary);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        /* Main Content */
-        main {
-            margin-top: 80px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.1)" points="1000,100 1000,0 0,100"/></svg>') no-repeat;
-            background-size: 100% 100px;
-            background-position: bottom;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: white;
-            color: var(--primary-color);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section:nth-child(even) {
-            background: var(--surface);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .team-card {
-            background: var(--background);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .team-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            overflow: hidden;
-            border: 4px solid var(--primary-color);
-            box-shadow: var(--shadow-md);
-        }
-
-        .team-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .team-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .team-role {
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .team-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: var(--surface);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        /* Projects Section */
-        .project-card {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 4rem;
-            background: var(--background);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-        }
-
-        .project-card:nth-child(even) {
-            direction: rtl;
-        }
-
-        .project-card:nth-child(even) > * {
-            direction: ltr;
-        }
-
-        .project-image {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .project-meta {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-authors {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-year {
-            color: var(--primary-color);
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .project-highlights {
-            background: var(--surface);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .project-highlights h4 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .project-highlights ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .project-highlights li {
-            padding: 0.25rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        .project-highlights li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--success);
-            font-weight: bold;
-        }
-
-        /* Courses Section */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .course-card {
-            background: var(--background);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
-            cursor: pointer;
-        }
-
-        .course-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .course-image {
-            height: 200px;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .course-icon {
-            font-size: 4rem;
-            color: white;
-            opacity: 0.9;
-        }
-
-        .course-content {
-            padding: 1.5rem;
-        }
-
-        .course-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .course-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-            z-index: 2000;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .modal-content {
-            background: var(--background);
-            border-radius: 16px;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: var(--shadow-xl);
-            animation: slideUp 0.3s ease;
-        }
-
-        .modal-header {
-            padding: 2rem 2rem 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--surface);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .modal-close:hover {
-            background: var(--border);
-        }
-
-        .modal-body {
-            padding: 2rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 3rem 0 1rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .footer-text {
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-link {
-            color: white;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-link:hover {
-            opacity: 1;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1rem;
-            opacity: 0.6;
-            font-size: 0.9rem;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            .project-card {
-                grid-template-columns: 1fr 1fr;
-                align-items: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                padding: 0 1rem;
-            }
-
-            .main-nav {
-                display: none;
-            }
-
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .hero {
-                padding: 2rem 0;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            .section {
-                padding: 2rem 0;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .courses-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Utility Classes */
-        .text-center { text-align: center; }
-        .mb-1 { margin-bottom: 0.25rem; }
-        .mb-2 { margin-bottom: 0.5rem; }
-        .mb-3 { margin-bottom: 1rem; }
-        .mb-4 { margin-bottom: 1.5rem; }
-        .mt-4 { margin-top: 1.5rem; }
-        .font-medium { font-weight: 500; }
-        .font-semibold { font-weight: 600; }
-        .text-primary { color: var(--primary-color); }
-        .text-secondary { color: var(--text-secondary); }
+        /* Estilos básicos para el submenú */
+        .nav-item { position: relative; }
+        .submenu { display: none; position: absolute; top: 100%; left: 0; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; }
+        .submenu a { color: black; padding: 12px 16px; text-decoration: none; display: block; }
+        .nav-item:hover .submenu { display: block; }
+
+        /* Estilos básicos para el carrusel de investigadores */
+        #investigadores-container { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; position: relative; padding: 20px 0; }
+        .investigador { flex: 0 0 250px; margin: 0 10px; text-align: center; scroll-snap-align: start; }
+        .foto-perfil { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; margin: 0 auto 10px; }
+        .foto-perfil img { width: 100%; height: auto; display: block; object-fit: cover; }
+        .investigador-info { margin-top: 10px; }
+        .flecha { position: absolute; top: 50%; transform: translateY(-50%); font-size: 2em; color: rgba(0, 0, 0, 0.3); cursor: pointer; user-select: none; background: none; border: none; outline: none; }
+        .flecha-izquierda { left: 10px; }
+        .flecha-derecha { right: 10px; }
+
+        /* Estilos básicos para las modales */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
+        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; border-radius: 8px; position: relative; }
+        .close-button { color: #aaa; position: absolute; top: 0; right: 0; font-size: 28px; font-weight: bold; cursor: pointer; background: none; border: none; outline: none; }
+        .close-button:hover, .close-button:focus { color: black; text-decoration: none; }
+
+        /* Estilos básicos para la sección de cursos */
+        #cursos-tematicas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
+        .curso-tema { border: 1px solid #ccc; padding: 15px; border-radius: 8px; text-align: center; cursor: pointer; }
+        .curso-tema img { max-width: 100%; height: auto; margin-bottom: 10px; }
+
+        /* Estilos básicos para la sección de proyectos */
+        #proyectos-lista { padding: 20px; }
+        .proyecto { display: flex; flex-direction: column; margin-bottom: 30px; align-items: center; }
+        .proyecto-imagen { max-width: 100%; }
+        .proyecto-imagen img { width: 100%; height: auto; display: block; }
+        .proyecto-texto { padding: 20px; text-align: center; }
+        @media (min-width: 768px) { .proyecto { flex-direction: row; align-items: center; } .proyecto-texto { text-align: left; } .proyecto-texto.izquierda { margin-right: 20px; } .proyecto-texto.derecha { margin-left: 20px; } .proyecto-imagen { max-width: 50%; } }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <img src="images/LOGO3.png" alt="Logo">
-                <div class="logo-text">
-                    <div class="logo-title">Ciencias Básicas Aplicadas</div>
-                    <div class="logo-subtitle">Grupo de Investigación</div>
+        <a href="/" aria-label="Ir a la página de inicio">
+            <img src="images/LOGO3.png" alt="Logo del Semillero" width="300" height="150">
+        </a>
+        <h1>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</h1>
+        <nav>
+            <a href="/" aria-label="Ir a la sección de inicio">Inicio</a>
+            <div class="nav-item">
+                <a href="#cursos" aria-expanded="false" aria-controls="submenu-cursos">Cursos</a>
+                <div class="submenu" id="submenu-cursos">
+                    <a href="#quimica" aria-label="Ir a la sección de Química" data-modal="modal-quimica-detalle">Química</a>
+                    <a href="#fisica" aria-label="Ir a la sección de Física" data-modal="modal-fisica-detalle">Física</a>
+                    <a href="#matematica" aria-label="Ir a la sección de Matemática" data-modal="modal-matematica-detalle">Matemática</a>
+                    <a href="#ciencia-datos" aria-label="Ir a la sección de Ciencia de Datos" data-modal="modal-ciencia-datos-detalle">Ciencia de Datos</a>
+                    <a href="#programacion" aria-label="Ir a la sección de Programación" data-modal="modal-programacion-detalle">Programación</a>
                 </div>
             </div>
-            
-            <nav class="main-nav">
-                <ul class="nav-links">
-                    <li class="nav-item">
-                        <a href="#inicio" class="nav-link">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#cursos" class="nav-link">Cursos</a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item" data-modal="modal-quimica">Química</a>
-                            <a href="#" class="dropdown-item" data-modal="modal-fisica">Física</a>
-                            <a href="#" class="dropdown-item" data-modal="modal-matematica">Matemática</a>
-                            <a href="#" class="dropdown-item" data-modal="modal-ciencia-datos">Ciencia de Datos</a>
-                            <a href="#" class="dropdown-item" data-modal="modal-programacion">Programación</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#proyectos" class="nav-link">Proyectos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#equipo" class="nav-link">Equipo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#eventos" class="nav-link">Eventos</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <button class="mobile-menu-toggle">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </div>
+            <a href="#proyectos" aria-label="Ir a la sección de Proyectos">Proyectos</a>
+            <a href="#eventos" aria-label="Ir a la sección de Eventos">Eventos</a>
+            <a href="#noticias" aria-label="Ir a la sección de Noticias">Noticias</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Alternar menú" aria-expanded="false">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-                <h1>Ciencias Básicas Aplicadas a Ingenierías</h1>
-                <p>Desarrollamos investigación de vanguardia en química, física, matemáticas y ciencias de datos con aplicaciones prácticas en ingeniería</p>
-                <a href="#proyectos" class="cta-button">
-                    <span>Conoce nuestros proyectos</span>
-                    <span>→</span>
-                </a>
+        <section id="investigadores">
+            <h2>NUESTRO EQUIPO DE TRABAJO</h2>
+            <p>Conoce a los investigadores que hacen parte de este semillero.</p>
+            <div id="investigadores-container">
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/miguelmolano.png" alt="Miguel  Molano " width="100" height="100" data-modal="modal-miguel" role="button" tabindex="0" aria-labelledby="miguel-molano-name">
+                    </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-miguel" id="Miguel" role="button" tabindex="0">Miguel Fernando Molano Cabrejo</h3>
+                        <p class="cargo">LÍDER DEL SEMILLERO</p>
+                        <p class="descripcion">Químico con amplia experiencia en formulación y ejecucion de proyectos.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook de Miguel  Molano"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter de Miguel  Molano"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de Miguel  Molano"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/josedavid.png" alt="jose david" width="100" height="100" data-modal="modal-jose" role="button" tabindex="0" aria-labelledby="jose-david-name">
+                    </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-jose" id="jose-david-name" role="button" tabindex="0">José David Tamára Jaramillo</h3>
+                        <p class="cargo">COORDINADORA DE PROYECTOS</p>
+                        <p class="descripcion">Fíisco con amplia experiencia en la gestión y el seguimiento de proyectos.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook de jose david"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter de jose david"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de jose david"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/alex-grinfield-perfil.png" alt="Alex Grinfield" width="100" height="100" data-modal="modal-alex" role="button" tabindex="0" aria-labelledby="alex-grinfield-name">
+                    </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-alex" id="alex-grinfield-name" role="button" tabindex="0">Alex Grinfield</h3>
+                        <p class="cargo">ESPECIALISTA EN PROGRAMACIÓN Y MODELADO</p>
+                        <p class="descripcion">Aporta su experiencia en el desarrollo de herramientas computacionales para la investigación.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook de Alex Grinfield"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter de Alex Grinfield"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de Alex Grinfield"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/roxie-swanson-perfil.png" alt="Roxie Swanson" width="100" height="100" data-modal="modal-roxie" role="button" tabindex="0" aria-labelledby="roxie-swanson-name">
+                    </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-roxie" id="roxie-swanson-name" role="button" tabindex="0">Roxie Swanson</h3>
+                        <p class="cargo">ENLACE CON LA INDUSTRIA</p>
+                        <p class="descripcion">Responsable de establecer colaboraciones con empresas y organizaciones del sector.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook de Roxie Swanson"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter de Roxie Swanson"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram de Roxie Swanson"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/investigador5-perfil.png" alt="Nombre Investigador 5" width="100" height="100" data-modal="modal-investigador5" role="button" tabindex="0" aria-labelledby="investigador5-name">
+                    </div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-investigador5" id="investigador5-name" role="button" tabindex="0">Nombre Investigador 5</h3>
+                        <p class="cargo">Cargo Investigador 5</p>
+                        <p class="descripcion">Breve descripción del Investigador 5.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook del Investigador 5"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter del Investigador 5"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram del Investigador 5"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="investigador">
+                    <div class="foto-perfil">
+                        <img loading="lazy" src="images/investigador5-perfil.png" alt="Nombre Investigador 6" width="100" height="100" data-modal="
+</div>
+                    <div class="investigador-info">
+                        <h3 data-modal="modal-investigador6" id="investigador6-name" role="button" tabindex="0">Nombre Investigador 6</h3>
+                        <p class="cargo">Cargo Investigador 6</p>
+                        <p class="descripcion">Breve descripción del Investigador 6.</p>
+                        <div class="redes-sociales">
+                            <a href="#" aria-label="Enlace a Facebook del Investigador 6"><img loading="lazy" src="images/facebook.png" alt="Facebook" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Twitter del Investigador 6"><img loading="lazy" src="images/twitter.png" alt="Twitter" width="30" height="30"></a>
+                            <a href="#" aria-label="Enlace a Instagram del Investigador 6"><img loading="lazy" src="images/instagram.png" alt="Instagram" width="30" height="30"></a>
+                        </div>
+                    </div>
+                </div>
+                <button class="flecha flecha-izquierda" aria-label="Mostrar investigadores anteriores">&lt;</button>
+                <button class="flecha flecha-derecha" aria-label="Mostrar siguientes investigadores">&gt;</button>
             </div>
         </section>
 
-        <!-- Team Section -->
-        <section id="equipo" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Nuestro Equipo de Trabajo</h2>
-                    <p class="section-subtitle">Conoce a los investigadores que hacen parte de este semillero de investigación</p>
-                </div>
-                
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="team-avatar">
-                            <img src="images/miguelmolano.png" alt="Miguel Fernando Molano Cabrejo">
-                        </div>
-                        <h3 class="team-name">Miguel Fernando Molano Cabrejo</h3>
-                        <div class="team-role">Líder del Semillero</div>
-                        <p class="team-description">Químico con amplia experiencia en formulación y ejecución de proyectos de investigación aplicada.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link">📧</a>
-                            <a href="#" class="social-link">🔗</a>
-                            <a href="#" class="social-link">📚</a>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-avatar">
-                            <img src="images/josedavid.png" alt="José David Tamára Jaramillo">
-                        </div>
-                        <h3 class="team-name">José David Tamára Jaramillo</h3>
-                        <div class="team-role">Coordinador de Proyectos</div>
-                        <p class="team-description">Físico con amplia experiencia en la gestión y el seguimiento de proyectos de investigación.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link">📧</a>
-                            <a href="#" class="social-link">🔗</a>
-                            <a href="#" class="social-link">📚</a>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-avatar">
-                            <img src="images/alex-grinfield-perfil.png" alt="Alex Grinfield">
-                        </div>
-                        <h3 class="team-name">Alex Grinfield</h3>
-                        <div class="team-role">Especialista en Programación</div>
-                        <p class="team-description">Aporta su experiencia en el desarrollo de herramientas computacionales para la investigación.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link">📧</a>
-                            <a href="#" class="social-link">🔗</a>
-                            <a href="#" class="social-link">📚</a>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-avatar">
-                            <img src="images/roxie-swanson-perfil.png" alt="Roxie Swanson">
-                        </div>
-                        <h3 class="team-name">Roxie Swanson</h3>
-                        <div class="team-role">Enlace con la Industria</div>
-                        <p class="team-description">Responsable de establecer colaboraciones con empresas y organizaciones del sector.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link">📧</a>
-                            <a href="#" class="social-link">🔗</a>
-                            <a href="#" class="social-link">📚</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="proyectos" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Nuestros Proyectos</h2>
-                    <p class="section-subtitle">Investigación aplicada con impacto real en la sociedad</p>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">Evaluación de la eficiencia de un prototipo de humedal artificial de flujo subsuperficial para el tratamiento de aguas residuales domésticas</h3>
-                        <div class="project-meta">
-                            <div class="project-authors"><strong>Autora:</strong> Gina Marcela Quintana Tibaduiza</div>
-                            <div class="project-year">2022 - Universidad Antonio Nariño</div>
-                        </div>
-                        <p class="project-description">
-                            Este trabajo propone una solución económica, sustentable y de bajo mantenimiento para el tratamiento de aguas residuales domésticas en zonas rurales sin acceso a sistemas de alcantarillado.
+        <section id="proyectos">
+            <h2>NUESTROS PROYECTOS</h2>
+            <div id="proyectos-lista">
+                <div class="proyecto">
+                    <div class="proyecto-texto izquierda">
+                        <h2>Evaluación de la eficiencia de un prototipo de humedal artificial de flujo subsuperficial para el tratamiento de aguas residuales domésticas provenientes de un pozo séptico</h2>
+                        <h3>Autora</h3>
+                        <p><strong>Gina Marcela Quintana Tibaduiza</strong><br>
+                            Trabajo de grado presentado para optar al título de Ingeniera Ambiental<br>
+                            Universidad Antonio Nariño – Programa de Ingeniería Ambiental – Sede Duitama (Boyacá)<br>
+                            Año: 2022
                         </p>
-                        <div class="project-highlights">
-                            <h4>Principales logros:</h4>
-                            <ul>
-                                <li>Reducción de DBO₅, DQO, SST y turbidez según normativa colombiana</li>
-                                <li>Eliminación del 99.99% de microorganismos patógenos</li>
-                                <li>Sistema funcional con materiales locales accesibles</li>
-                                <li>Alternativa escalable para comunidades rurales</li>
-                            </ul>
-                        </div>
+
+                        <h3>Directores</h3>
+                        <ul>
+                            <li>Mag. Stella Carolina Carvajal Rincón</li>
+                            <li>Mag. Miguel Fernando Molano Cabrejo</li>
+                        </ul>
+
+                        <h3>Objetivo General</h3>
+                        <p>Evaluar la eficiencia de un prototipo de humedal artificial de flujo subsuperficial a escala laboratorio para el tratamiento de aguas residuales domésticas provenientes de un pozo séptico.</p>
+
+                        <h3>Objetivos Específicos</h3>
+                        <ul>
+                            <li>Analizar estudios existentes para el diseño del prototipo.</li>
+                            <li>Caracterizar fisicoquímica y microbiológicamente el agua residual.</li>
+                            <li>Observar y monitorear indicadores clave como DBO₅, SST, pH, OD y parámetros microbiológicos.</li>
+                            <li>Evaluar la eficiencia del humedal a través de dichas mediciones.</li>
+                        </ul>
+
+                        <h3>Impacto del Proyecto</h3>
+                        <p>Este trabajo propone una solución económica, sustentable y de bajo mantenimiento para el tratamiento de aguas residuales domésticas en zonas rurales sin acceso a sistemas de alcantarillado, particularmente en el departamento de Boyacá, Colombia.</p>
+
+                        <h4>Principales logros:</h4>
+                        <ul>
+                            <li>Reducción de DBO₅, DQO, SST y turbidez a valores incluso mejores que los exigidos por la Resolución 631 de 2015 del Ministerio de Ambiente colombiano.</li>
+                            <li>Eliminación del 99.99% de microorganismos patógenos como <em>Escherichia coli</em>, <em>Shigella dysenteriae</em> y <em>Salmonella typhimurium</em> tras 8 días de tratamiento.</li>
+                            <li>Validación de un sistema de tratamiento funcional y replicable, hecho con materiales accesibles y vegetación local (<em>junco - Juncus effusus</em>), que puede ser implementado en comunidades rurales.</li>
+                            <li>Contribuye al cumplimiento del derecho al acceso a saneamiento básico y a un ambiente sano, según lo establecido en la Constitución Política de Colombia y en acuerdos internacionales.</li>
+                            <li>Este tipo de tecnologías representa una alternativa de tratamiento descentralizado que puede escalarse y adaptarse a distintas comunidades rurales, impactando positivamente la salud pública, la seguridad alimentaria y la protección de fuentes hídricas.</li>
+                        </ul>
                     </div>
-                    <div class="project-image">
-                        <img src="images/proyecto1.png" alt="Humedal artificial">
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto1.png" alt="Sistema Inteligente para Diagnóstico" width="500" height="300">
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/proyecto2.png" alt="Pacas digestoras">
+                <div class="proyecto">
+                    <div class="proyecto-imagen">
+                        <img loading="lazy" src="images/proyecto2.png" alt="Implementación biotecnológica en pacas digestoras" width="400" height="500">
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Implementación biotecnológica en pacas digestoras</h3>
-                        <div class="project-meta">
-                            <div class="project-authors"><strong>Autores:</strong> J.E. Perez, E.L. Becerra, M.F. Molano, C.A. Palacio, A.R. Salamanca</div>
-                            <div class="project-year">Universidad Antonio Nariño - Ingeniería Ambiental</div>
-                        </div>
-                        <p class="project-description">
-                            Desarrollo de un método biotecnológico que reduce los tiempos de espera para la obtención de sustrato orgánico, optimizando la descomposición y mejorando su calidad nutricional.
+                    <div class="proyecto-texto derecha">
+                        <h2>Implementación biotecnológica en pacas digestoras</h2>
+                        <em>Biotechnological Implementation in Digester Bales</em>
                         </p>
-                        <div class="project-highlights">
-                            <h4>Resultados destacados:</h4>
-                            <ul>
-                                <li>Reducción del tiempo de procesamiento de 10 a 4 meses</li>
-                                <li>Incremento estimado de $41.000.000 COP anuales en ingresos</li>
-                                <li>Producción de más de 2.160 toneladas mensuales de abono</li>
-                                <li>Contribución directa a los Objetivos de Desarrollo Sostenible</li>
-                            </ul>
-                        </div>
+                        <h3>Autores</h3>
+                        <ul>
+                            <li>Jhon Edison Perez Loaiza</li>
+                            <li>Erika Lorena Becerra Becerra</li>
+                            <li>Miguel Fernando Molano Cabrejo</li>
+                            <li>Carlos Andrés Palacio Gómez</li>
+                            <li>Ana Rocío Salamanca</li>
+                        </ul>
+                        <p><strong>Afiliación:</strong> Universidad Antonio Nariño – Facultad de Ingeniería Ambiental y Civil, Colombia</p>
+
+                        <h3>Objetivo General</h3>
+                        <p>Implementar un método biotecnológico en pacas digestoras que permita reducir los tiempos de espera para la obtención de sustrato (abono orgánico)
+                        <p>a partir de residuos orgánicos, optimizando la descomposición y mejorando su calidad nutricional.</p>
+
+                        <h3>Objetivos Específicos</h3>
+                        <ul>
+                            <li>Analizar fisicoquímica, microbiológica y bioquímicamente el sustrato obtenido.</li>
+                            <li>Evaluar el efecto de la incorporación de estiércol y microorganismos en la calidad del abono.</li>
+                            <li>Determinar la viabilidad de técnicas como la fluorescencia de rayos X frente a la espectroscopía de absorción atómica para analizar los abonos.</li>
+                        </ul>
+
+                        <h3>Impacto del Proyecto</h3>
+                        <p>Este proyecto propone una <strong>solución sostenible</strong> al manejo de residuos orgánicos en zonas rurales como el municipio de Iza (Boyacá), </p>
+                        <p>reduciendo la carga sobre los rellenos sanitarios y promoviendo la economía circular mediante la producción de abonos orgánicos de alta calidad.</p>
+
+                        <h4>Resultados y beneficios destacados:</h4>
+                        <ul>
+                            <li>Reducción del tiempo de procesamiento de abono de <strong>10 meses a 4 meses</strong> mediante la incorporación de microorganismos.</li>
+                            <li>Incremento estimado de ingresos para empresas de compostaje hasta <strong>$41.000.000 COP adicionales por año</strong>.</li>
+                            <li>Aprovechamiento del 40% de residuos orgánicos generados en Boyacá para producir más de <strong>2.160 toneladas mensuales de abono</strong>.</li>
+                            <li>Contribución directa a los <strong>Objetivos de Desarrollo Sostenible (ODS)</strong>: Hambre Cero, Producción y Consumo Responsable, Acción por el Clima y Vida de Ecosistemas Terrestres.</li>
+                            <li>Generación de sustratos con <strong>bajo contenido de patógenos</strong> y ricos en <strong>macro y micronutrientes</strong>, esenciales para la agricultura regenerativa.</li>
+                            <li>Validación del uso de técnicas como la <strong>fluorescencia de rayos-X</strong> como alternativa eficiente frente a métodos tradicionales.</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
         </section>
 
-        <!-- Courses Section -->
-        <section id="cursos" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Nuestros Cursos</h2>
-                    <p class="section-subtitle">Formación integral en ciencias básicas aplicadas a la ingeniería</p>
+        <section id="cursos">
+            <h2>NUESTROS CURSOS</h2>
+            <div id="cursos-tematicas">
+                <div class="curso-tema" data-modal="modal-quimica-detalle" role="button" tabindex="0" aria-labelledby="quimica-title">
+                    <img loading="lazy" src="images/quimica.avif" alt="Química" width="300" height="200">
+                    <h3 id="quimica-title">Química</h3>
+                    <p>Explora los fundamentos de la química y sus diversas ramas.</p>
                 </div>
-
-                <div class="courses-grid">
-                    <div class="course-card" data-modal="modal-quimica">
-                        <div class="course-image">
-                            <div class="course-icon">🧪</div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">Química</h3>
-                            <p class="course-description">Fundamentos de química general con enfoque aplicado a las ingenierías, desde estructura atómica hasta electroquímica.</p>
-                        </div>
-                    </div>
-
-                    <div class="course-card" data-modal="modal-fisica">
-                        <div class="course-image">
-                            <div class="course-icon">⚛️</div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">Física</h3>
-                            <p class="course-description">Leyes fundamentales que rigen el universo con aplicaciones prácticas en ingeniería.</p>
-                        </div>
-                    </div>
-
-                    <div class="course-card" data-modal="modal-matematica">
-                        <div class="course-image">
-                            <div class="course-icon">📊</div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">Matemática</h3>
-                            <p class="course-description">Desarrollo del pensamiento lógico y habilidades de resolución de problemas complejos.</p>
-                        </div>
-                    </div>
-
-                    <div class="course-card" data-modal="modal-ciencia-datos">
-                        <div class="course-image">
-                            <div class="course-icon">📈</div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">Ciencia de Datos</h3>
-                            <p class="course-description">Extracción de conocimiento valioso a partir de grandes conjuntos de datos usando técnicas modernas.</p>
-                        </div>
-                    </div>
-
-                    <div class="course-card" data-modal="modal-programacion">
-                        <div class="course-image">
-                            <div class="course-icon">💻</div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">Programación</h3>
-                            <p class="course-description">Desarrollo de software y automatización, desde fundamentos hasta sistemas embebidos avanzados.</p>
-                        </div>
-                    </div>
+                <div class="curso-tema" data-modal="modal-fisica-detalle" role="button" tabindex="0" aria-labelledby="fisica-title">
+                    <img loading="lazy" src="images/fisica.avif" alt="Física" width="300" height="200">
+                    <h3 id="fisica-title">Física</h3>
+                    <p>Descubre las leyes que rigen el universo.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-matematica-detalle" role="button" tabindex="0" aria-labelledby="matematica-title">
+                    <img loading="lazy" src="images/matematica.avif" alt="Matemática" width="300" height="200">
+                    <h3 id="matematica-title">Matemática</h3>
+                    <p>Desarrolla tu pensamiento lógico y habilidades de resolución de problemas.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-ciencia-datos-detalle" role="button" tabindex="0" aria-labelledby="ciencia-datos-title">
+                    <img loading="lazy" src="images/ciencia datos.avif" alt="Ciencia de Datos" width="300" height="200">
+                    <h3 id="ciencia-datos-title">Ciencia de Datos</h3>
+                    <p>Aprende a extraer conocimiento valioso a partir de grandes conjuntos de datos.</p>
+                </div>
+                <div class="curso-tema" data-modal="modal-programacion-detalle" role="button" tabindex="0" aria-labelledby="programacion-title">
+                    <img loading="lazy" src="images/programacion.avif" alt="Programación" width="300" height="200">
+                    <h3 id="programacion-title">Programación</h3>
+                    <p>Adquiere las habilidades para crear software y automatizar tareas.</p>
                 </div>
             </div>
-        </section>
+            <div id="modal-quimica-detalle" class="modal">
+                <div class="modal-content">
+                    <button class="close-button" aria-label="Cerrar ventana">&times;</button>
+                    <h2>🧪 Curso de Química General para Ingeniería</h2>
+                    <p><strong>🎯 Objetivo general:</strong><br>
+                    Brindar al estudiante los fundamentos de la química general con un enfoque aplicado a las ingenierías, desarrollando competencias en el análisis y solución de problemas relacionados con materiales, energía, reacciones químicas,  y propiedades de la materia.</p>
 
-        <!-- Events Section -->
-        <section id="eventos" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Eventos</h2>
-                    <p class="section-subtitle">Mantente al día con nuestras actividades académicas</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-secondary">Próximamente estaremos publicando información sobre seminarios, talleres y conferencias.</p>
+                    <h3>📚 Módulo 1: Introducción a la Química y su Rol en la Ingeniería</h3>
+                    <ul>
+                        <section id="materia-y-estructura" style="padding: 20px;">
+    <h2>🔬 Fundamentos de la Materia y su Composición</h2>
+
+    <h3>1. ¿Qué es la Materia?</h3>
+    <p><strong>Materia</strong> es todo aquello que tiene masa y ocupa espacio. Está formada por partículas subatómicas (protones, neutrones y electrones), que a su vez constituyen átomos. Se considera que una entidad es materia cuando presenta propiedades físicas y químicas medibles, como densidad, volumen, inercia y energía asociada.</p>
+    <p>Desde el punto de vista de la física cuántica y la química moderna, consideramos como materia a una partícula cuando posee masa en reposo y puede interactuar mediante fuerzas fundamentales (como la electromagnética). Esta definición incluye desde átomos individuales hasta moléculas complejas y sistemas materiales macroscópicos.</p>
+    <p><strong>Implicaciones para la Química:</strong> Entender qué es la materia permite estudiar su estructura interna, transformación mediante reacciones químicas y su comportamiento energético. La química se ocupa del análisis de cómo se organiza la materia a nivel atómico y molecular y cómo se transforma.</p>
+
+    <h3>2. ¿Qué es un Átomo, un Isótopo y una Forma Alotrópica?</h3>
+    <p>El <strong>átomo</strong> es la unidad básica de la materia. Está compuesto por un núcleo (protones y neutrones) y una corteza de electrones. Cada átomo se define por su número atómico (Z), que corresponde a la cantidad de protones.</p>
+    <p>Un <strong>isótopo</strong> es una variante de un elemento químico que tiene el mismo número de protones (mismo Z), pero diferente número de neutrones. Esto implica una masa atómica diferente, aunque sus propiedades químicas son muy similares. Por ejemplo:</p>
+    <ul>
+        <li><strong>Carbono-12:</strong> 6 protones, 6 neutrones</li>
+        <li><strong>Carbono-14:</strong> 6 protones, 8 neutrones (usado en datación radiométrica)</li>
+    </ul>
+
+    <p>Las <strong>formas alotrópicas</strong> son diferentes estructuras de un mismo elemento en el mismo estado físico. Los átomos se organizan de manera distinta, generando propiedades físicas y químicas únicas. Ejemplos:</p>
+    <ul>
+        <li><strong>Carbono:</strong> grafito, diamante, fullereno</li>
+        <li><strong>Oxígeno:</strong> O<sub>2</sub> (oxígeno molecular) y O<sub>3</sub> (ozono)</li>
+    </ul>
+
+    <figure style="text-align:center;">
+        <img src="images/formas alotropicas.png" alt="Formas alotrópicas del carbono" style="max-width:100%; height:auto;">
+        <figcaption>Figura: Estructuras alotrópicas del carbono a.Diamante, b.Grafito C.Lonsdaleita d.C<sub>60</sub> e. C<sub>540</sub> f.C<sub>70</sub> g.Carbono Amorfo h.Nanotubos de Carbono.</figcaption>
+    </figure>
+    <div class="section">
+        <h2>1. Dalton y la Masa Atómica (1803)</h2>
+        <p>Dalton propuso la ley de las proporciones múltiples:</p>
+        <code>Relación de masas = m₁ / m₂ = razón de números enteros</code>
+      </div>
+    
+      <div class="section">
+        <h2>2. Thomson y la relación carga-masa del electrón (1897)</h2>
+        <code>e/m = 2V / (r²B²)</code>
+        <p>Aplicación: espectrometría de masas y tubos de rayos catódicos.</p>
+      </div>
+    
+      <div class="section">
+        <h2>3. Millikan y la carga del electrón (1909)</h2>
+        <code>q = ne</code><br>
+        <code>e = 1.602 × 10⁻¹⁹ C</code>
+      </div>
+    
+      <div class="section">
+        <h2>4. Rutherford y la ley de dispersión (1911)</h2>
+        <code>dσ/dΩ = [ (1 / 4πε₀) · (2Ze² / 4E) ]² · (1 / sin⁴(θ/2))</code>
+      </div>
+    
+      <div class="section">
+        <h2>5. Bohr y los niveles de energía (1913)</h2>
+        <code>Eₙ = -13.6 eV / n²</code><br>
+        <code>ΔE = hν = 13.6 (1/n_f² - 1/n_i²)</code>
+      </div>
+    
+      <div class="section">
+        <h2>6. De Broglie y la naturaleza ondulatoria (1924)</h2>
+        <code>λ = h / p = h / mv</code>
+      </div>
+    
+      <div class="section">
+        <h2>7. Ecuación de Schrödinger (1926)</h2>
+        <p>Dependiente del tiempo:</p>
+        <code>iħ ∂Ψ/∂t = ĤΨ</code>
+        <p>Independiente del tiempo:</p>
+        <code>ĤΨ = EΨ</code>
+        <p>Ejemplo: orbital 1s:</p>
+        <code>Ψ₁s(r) = (1/√πa₀³) e⁻ʳ/ᵃ₀</code>
+      </div>
+    
+      <div class="section">
+        <h2>8. Principio de Exclusión de Pauli (1925)</h2>
+        <code>(n, l, m<sub>l</sub>, m<sub>s</sub>)</code>
+      </div>
+    
+      <div class="section">
+        <h2>9. Principio de Incertidumbre de Heisenberg (1927)</h2>
+        <code>Δx · Δp ≥ ħ/2</code>
+      </div>
+    
+      <div class="section">
+        <h2>10. Aplicaciones Contemporáneas</h2>
+        <ul>
+          <li>Espectroscopía atómica y molecular</li>
+          <li>Química computacional y farmacología</li>
+          <li>Diseño de materiales y nanociencia</li>
+        </ul>
+      </div>
+    
+      <div class="section">
+        <h2>Síntesis: Cómo las matemáticas moldearon la teoría atómica</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Científico</th>
+              <th>Aporte matemático clave</th>
+              <th>Aplicación práctica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Thomson</td>
+              <td><code>e/m</code> del electrón</td>
+              <td>Rayos catódicos, espectrometría</td>
+            </tr>
+            <tr>
+              <td>Bohr</td>
+              <td><code>Eₙ = -13.6/n²</code> eV</td>
+              <td>Espectroscopía atómica</td>
+            </tr>
+            <tr>
+              <td>De Broglie</td>
+              <td><code>λ = h/p</code></td>
+              <td>Microscopía electrónica</td>
+            </tr>
+            <tr>
+              <td>Schrödinger</td>
+              <td><code>ĤΨ = EΨ</code></td>
+              <td>Modelado molecular</td>
+            </tr>
+            <tr>
+              <td>Heisenberg</td>
+              <td><code>Δx · Δp ≥ ħ/2</code></td>
+              <td>Naturaleza probabilística</td>
+            </tr>
+            <tr>
+              <td>Pauli</td>
+              <td>Exclusión de estados</td>
+              <td>Estructura electrónica</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolución de la Teoría Atómica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    code {
+      background-color: #e8e8e8;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: Consolas, monospace;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #fff;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #2980b9;
+      color: white;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Evolución Matemática y Aplicada de la Teoría Atómica</h1>
+
+  <div class="section">
+    <h2>1. Dalton y la Masa Atómica (1803)</h2>
+    <p>Dalton propuso la ley de las proporciones múltiples:</p>
+    <code>Relación de masas = m₁ / m₂ = razón de números enteros</code>
+  </div>
+
+  <div class="section">
+    <h2>2. Thomson y la relación carga-masa del electrón (1897)</h2>
+    <code>e/m = 2V / (r²B²)</code>
+    <p>Aplicación: espectrometría de masas y tubos de rayos catódicos.</p>
+  </div>
+
+  <div class="section">
+    <h2>3. Millikan y la carga del electrón (1909)</h2>
+    <code>q = ne</code><br>
+    <code>e = 1.602 × 10⁻¹⁹ C</code>
+  </div>
+
+  <div class="section">
+    <h2>4. Rutherford y la ley de dispersión (1911)</h2>
+    <code>dσ/dΩ = [ (1 / 4πε₀) · (2Ze² / 4E) ]² · (1 / sin⁴(θ/2))</code>
+  </div>
+
+  <div class="section">
+    <h2>5. Bohr y los niveles de energía (1913)</h2>
+    <code>Eₙ = -13.6 eV / n²</code><br>
+    <code>ΔE = hν = 13.6 (1/n_f² - 1/n_i²)</code>
+  </div>
+
+  <div class="section">
+    <h2>6. De Broglie y la naturaleza ondulatoria (1924)</h2>
+    <code>λ = h / p = h / mv</code>
+  </div>
+
+  <div class="section">
+    <h2>7. Ecuación de Schrödinger (1926)</h2>
+    <p>Dependiente del tiempo:</p>
+    <code>iħ ∂Ψ/∂t = ĤΨ</code>
+    <p>Independiente del tiempo:</p>
+    <code>ĤΨ = EΨ</code>
+    <p>Ejemplo: orbital 1s:</p>
+    <code>Ψ₁s(r) = (1/√πa₀³) e⁻ʳ/ᵃ₀</code>
+  </div>
+
+  <div class="section">
+    <h2>8. Principio de Exclusión de Pauli (1925)</h2>
+    <code>(n, l, m<sub>l</sub>, m<sub>s</sub>)</code>
+  </div>
+
+  <div class="section">
+    <h2>9. Principio de Incertidumbre de Heisenberg (1927)</h2>
+    <code>Δx · Δp ≥ ħ/2</code>
+  </div>
+
+  <div class="section">
+    <h2>10. Aplicaciones Contemporáneas</h2>
+    <ul>
+      <li>Espectroscopía atómica y molecular</li>
+      <li>Química computacional y farmacología</li>
+      <li>Diseño de materiales y nanociencia</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Síntesis: Cómo las matemáticas moldearon la teoría atómica</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Científico</th>
+          <th>Aporte matemático clave</th>
+          <th>Aplicación práctica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Thomson</td>
+          <td><code>e/m</code> del electrón</td>
+          <td>Rayos catódicos, espectrometría</td>
+        </tr>
+        <tr>
+          <td>Bohr</td>
+          <td><code>Eₙ = -13.6/n²</code> eV</td>
+          <td>Espectroscopía atómica</td>
+        </tr>
+        <tr>
+          <td>De Broglie</td>
+          <td><code>λ = h/p</code></td>
+          <td>Microscopía electrónica</td>
+        </tr>
+        <tr>
+          <td>Schrödinger</td>
+          <td><code>ĤΨ = EΨ</code></td>
+          <td>Modelado molecular</td>
+        </tr>
+        <tr>
+          <td>Heisenberg</td>
+          <td><code>Δx · Δp ≥ ħ/2</code></td>
+          <td>Naturaleza probabilística</td>
+        </tr>
+        <tr>
+          <td>Pauli</td>
+          <td>Exclusión de estados</td>
+          <td>Estructura electrónica</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                        <div style="flex: 1 1 300px;">
+                        <h4>🔬 Estructura del átomo</h4>
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/Ml1bk9wDXVo" title="Estructura del átomo" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div style="flex: 1 1 300px;">
+                        <h4>📜 Historia de la química</h4>
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/RI-Nok6kPus" title="Historia de la química" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </ul>
+
+                    <h3>⚛️ Módulo 2: Estructura Atómica</h3>
+                    <ul>
+                        <li>Teoría atómica</li>
+                        <li>Partículas subatómicas</li>
+                        <li>Número atómico y másico</li>
+                        <li>Isótopos</li>
+                        <li>Modelo cuántico y números cuánticos</li>
+                        <li>Configuraciones electrónicas</li>
+                        <li><strong>Ejemplo aplicado:</strong>  Elección de materiales según estructura electrónica (conductividad, semiconductores)</li>
+                    </ul>
+
+                    <h3>🧬 Módulo 3: Tabla Periódica y Propiedades Periódicas</h3>
+                    <ul>
+                        <li>Organización y bloques</li>
+                        <li>Radio atómico, energía de ionización, afinidad electrónica, electronegatividad</li>
+                        <li><strong>Ejemplo aplicado:</strong> Selección de materiales resistentes a la corrosión en función de su posición en la tabla periódica</li>
+                        <div style="flex: 1 1 300px;">
+                        <h4>📊 Tabla periódica</h4>
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/xWm-nBSqJvU" title="Tabla periódica" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </ul>
+
+                    <h3>🔗 Módulo 4: Enlace Químico</h3>
+                    <ul>
+                        <li>Enlaces iónicos, covalentes y metálicos</li>
+                        <li>Teoría del octeto</li>
+                        <li>Estructuras de Lewis</li>
+                        <li>Geometría molecular (VSEPR)</li>
+                        <li>Polaridad de enlaces y moléculas</li>
+                        <li><strong>Ejemplo aplicado:</strong> Propiedades térmicas de materiales según tipo de enlace (aislantes vs conductores)</li>
+                    </ul>
+
+                    <h3>🧮 Módulo 5: Estequiometría</h3>
+                    <ul>
+                        <li>Leyes ponderales</li>
+                        <li>Ecuaciones químicas</li>
+                        <li>Cálculos moleculares, masa molar</li>
+                        <li>Reacciones químicas (combustión, redox, etc.)</li>
+                        <li>Reactivo limitante y rendimiento</li>
+                        <li><strong>Ejemplo aplicado:</strong> Cálculo de combustibles necesarios para un motor de combustión interna</li>
+                    </ul>
+
+                    <h3>🌡️ Módulo 6: Estados de la Materia y Gases</h3>
+                    <ul>
+                        <li>Gases ideales y reales</li>
+                        <li>Ley de los gases</li>
+                        <li>Ley de Dalton, ley de Avogadro</li>
+                        <li>Mezclas de gases</li>
+                        <li><strong>Ejemplo aplicado:</strong> Comportamiento de gases en procesos de soldadura o sistemas neumáticos</li>
+                    </ul>
+
+                    <h3>💧 Módulo 7: Soluciones y Concentraciones</h3>
+                    <ul>
+                        <li>Tipos de soluciones</li>
+                        <li>Unidades de concentración (M, m, %, ppm)</li>
+                        <li>Diluciones</li>
+                        <li>Propiedades coligativas</li>
+                        <li><strong>Ejemplo aplicado:</strong> Tratamiento de aguas industriales y control de contaminantes (ppm)</li>
+                    </ul>
+
+                    <h3>♻️ Módulo 8: Termoquímica</h3>
+                    <ul>
+                        <li>Calor y trabajo</li>
+                        <li>Entalpía</li>
+                        <li>Ley de Hess</li>
+                        <li>Cambios de estado</li>
+                        <li>Capacidad calorífica</li>
+                        <li><strong>Ejemplo aplicado:</strong> Diseño de intercambiadores de calor en procesos industriales</li>
+                    </ul>
+
+                    <h3>⚡ Módulo 9: Cinética Química y Equilibrio</h3>
+                    <ul>
+                        <li>Velocidad de reacción</li>
+                        <li>Factores que afectan la velocidad</li>
+                        <li>Constante de equilibrio</li>
+                        <li>Principio de Le Châtelier</li>
+                        <li><strong>Ejemplo aplicado:</strong> Control de velocidad de reacciones en procesos industriales (ej. producción de amoníaco)</li>
+                    </ul>
+
+                    <h3>⚗️ Módulo 10: Ácidos, Bases y pH</h3>
+                    <ul>
+                        <li>Teorías de ácidos y bases (Arrhenius, Brønsted, Lewis)</li>
+                        <li>pH y pOH</li>
+                        <li>Neutralización</li>
+                        <li>Soluciones tampón</li>
+                        <li><strong>Ejemplo aplicado:</strong> Control del pH en procesos industriales o en tratamiento de aguas</li>
+                    </ul>
+
+                    <h3>🧲 Módulo 11: Electroquímica</h3>
+                    <ul>
+                        <li>Celdas galvánicas y electrolíticas</li>
+                        <li>Potenciales de electrodo</li>
+                        <li>Corrosión</li>
+                        <li>Electrólisis</li>
+                        <li><strong>Ejemplo aplicado:</strong> Prevención de corrosión en estructuras metálicas (puentes, barcos, tuberías)</li>
+                    </ul>
                 </div>
             </div>
-        </section>
+
+        <section id="eventos">
+            <h2>EVENTOS</h2>
+            </section>
+
+        <section id="noticias">
+            <h2>NOTICIAS</h2>
+            </section>
     </main>
 
-    <!-- Modals -->
-    <div id="modal-quimica" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">🧪 Curso de Química General para Ingeniería</h2>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Objetivo general:</strong> Brindar al estudiante los fundamentos de la química general con un enfoque aplicado a las ingenierías, desarrollando competencias en el análisis y solución de problemas relacionados con materiales, energía y reacciones químicas.</p>
-                
-                <h3>Módulos del curso:</h3>
-                <ul>
-                    <li><strong>Introducción a la Química:</strong> Historia, método científico y aplicaciones en ingeniería</li>
-                    <li><strong>Estructura Atómica:</strong> Teoría cuántica, configuraciones electrónicas</li>
-                    <li><strong>Tabla Periódica:</strong> Propiedades periódicas y selección de materiales</li>
-                    <li><strong>Enlace Químico:</strong> Tipos de enlaces y propiedades de materiales</li>
-                    <li><strong>Estequiometría:</strong> Cálculos químicos aplicados</li>
-                    <li><strong>Estados de la Materia:</strong> Gases, líquidos y sólidos</li>
-                    <li><strong>Soluciones:</strong> Concentraciones y propiedades coligativas</li>
-                    <li><strong>Termoquímica:</strong> Energía en reacciones químicas</li>
-                    <li><strong>Cinética y Equilibrio:</strong> Velocidad de reacciones</li>
-                    <li><strong>Ácidos y Bases:</strong> pH y neutralización</li>
-                    <li><strong>Electroquímica:</strong> Celdas y corrosión</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-programacion" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Curso de Programación - Arduino: De Principiante a Avanzado</h2>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Objetivo general:</strong> Desarrollar competencias completas en programación de sistemas embebidos con Arduino, desde conceptos básicos hasta implementaciones industriales avanzadas.</p>
-                
-                <div style="background: var(--surface); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
-                    <h4>Metodología progresiva de aprendizaje</h4>
-                    <p>Progresa sistemáticamente desde encender tu primer LED hasta desarrollar sistemas complejos de monitoreo industrial con comunicación inalámbrica.</p>
-                </div>
-
-                <h3>Estructura del curso por niveles</h3>
-
-                <h4>Nivel 1: Fundamentos</h4>
-                <ul>
-                    <li><strong>Primer programa:</strong> Encender un LED
-                        <pre style="background: #f8f9fa; padding: 10px; border-radius: 4px; font-size: 12px; margin: 8px 0;"><code>void setup() {
-  pinMode(13, OUTPUT);
-}
-
-void loop() {
-  digitalWrite(13, HIGH);
-  delay(1000);
-  digitalWrite(13, LOW);
-  delay(1000);
-}</code></pre>
-                    </li>
-                    <li><strong>Lectura de sensores:</strong> Sensor de luz (LDR)</li>
-                    <li><strong>Comunicación serial:</strong> Monitoreo de datos</li>
-                    <li><strong>Entradas y salidas digitales/analógicas</strong></li>
-                </ul>
-
-                <h4>Nivel 2: Intermedio</h4>
-                <ul>
-                    <li><strong>Control automático con sensores:</strong> LED que responde a luz ambiental</li>
-                    <li><strong>Temporización no bloqueante:</strong> Uso de millis() en lugar de delay()
-                        <pre style="background: #f8f9fa; padding: 10px; border-radius: 4px; font-size: 12px; margin: 8px 0;"><code>unsigned long anterior = 0;
-const long intervalo = 1000;
-
-void loop() {
-  unsigned long actual = millis();
-  if (actual - anterior >= intervalo) {
-    digitalWrite(13, !digitalRead(13));
-    anterior = actual;
-  }
-}</code></pre>
-                    </li>
-                    <li><strong>Estructuras de control avanzadas</strong></li>
-                    <li><strong>Funciones personalizadas y modularización</strong></li>
-                </ul>
-
-                <h4>Nivel 3: Avanzado</h4>
-                <ul>
-                    <li><strong>Interrupciones hardware:</strong> Respuesta inmediata a eventos</li>
-                    <li><strong>Gestión de memoria EEPROM:</strong> Almacenamiento no volátil</li>
-                    <li><strong>Comunicaciones I2C, SPI, UART:</strong> Integración con múltiples sensores</li>
-                    <li><strong>Máquinas de estado finitos (FSM):</strong> Control determinista</li>
-                    <li><strong>Optimización de memoria:</strong> PROGMEM, gestión de Flash y SRAM</li>
-                </ul>
-
-                <h3>Ejemplo integrado: Sistema de control inteligente</h3>
-                <div style="background: #eefbf3; border-left: 4px solid #00b37e; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
-                    <h4>Control automático de LED con configuración vía Serial</h4>
-                    <pre style="background: #f8f9fa; padding: 15px; border-radius: 4px; font-size: 11px; overflow-x: auto;"><code>#define LED_PIN 13
-#define LDR_PIN A0
-
-int umbralLuz = 500;
-bool estadoLED = false;
-
-void setup() {
-  pinMode(LED_PIN, OUTPUT);
-  Serial.begin(9600);
-  Serial.println("Sistema iniciado");
-}
-
-void loop() {
-  int valorLuz = analogRead(LDR_PIN);
-  
-  if (valorLuz < umbralLuz && !estadoLED) encenderLED();
-  else if (valorLuz >= umbralLuz && estadoLED) apagarLED();
-  
-  if (Serial.available() > 0) procesarComandoSerial();
-  
-  delay(100);
-}
-
-void procesarComandoSerial() {
-  char comando = Serial.read();
-  if (comando == 'E') encenderLED();
-  else if (comando == 'A') apagarLED();
-  else if (comando == 'U') {
-    umbralLuz = Serial.parseInt();
-    Serial.print("Umbral cambiado a: ");
-    Serial.println(umbralLuz);
-  }
-}</code></pre>
-                </div>
-
-                <h3>Módulos especializados</h3>
-                <ol>
-                    <li><strong>Arquitectura y optimización de memoria</strong>
-                        <ul>
-                            <li>Gestión eficiente de Flash, SRAM y EEPROM</li>
-                            <li>Técnicas de ahorro con PROGMEM</li>
-                            <li>Prevención de fragmentación de memoria</li>
-                        </ul>
-                    </li>
-                    <li><strong>Gestión avanzada de energía</strong>
-                        <ul>
-                            <li>Modos de bajo consumo en AVR y ESP32</li>
-                            <li>Deep sleep y wake-up sources</li>
-                            <li>Optimización para aplicaciones a batería</li>
-                        </ul>
-                    </li>
-                    <li><strong>Comunicaciones avanzadas</strong>
-                        <ul>
-                            <li>Protocolos I2C, SPI, UART con buffers circulares</li>
-                            <li>Comunicación inalámbrica: LoRa, BLE, MQTT</li>
-                            <li>Manejo de errores y timeouts</li>
-                        </ul>
-                    </li>
-                    <li><strong>Programación orientada a eventos</strong>
-                        <ul>
-                            <li>Interrupciones y prevención de race conditions</li>
-                            <li>Scheduler cooperativo</li>
-                            <li>Sistemas reactivos y tiempo real</li>
-                        </ul>
-                    </li>
-                </ol>
-
-                <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
-                    <h4>Proyecto final integrado</h4>
-                    <p>Sistema de monitoreo industrial que incluye:</p>
-                    <ul>
-                        <li>Múltiples sensores I2C (BMP280, MPU6050)</li>
-                        <li>Control de actuadores PWM con FSM</li>
-                        <li>Interfaz de configuración vía Serial</li>
-                        <li>Modos de bajo consumo automático</li>
-                        <li>Comunicación MQTT para IoT</li>
-                        <li>Sistema de logging y recuperación de errores</li>
-                    </ul>
-                </div>
-
-                <h3>Enfoque industrial y profesional</h3>
-                <ul>
-                    <li><strong>Robustez:</strong> Manejo de errores y recuperación automática</li>
-                    <li><strong>Seguridad:</strong> Watchdog, modos fail-safe y aislamiento</li>
-                    <li><strong>Mantenibilidad:</strong> Código modular y documentado</li>
-                    <li><strong>Escalabilidad:</strong> Arquitecturas extensibles</li>
-                    <li><strong>Testing:</strong> Pruebas unitarias con ArduinoUnit</li>
-                    <li><strong>Deployment:</strong> OTA updates para ESP32</li>
-                </ul>
-
-                <div style="background: #d1ecf1; border-left: 4px solid #0dcaf0; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
-                    <h4>Herramientas y compatibilidad</h4>
-                    <ul>
-                        <li>Compatible con Arduino IDE y PlatformIO</li>
-                        <li>Ejemplos adaptados para Tinkercad</li>
-                        <li>Soporte para Arduino Uno, Nano, ESP32, ESP8266</li>
-                        <li>Diagramas de circuitos y esquemas de conexión</li>
-                        <li>Código fuente completo y funcional</li>
-                    </ul>
-                </div>
-
-                <h4>Metodología de enseñanza</h4>
-                <p>Aprendizaje hands-on con ejemplos prácticos, código completo y funcional, diagramas de flujo detallados y esquemas de conexiones. Cada concepto se refuerza con proyectos incrementales que construyen sobre el conocimiento previo.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-text">
-                <h3>Ciencias Básicas Aplicadas a Ingenierías</h3>
-                <p>Grupo de investigación comprometido con la excelencia académica y la innovación tecnológica</p>
-            </div>
-            <div class="footer-links">
-                <a href="#inicio" class="footer-link">Inicio</a>
-                <a href="#equipo" class="footer-link">Equipo</a>
-                <a href="#proyectos" class="footer-link">Proyectos</a>
-                <a href="#cursos" class="footer-link">Cursos</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Universidad Antonio Nariño - Todos los derechos reservados</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
-    <script>
-        // Mobile menu functionality
-        const mobileToggle = document.querySelector('.mobile-menu-toggle');
-        const mainNav = document.querySelector('.main-nav');
-        
-        mobileToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-        });
-
-        // Modal functionality
-        const modals = document.querySelectorAll('.modal');
-        const modalTriggers = document.querySelectorAll('[data-modal]');
-        const closeButtons = document.querySelectorAll('.modal-close');
-
-        modalTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                const modalId = trigger.getAttribute('data-modal');
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.classList.add('active');
-                }
-            });
-        });
-
-        closeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const modal = button.closest('.modal');
-                modal.classList.remove('active');
-            });
-        });
-
-        // Close modal when clicking outside
-        modals.forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                }
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        const navLinks = document.querySelectorAll('a[href^="#"]');
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = targetElement.offsetTop - headerHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Header shadow on scroll
-        const header = document.querySelector('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.style.boxShadow = 'var(--shadow-lg)';
-            } else {
-                header.style.boxShadow = 'var(--shadow-sm)';
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards and sections
-        document.querySelectorAll('.team-card, .project-card, .course-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+    <script src="script.js"></script>
+</body>
+</html>
