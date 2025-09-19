@@ -1,136 +1,257 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</title>
-    <link rel="stylesheet" href="styles.min.css">
-    <link rel="preload" href="images/LOGO3.png" as="image">
-    <link rel="preload" href="images/miguelmolano.png" as="image">
-    <link rel="preload" href="images/josedavid.png" as="image">
-    <link rel="preload" href="images/gustavo.png" as="image">
-    <link rel="preload" href="images/isaura.png" as="image">
-    <link rel="preload" href="images/cristian-perfil.png" as="image">
-    <link rel="preload" href="images/daniel-perfil.png" as="image">
-    <link rel="preload" href="images/facebook.png" as="image">
-    <link rel="preload" href="images/twitter.png" as="image">
-    <link rel="preload" href="images/instagram.png" as="image">
-    <link rel="preload" href="images/proyecto1.png" as="image">
-    <link rel="preload" href="images/proyecto2.png" as="image">
-    <link rel="preload" href="images/proyecto3.png" as="image">
-    <link rel="preload" href="images/proyecto4.png" as="image">
-    <link rel="preload" href="images/proyecto5.png" as="image">
-    <link rel="preload" href="images/proyecto6.png" as="image">
-    <link rel="preload" href="images/proyecto7.png" as="image">
-    <link rel="preload" href="images/proyecto8.png" as="image">
-    <link rel="preload" href="images/proyecto9.png" as="image">
-    <link rel="preload" href="images/proyecto10.png" as="image">
-    <link rel="preload" href="images/quimica.png" as="image">
-    <link rel="preload" href="images/fisica.png" as="image">
-    <link rel="preload" href="images/matematica.png" as="image">
-    <link rel="preload" href="images/ciencia-datos.png" as="image">
-    <link rel="preload" href="images/programacion.png" as="image">
-    <link rel="preload" href="images/arduino.png" as="image">
-    <style>
-        .nav-item { position: relative; }
-        .submenu { display: none; position: absolute; top: 100%; left: 0; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; }
-        .submenu a { color: black; padding: 12px 16px; text-decoration: none; display: block; }
-        .nav-item:hover .submenu { display: block; }
-        #cursos-tematicas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
-        .curso-tema { border: 1px solid #ccc; padding: 15px; border-radius: 8px; text-align: center; cursor: pointer; }
-        .curso-tema img { max-width: 100%; height: auto; margin-bottom: 10px; }
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
-        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border: 1px solid #888; width: 80%; border-radius: 8px; position: relative; }
-        .close-button { color: #aaa; position: absolute; top: 0; right: 0; font-size: 28px; font-weight: bold; cursor: pointer; background: none; border: none; outline: none; }
-        .close-button:hover, .close-button:focus { color: black; text-decoration: none; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIENCIAS BÁSICAS APLICADAS A INGENIERÍAS</title>
+  <link rel="stylesheet" href="styles.min.css">
+
+  <!-- Estilos adicionales para navegación y modales -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background: #002855;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    header img {
+      max-width: 220px;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sección de cursos */
+    #cursos-tematicas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .curso-tema {
+      border: 1px solid #ccc;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .curso-tema:hover {
+      transform: scale(1.03);
+      border-color: #002855;
+    }
+
+    .curso-tema img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    /* Estilos modales */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 85%;
+      max-width: 900px;
+      position: relative;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px; right: 15px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .close-button:hover {
+      color: #002855;
+    }
+
+    footer {
+      margin-top: 40px;
+      background: #002855;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
 </head>
 <body>
-<header>
-    <a href="/" aria-label="Ir a la página de inicio">
-        <img src="images/LOGO3.png" alt="Logo del Semillero" width="300" height="150">
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <!-- Logo del semillero -->
+    <a href="/" aria-label="Ir a inicio">
+      <img src="images/LOGO3.png" alt="Logo del Semillero">
     </a>
-    <h1>CIENCIAS BÁSICAS APLICADAS A INGENIERIAS</h1>
+    <h1>CIENCIAS BÁSICAS APLICADAS A INGENIERÍAS</h1>
+
+    <!-- Menú principal -->
     <nav>
-        <a href="/" aria-label="Ir a la sección de inicio">Inicio</a>
-        <div class="nav-item">
-            <a href="#cursos" aria-expanded="false" aria-controls="submenu-cursos">Cursos</a>
-            <div class="submenu" id="submenu-cursos">
-                <a href="#quimica" data-modal="modal-quimica-detalle">Química</a>
-                <a href="#fisica" data-modal="modal-fisica-detalle">Física</a>
-                <a href="#matematica" data-modal="modal-matematica-detalle">Matemática</a>
-                <a href="#ciencia-datos" data-modal="modal-ciencia-datos-detalle">Ciencia de Datos</a>
-                <a href="#programacion" data-modal="modal-programacion-detalle">Programación</a>
-                <a href="#arduino" data-modal="modal-arduino-detalle">Arduino</a>
-            </div>
-        </div>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#eventos">Eventos</a>
-        <a href="#noticias">Noticias</a>
+      <a href="/">Inicio</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#noticias">Noticias</a>
     </nav>
-</header>
-<main>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+    <!-- Sección cursos -->
     <section id="cursos">
-        <h2>NUESTROS CURSOS</h2>
-        <div id="cursos-tematicas">
-            <div class="curso-tema" data-modal="modal-quimica-detalle">
-                <img src="images/quimica.png" alt="Química" width="300" height="200">
-                <h3>Química</h3>
-                <p>Explora los fundamentos de la química y sus diversas ramas.</p>
-            </div>
-            <div class="curso-tema" data-modal="modal-fisica-detalle">
-                <img src="images/fisica.png" alt="Física" width="300" height="200">
-                <h3>Física</h3>
-                <p>Descubre las leyes que rigen el universo.</p>
-            </div>
-            <div class="curso-tema" data-modal="modal-matematica-detalle">
-                <img src="images/matematica.png" alt="Matemática" width="300" height="200">
-                <h3>Matemática</h3>
-                <p>Desarrolla tu pensamiento lógico y habilidades de resolución de problemas.</p>
-            </div>
-            <div class="curso-tema" data-modal="modal-ciencia-datos-detalle">
-                <img src="images/ciencia-datos.png" alt="Ciencia de Datos" width="300" height="200">
-                <h3>Ciencia de Datos</h3>
-                <p>Aprende a extraer conocimiento valioso a partir de grandes conjuntos de datos.</p>
-            </div>
-            <div class="curso-tema" data-modal="modal-programacion-detalle">
-                <img src="images/programacion.png" alt="Programación" width="300" height="200">
-                <h3>Programación</h3>
-                <p>Adquiere las habilidades para crear software y automatizar tareas.</p>
-            </div>
-            <div class="curso-tema" data-modal="modal-arduino-detalle">
-                <img src="images/arduino.png" alt="Arduino" width="300" height="200">
-                <h3>Arduino</h3>
-                <p>Aprende electrónica y programación desde cero hasta un nivel avanzado con proyectos prácticos.</p>
-            </div>
+      <h2 style="text-align:center; margin-top:20px;">Nuestros Cursos</h2>
+
+      <!-- Tarjetas de cursos -->
+      <div id="cursos-tematicas">
+        <!-- Química -->
+        <div class="curso-tema" data-modal="modal-quimica">
+          <img src="images/quimica.png" alt="Química">
+          <h3>Química</h3>
+          <p>Explora los fundamentos de la química y sus diversas ramas.</p>
         </div>
 
-        <!-- Modal Arduino -->
-        <div id="modal-arduino-detalle" class="modal">
-            <div class="modal-content">
-                <button class="close-button">&times;</button>
-                <h2>🤖 Curso de Arduino: Desde Cero hasta Avanzado</h2>
-                <p><strong>🎯 Objetivo general:</strong><br>
-                    Enseñar de manera pedagógica y didáctica los fundamentos de la electrónica y programación con Arduino, avanzando desde conceptos básicos hasta proyectos complejos aplicados en ingeniería y ciencias.</p>
-                <h3>📚 Módulos</h3>
-                <ul>
-                    <li><strong>Módulo 1:</strong> Introducción a la electrónica y al entorno Arduino IDE.</li>
-                    <li><strong>Módulo 2:</strong> Fundamentos de programación en C/C++ para Arduino.</li>
-                    <li><strong>Módulo 3:</strong> Manejo de pines digitales y analógicos, entradas y salidas.</li>
-                    <li><strong>Módulo 4:</strong> Sensores básicos (temperatura, luz, ultrasonido) y su programación.</li>
-                    <li><strong>Módulo 5:</strong> Actuadores (LEDs, motores, servos, relés).</li>
-                    <li><strong>Módulo 6:</strong> Comunicación serial y protocolos (I2C, SPI).</li>
-                    <li><strong>Módulo 7:</strong> Proyectos intermedios: estaciones meteorológicas, sistemas de riego.</li>
-                    <li><strong>Módulo 8:</strong> Integración con módulos avanzados (WiFi, Bluetooth, IoT).</li>
-                    <li><strong>Módulo 9:</strong> Buenas prácticas de diseño, optimización de código y seguridad.</li>
-                    <li><strong>Módulo 10:</strong> Proyecto final integrador aplicado a ingeniería o ciencias.</li>
-                </ul>
-                <p><strong>📺 Recursos adicionales:</strong> Videos explicativos, diagramas de conexión, simuladores online (Tinkercad, Proteus) y repositorios de código en GitHub.</p>
-            </div>
+        <!-- Física -->
+        <div class="curso-tema" data-modal="modal-fisica">
+          <img src="images/fisica.png" alt="Física">
+          <h3>Física</h3>
+          <p>Descubre las leyes que rigen el universo.</p>
         </div>
+
+        <!-- Matemática -->
+        <div class="curso-tema" data-modal="modal-matematica">
+          <img src="images/matematica.png" alt="Matemática">
+          <h3>Matemática</h3>
+          <p>Desarrolla tu pensamiento lógico y habilidades de resolución de problemas.</p>
+        </div>
+
+        <!-- Ciencia de Datos -->
+        <div class="curso-tema" data-modal="modal-ciencia-datos">
+          <img src="images/ciencia-datos.png" alt="Ciencia de Datos">
+          <h3>Ciencia de Datos</h3>
+          <p>Aprende a extraer conocimiento valioso a partir de grandes volúmenes de datos.</p>
+        </div>
+
+        <!-- Programación -->
+        <div class="curso-tema" data-modal="modal-programacion">
+          <img src="images/programacion.png" alt="Programación">
+          <h3>Programación</h3>
+          <p>Adquiere habilidades para crear software, automatizar procesos y controlar hardware.</p>
+        </div>
+      </div>
     </section>
-</main>
-<footer></footer>
-<script src="script.js"></script>
+  </main>
+
+  <!-- ================= MODALES DE CURSOS ================= -->
+
+  <!-- Modal Programación con Arduino como subcurso -->
+  <div id="modal-programacion" class="modal">
+    <div class="modal-content">
+      <button class="close-button">&times;</button>
+      <h2>💻 Cursos de Programación</h2>
+      <p>En esta categoría encontrarás cursos para aprender desde lógica de programación hasta control de hardware.</p>
+
+      <h3>📚 Subcursos</h3>
+      <ul>
+        <li>
+          <strong>Introducción a la Programación</strong><br>
+          Conceptos básicos de algoritmos, estructuras de control y buenas prácticas de programación.
+        </li>
+        <li>
+          <strong>🤖 Arduino: Desde Cero hasta Avanzado</strong>
+          <p>
+            Aprende electrónica y programación con Arduino, avanzando desde proyectos básicos (encender un LED) hasta integración con IoT y sistemas embebidos.
+          </p>
+          <h4>📘 Módulos del curso Arduino</h4>
+          <ul>
+            <li>Módulo 1: Introducción al entorno Arduino IDE.</li>
+            <li>Módulo 2: Fundamentos de programación en C/C++.</li>
+            <li>Módulo 3: Manejo de pines digitales y analógicos.</li>
+            <li>Módulo 4: Sensores básicos (luz, temperatura, ultrasonido).</li>
+            <li>Módulo 5: Actuadores (LEDs, motores, servos, relés).</li>
+            <li>Módulo 6: Comunicación serial y protocolos (I2C, SPI).</li>
+            <li>Módulo 7: Proyectos intermedios (estación meteorológica, riego automático).</li>
+            <li>Módulo 8: Integración con módulos WiFi, Bluetooth, IoT.</li>
+            <li>Módulo 9: Optimización de código y buenas prácticas.</li>
+            <li>Módulo 10: Proyecto final integrador.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Aquí puedes mantener modales similares para Química, Física, etc. -->
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p><strong>Profesores responsables:</strong></p>
+    <p>Miguel Fernando Molano Cabrejo<br>José David Támara Jaramillo</p>
+    <p>&copy; 2025 - Semillero de Ciencias Básicas Aplicadas a Ingenierías</p>
+  </footer>
+
+  <!-- Script JS para abrir/cerrar modales -->
+  <script>
+    // Abrir modales
+    document.querySelectorAll('.curso-tema').forEach(card => {
+      card.addEventListener('click', () => {
+        const modalId = card.getAttribute('data-modal');
+        document.getElementById(modalId).style.display = 'block';
+      });
+    });
+
+    // Cerrar modales
+    document.querySelectorAll('.close-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.closest('.modal').style.display = 'none';
+      });
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    window.addEventListener('click', (event) => {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
