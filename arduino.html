@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Arduino - Portal Educativo de Química</title>
+    <style>
+        :root {
+            --color-primary: #2c3e50;
+            --color-secondary: #3498db;
+            --color-accent: #e74c3c;
+            --color-light: #ecf0f1;
+            --color-dark: #2c3e50;
+            --spacing: 1rem;
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* Content Styles */
+        .course-content {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .module:last-child {
+            border-bottom: none;
+        }
+        
+        .module h3 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .code-comment {
+            color: #75715e;
+        }
+        
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .resource-card {
+            background: var(--color-light);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--color-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+            margin-top: 0.5rem;
+        }
+        
+        .btn:hover {
+            background: var(--color-primary);
+        }
+        
+        .btn-accent {
+            background: var(--color-accent);
+        }
+        
+        .btn-accent:hover {
+            background: #c0392b;
+        }
+        
+        .back-btn {
+            margin: 1rem 0;
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: var(--color-secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Portal de Química</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html#cursos">Cursos</a></li>
+                    <li><a href="index.html#materiales">Materiales</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección de bienvenida -->
+    <section class="hero">
+        <div class="container">
+            <h1>Curso de Arduino para Química</h1>
+            <p>Aprende a utilizar Arduino para aplicaciones en el laboratorio de química</p>
+        </div>
+    </section>
+
+    <!-- Botón de volver -->
+    <div class="container">
+        <a href="index.html#cursos" class="back-btn">← Volver a Cursos</a>
+    </div>
+
+    <!-- Contenido del curso -->
+    <section class="container">
+        <div class="course-content">
+            <h2>Introducción a Arduino</h2>
+            <p>Arduino es una plataforma de hardware y software de código abierto que permite crear proyectos interactivos mediante la programación de microcontroladores. Esta guía te proporcionará los conocimientos esenciales para programar en Arduino.</p>
+            
+            <div class="module">
+                <h3>Estructura Básica de un Sketch</h3>
+                <div class="code-block">
+                    <span class="code-comment">// Sección de definiciones y includes</span><br>
+                    #include &lt;biblioteca.h&gt;<br>
+                    #define CONSTANTE valor<br>
+                    <br>
+                    <span class="code-comment">// Declaración de variables globales</span><br>
+                    tipoDato variable = valor;<br>
+                    <br>
+                    <span class="code-comment">// Configuración inicial (se ejecuta una vez)</span><br>
+                    void setup() {<br>
+                    &nbsp;&nbsp;<span class="code-comment">// Inicializar pines, comunicaciones, etc.</span><br>
+                    }<br>
+                    <br>
+                    <span class="code-comment">// Bucle principal (se ejecuta repetidamente)</span><br>
+                    void loop() {<br>
+                    &nbsp;&nbsp;<span class="code-comment">// Código principal del programa</span><br>
+                    }
+                </div>
+            </div>
+            
+            <div class="module">
+                <h3>Funciones Esenciales de Arduino</h3>
+                
+                <h4>1. Configuración de Pines</h4>
+                <p><strong>pinMode(pin, mode)</strong> - Configura un pin específico como entrada o salida.</p>
+                <div class="code-block">
+                    void setup() {<br>
+                    &nbsp;&nbsp;pinMode(13, OUTPUT);      <span class="code-comment">// Pin 13 como salida</span><br>
+                    &nbsp;&nbsp;pinMode(A0, INPUT);       <span class="code-comment">// Pin analógico A0 como entrada</span><br>
+                    &nbsp;&nbsp;pinMode(2, INPUT_PULLUP); <span class="code-comment">// Pin 2 como entrada con resistencia pull-up interna</span><br>
+                    }
+                </div>
+                
+                <h4>2. Control de Tiempo</h4>
+                <p><strong>delay(ms)</strong> - Pausa el programa durante el tiempo especificado en milisegundos.</p>
+                <div class="code-block">
+                    void loop() {<br>
+                    &nbsp;&nbsp;digitalWrite(13, HIGH);<br>
+                    &nbsp;&nbsp;delay(500);  <span class="code-comment">// Espera 500 milisegundos</span><br>
+                    &nbsp;&nbsp;digitalWrite(13, LOW);<br>
+                    &nbsp;&nbsp;delay(500);<br>
+                    }
+                </div>
+                
+                <h4>3. Comunicación Serial</h4>
+                <p><strong>Serial.begin(velocidad)</strong> - Inicializa la comunicación serial.</p>
+                <div class="code-block">
+                    void setup() {<br>
+                    &nbsp;&nbsp;Serial.begin(9600); <span class="code-comment">// 9600 baudios</span><br>
+                    }<br>
+                    <br>
+                    void loop() {<br>
+                    &nbsp;&nbsp;int valor = analogRead(A0);<br>
+                    &nbsp;&nbsp;Serial.print("Valor del sensor: ");<br>
+                    &nbsp;&nbsp;Serial.println(valor);<br>
+                    &nbsp;&nbsp;delay(1000);<br>
+                    }
+                </div>
+                
+                <h4>4. Funciones Matemáticas</h4>
+                <p><strong>map(valor, fromLow, fromHigh, toLow, toHigh)</strong> - Re-mapea un número de un rango a otro.</p>
+                <div class="code-block">
+                    void loop() {<br>
+                    &nbsp;&nbsp;int valorSensor = analogRead(A0);<br>
+                    &nbsp;&nbsp;int valorMapeado = map(valorSensor, 0, 1023, 0, 255);<br>
+                    &nbsp;&nbsp;analogWrite(9, valorMapeado);<br>
+                    }
+                </div>
+            </div>
+            
+            <div class="module">
+                <h3>Ejemplo Completo</h3>
+                <div class="code-block">
+                    <span class="code-comment">// Control de LED con sensor de luz y comunicación serial</span><br>
+                    <br>
+                    #define LED_PIN 13<br>
+                    #define LDR_PIN A0<br>
+                    <br>
+                    int umbralLuz = 500;<br>
+                    bool estadoLED = false;<br>
+                    <br>
+                    void setup() {<br>
+                    &nbsp;&nbsp;pinMode(LED_PIN, OUTPUT);<br>
+                    &nbsp;&nbsp;Serial.begin(9600);<br>
+                    &nbsp;&nbsp;Serial.println("Sistema iniciado");<br>
+                    }<br>
+                    <br>
+                    void loop() {<br>
+                    &nbsp;&nbsp;int valorLuz = analogRead(LDR_PIN);<br>
+                    &nbsp;&nbsp;<br>
+                    &nbsp;&nbsp;if (valorLuz < umbralLuz && !estadoLED) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;encenderLED();<br>
+                    &nbsp;&nbsp;} else if (valorLuz >= umbralLuz && estadoLED) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;apagarLED();<br>
+                    &nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;<br>
+                    &nbsp;&nbsp;if (Serial.available() > 0) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;procesarComandoSerial();<br>
+                    &nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;<br>
+                    &nbsp;&nbsp;delay(100);<br>
+                    }<br>
+                    <br>
+                    void encenderLED() {<br>
+                    &nbsp;&nbsp;digitalWrite(LED_PIN, HIGH);<br>
+                    &nbsp;&nbsp;estadoLED = true;<br>
+                    &nbsp;&nbsp;Serial.println("LED encendido");<br>
+                    }<br>
+                    <br>
+                    void apagarLED() {<br>
+                    &nbsp;&nbsp;digitalWrite(LED_PIN, LOW);<br>
+                    &nbsp;&nbsp;estadoLED = false;<br>
+                    &nbsp;&nbsp;Serial.println("LED apagado");<br>
+                    }<br>
+                    <br>
+                    void procesarComandoSerial() {<br>
+                    &nbsp;&nbsp;char comando = Serial.read();<br>
+                    &nbsp;&nbsp;if (comando == 'E') {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;encenderLED();<br>
+                    &nbsp;&nbsp;} else if (comando == 'A') {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;apagarLED();<br>
+                    &nbsp;&nbsp;} else if (comando == 'U') {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;umbralLuz = Serial.parseInt();<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Serial.print("Umbral cambiado a: ");<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Serial.println(umbralLuz);<br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+            </div>
+            
+            <h3>Recursos del curso</h3>
+            <div class="resources">
+                <div class="resource-card">
+                    <h4>Simulador Tinkercad</h4>
+                    <p>Practica con Arduino en un entorno virtual seguro</p>
+                    <a href="https://www.tinkercad.com/dashboard" target="_blank" class="btn">Acceder al simulador</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Presentaciones</h4>
+                    <p>Diapositivas de todas las clases</p>
+                    <a href="#" class="btn">Descargar</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Códigos de ejemplo</h4>
+                    <p>Sketchs de Arduino para practicar</p>
+                    <a href="#" class="btn">Descargar</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Guía de componentes</h4>
+                    <p>Lista de materiales necesarios</p>
+                    <a href="#" class="btn">Descargar</a>
+                </div>
+            </div>
+            
+            <h3>Videos Tutoriales</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP" title="Tutoriales de Arduino" allowfullscreen></iframe>
+            </div>
+            <p><a href="https://www.youtube.com/results?search_query=arduino+tutorial" target="_blank" class="btn">Ver más videos</a></p>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: profesor@ejemplo.com</p>
+                <p>Despacho: Edificio de Ciencias, Oficina 304</p>
+                <p>Horario de atención: Lunes y Miércoles 10:00-12:00</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces rápidos</h3>
+                <p><a href="index.html#inicio">Inicio</a></p>
+                <p><a href="index.html#cursos">Cursos</a></p>
+                <p><a href="index.html#materiales">Materiales</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Recursos externos</h3>
+                <p><a href="#">Sociedad de Química</a></p>
+                <p><a href="#">Revistas especializadas</a></p>
+                <p><a href="#">Base de datos de compuestos</a></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Portal Educativo de Química. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
