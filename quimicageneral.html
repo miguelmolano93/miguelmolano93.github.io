@@ -1029,89 +1029,172 @@
     <div id="modal-programacion" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">💻 Curso de Programación - Arduino Avanzado</h2>
+                <h2 class="modal-title">Curso de Programación - Arduino: De Principiante a Avanzado</h2>
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
-                <p><strong>Objetivo general:</strong> Desarrollar competencias avanzadas en programación de sistemas embebidos con Arduino, desde conceptos básicos hasta implementaciones industriales.</p>
+                <p><strong>Objetivo general:</strong> Desarrollar competencias completas en programación de sistemas embebidos con Arduino, desde conceptos básicos hasta implementaciones industriales avanzadas.</p>
                 
-                <h3>Contenido del curso:</h3>
                 <div style="background: var(--surface); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
-                    <h4>🎯 De cero a nivel avanzado</h4>
-                    <p>Progresa desde programar un LED hasta desarrollar sistemas de monitoreo con sensores I2C, actuadores PWM y comunicación inalámbrica.</p>
+                    <h4>Metodología progresiva de aprendizaje</h4>
+                    <p>Progresa sistemáticamente desde encender tu primer LED hasta desarrollar sistemas complejos de monitoreo industrial con comunicación inalámbrica.</p>
                 </div>
 
-                <h4>Módulos principales:</h4>
+                <h3>Estructura del curso por niveles</h3>
+
+                <h4>Nivel 1: Fundamentos</h4>
+                <ul>
+                    <li><strong>Primer programa:</strong> Encender un LED
+                        <pre style="background: #f8f9fa; padding: 10px; border-radius: 4px; font-size: 12px; margin: 8px 0;"><code>void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  delay(1000);
+}</code></pre>
+                    </li>
+                    <li><strong>Lectura de sensores:</strong> Sensor de luz (LDR)</li>
+                    <li><strong>Comunicación serial:</strong> Monitoreo de datos</li>
+                    <li><strong>Entradas y salidas digitales/analógicas</strong></li>
+                </ul>
+
+                <h4>Nivel 2: Intermedio</h4>
+                <ul>
+                    <li><strong>Control automático con sensores:</strong> LED que responde a luz ambiental</li>
+                    <li><strong>Temporización no bloqueante:</strong> Uso de millis() en lugar de delay()
+                        <pre style="background: #f8f9fa; padding: 10px; border-radius: 4px; font-size: 12px; margin: 8px 0;"><code>unsigned long anterior = 0;
+const long intervalo = 1000;
+
+void loop() {
+  unsigned long actual = millis();
+  if (actual - anterior >= intervalo) {
+    digitalWrite(13, !digitalRead(13));
+    anterior = actual;
+  }
+}</code></pre>
+                    </li>
+                    <li><strong>Estructuras de control avanzadas</strong></li>
+                    <li><strong>Funciones personalizadas y modularización</strong></li>
+                </ul>
+
+                <h4>Nivel 3: Avanzado</h4>
+                <ul>
+                    <li><strong>Interrupciones hardware:</strong> Respuesta inmediata a eventos</li>
+                    <li><strong>Gestión de memoria EEPROM:</strong> Almacenamiento no volátil</li>
+                    <li><strong>Comunicaciones I2C, SPI, UART:</strong> Integración con múltiples sensores</li>
+                    <li><strong>Máquinas de estado finitos (FSM):</strong> Control determinista</li>
+                    <li><strong>Optimización de memoria:</strong> PROGMEM, gestión de Flash y SRAM</li>
+                </ul>
+
+                <h3>Ejemplo integrado: Sistema de control inteligente</h3>
+                <div style="background: #eefbf3; border-left: 4px solid #00b37e; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                    <h4>Control automático de LED con configuración vía Serial</h4>
+                    <pre style="background: #f8f9fa; padding: 15px; border-radius: 4px; font-size: 11px; overflow-x: auto;"><code>#define LED_PIN 13
+#define LDR_PIN A0
+
+int umbralLuz = 500;
+bool estadoLED = false;
+
+void setup() {
+  pinMode(LED_PIN, OUTPUT);
+  Serial.begin(9600);
+  Serial.println("Sistema iniciado");
+}
+
+void loop() {
+  int valorLuz = analogRead(LDR_PIN);
+  
+  if (valorLuz < umbralLuz && !estadoLED) encenderLED();
+  else if (valorLuz >= umbralLuz && estadoLED) apagarLED();
+  
+  if (Serial.available() > 0) procesarComandoSerial();
+  
+  delay(100);
+}
+
+void procesarComandoSerial() {
+  char comando = Serial.read();
+  if (comando == 'E') encenderLED();
+  else if (comando == 'A') apagarLED();
+  else if (comando == 'U') {
+    umbralLuz = Serial.parseInt();
+    Serial.print("Umbral cambiado a: ");
+    Serial.println(umbralLuz);
+  }
+}</code></pre>
+                </div>
+
+                <h3>Módulos especializados</h3>
                 <ol>
                     <li><strong>Arquitectura y optimización de memoria</strong>
                         <ul>
-                            <li>Gestión de Flash, SRAM y EEPROM</li>
-                            <li>Uso de PROGMEM y técnicas de ahorro de memoria</li>
+                            <li>Gestión eficiente de Flash, SRAM y EEPROM</li>
+                            <li>Técnicas de ahorro con PROGMEM</li>
+                            <li>Prevención de fragmentación de memoria</li>
                         </ul>
                     </li>
                     <li><strong>Gestión avanzada de energía</strong>
                         <ul>
                             <li>Modos de bajo consumo en AVR y ESP32</li>
                             <li>Deep sleep y wake-up sources</li>
-                        </ul>
-                    </li>
-                    <li><strong>Programación orientada a eventos</strong>
-                        <ul>
-                            <li>Máquinas de estado finitos (FSM)</li>
-                            <li>Interrupciones y prevención de race conditions</li>
+                            <li>Optimización para aplicaciones a batería</li>
                         </ul>
                     </li>
                     <li><strong>Comunicaciones avanzadas</strong>
                         <ul>
-                            <li>I2C, SPI, UART con buffers circulares</li>
-                            <li>LoRa, BLE, MQTT para IoT</li>
+                            <li>Protocolos I2C, SPI, UART con buffers circulares</li>
+                            <li>Comunicación inalámbrica: LoRa, BLE, MQTT</li>
+                            <li>Manejo de errores y timeouts</li>
                         </ul>
                     </li>
-                    <li><strong>Temporización no bloqueante</strong>
+                    <li><strong>Programación orientada a eventos</strong>
                         <ul>
-                            <li>Reemplazo de delay() con millis()</li>
+                            <li>Interrupciones y prevención de race conditions</li>
                             <li>Scheduler cooperativo</li>
-                        </ul>
-                    </li>
-                    <li><strong>Librerías y modularización</strong>
-                        <ul>
-                            <li>Creación de librerías C++</li>
-                            <li>Abstracción de drivers</li>
-                        </ul>
-                    </li>
-                    <li><strong>Debugging y testing</strong>
-                        <ul>
-                            <li>Logging eficiente</li>
-                            <li>Tests unitarios con ArduinoUnit</li>
+                            <li>Sistemas reactivos y tiempo real</li>
                         </ul>
                     </li>
                 </ol>
 
-                <div style="background: #eefbf3; border-left: 4px solid #00b37e; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
-                    <h4>🔧 Proyecto integrado</h4>
-                    <p>Sistema de monitoreo completo que incluye:</p>
+                <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                    <h4>Proyecto final integrado</h4>
+                    <p>Sistema de monitoreo industrial que incluye:</p>
                     <ul>
-                        <li>Lectura de sensores I2C (BMP280, MPU6050)</li>
+                        <li>Múltiples sensores I2C (BMP280, MPU6050)</li>
                         <li>Control de actuadores PWM con FSM</li>
-                        <li>Comunicación serial para configuración</li>
+                        <li>Interfaz de configuración vía Serial</li>
                         <li>Modos de bajo consumo automático</li>
-                        <li>Compatible con Tinkercad para simulación</li>
+                        <li>Comunicación MQTT para IoT</li>
+                        <li>Sistema de logging y recuperación de errores</li>
                     </ul>
                 </div>
 
-                <h4>🏭 Enfoque industrial:</h4>
+                <h3>Enfoque industrial y profesional</h3>
                 <ul>
-                    <li>Protocolos de comunicación robustos</li>
-                    <li>Manejo de errores y recuperación automática</li>
-                    <li>Aislamiento y protección de entradas</li>
-                    <li>Watchdog y modos fail-safe</li>
-                    <li>OTA (Over-The-Air) updates para ESP32</li>
+                    <li><strong>Robustez:</strong> Manejo de errores y recuperación automática</li>
+                    <li><strong>Seguridad:</strong> Watchdog, modos fail-safe y aislamiento</li>
+                    <li><strong>Mantenibilidad:</strong> Código modular y documentado</li>
+                    <li><strong>Escalabilidad:</strong> Arquitecturas extensibles</li>
+                    <li><strong>Testing:</strong> Pruebas unitarias con ArduinoUnit</li>
+                    <li><strong>Deployment:</strong> OTA updates para ESP32</li>
                 </ul>
 
-                <div style="background: #fff8e6; border-left: 4px solid #ffc107; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
-                    <h4>📝 Metodología</h4>
-                    <p>Código completo y funcional, ejemplos prácticos, diagramas de flujo y esquemas de conexiones. Compatible con simuladores y listo para implementación real.</p>
+                <div style="background: #d1ecf1; border-left: 4px solid #0dcaf0; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                    <h4>Herramientas y compatibilidad</h4>
+                    <ul>
+                        <li>Compatible con Arduino IDE y PlatformIO</li>
+                        <li>Ejemplos adaptados para Tinkercad</li>
+                        <li>Soporte para Arduino Uno, Nano, ESP32, ESP8266</li>
+                        <li>Diagramas de circuitos y esquemas de conexión</li>
+                        <li>Código fuente completo y funcional</li>
+                    </ul>
                 </div>
+
+                <h4>Metodología de enseñanza</h4>
+                <p>Aprendizaje hands-on con ejemplos prácticos, código completo y funcional, diagramas de flujo detallados y esquemas de conexiones. Cada concepto se refuerza con proyectos incrementales que construyen sobre el conocimiento previo.</p>
             </div>
         </div>
     </div>
