@@ -1,248 +1,425 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CIENCIAS BÁSICAS APLICADAS A INGENIERÍAS</title>
-
-  <!-- Hoja de estilos principal -->
-  <link rel="stylesheet" href="styles.min.css">
-
-  <!-- Precarga de imágenes más usadas para mejorar rendimiento -->
-  <link rel="preload" href="images/LOGO3.png" as="image">
-  <link rel="preload" href="images/miguelmolano.png" as="image">
-  <link rel="preload" href="images/josedavid.png" as="image">
-
-  <style>
-    /* ======= Navegación y Submenús ======= */
-    .nav-item { position: relative; }
-    .submenu {
-      display: none;
-      position: absolute;
-      top: 100%; left: 0;
-      background-color: #f9f9f9;
-      min-width: 180px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-      z-index: 100;
-    }
-    .submenu a {
-      color: #333;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-    .nav-item:hover .submenu { display: block; }
-
-    /* ======= Carrusel de Investigadores ======= */
-    #investigadores-container {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 20px 0;
-      position: relative;
-    }
-    .investigador {
-      flex: 0 0 250px;
-      margin: 0 10px;
-      text-align: center;
-      scroll-snap-align: start;
-    }
-    .foto-perfil {
-      width: 100px; height: 100px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto 10px;
-    }
-    .foto-perfil img {
-      width: 100%; height: auto;
-      object-fit: cover;
-      display: block;
-    }
-    .investigador-info { margin-top: 10px; }
-    .flecha {
-      position: absolute; top: 50%;
-      transform: translateY(-50%);
-      font-size: 2em;
-      color: rgba(0,0,0,0.3);
-      cursor: pointer;
-      border: none; background: none;
-    }
-    .flecha-izquierda { left: 10px; }
-    .flecha-derecha { right: 10px; }
-
-    /* ======= Modal ======= */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background-color: rgba(0,0,0,0.4);
-      z-index: 2000;
-    }
-    .modal-content {
-      background-color: #fff;
-      margin: 5% auto;
-      padding: 20px;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 800px;
-      position: relative;
-    }
-    .close-button {
-      position: absolute; top: 10px; right: 15px;
-      font-size: 28px; font-weight: bold;
-      border: none; background: none;
-      color: #888; cursor: pointer;
-    }
-    .close-button:hover { color: #000; }
-
-    /* ======= Cursos ======= */
-    #cursos-tematicas {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .curso-tema {
-      border: 1px solid #ddd;
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .curso-tema:hover { transform: scale(1.03); }
-    .curso-tema img { max-width: 100%; height: auto; margin-bottom: 10px; }
-
-    /* ======= Proyectos ======= */
-    #proyectos-lista { padding: 20px; }
-    .proyecto {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 40px;
-      align-items: center;
-    }
-    .proyecto-imagen img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .proyecto-texto { padding: 20px; text-align: center; }
-    @media (min-width: 768px) {
-      .proyecto { flex-direction: row; }
-      .proyecto-texto { text-align: left; flex: 1; }
-      .proyecto-imagen { flex: 1; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Educativo de Química</title>
+    <style>
+        :root {
+            --color-primary: #2c3e50;
+            --color-secondary: #3498db;
+            --color-accent: #e74c3c;
+            --color-light: #ecf0f1;
+            --color-dark: #2c3e50;
+            --spacing: 1rem;
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Tabs System */
+        .tabs {
+            margin: 2rem 0;
+        }
+        
+        .tab-header {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab-link {
+            padding: 0.8rem 1.5rem;
+            background: #f1f1f1;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            transition: all 0.3s;
+        }
+        
+        .tab-link:hover {
+            background: #ddd;
+        }
+        
+        .tab-link.active {
+            background: var(--color-secondary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Materials Grid */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .material-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .material-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-content h3 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--color-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--color-primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .tab-header {
+                flex-direction: column;
+            }
+            
+            .tab-link {
+                margin-bottom: 5px;
+                border-radius: 5px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- ======= Encabezado ======= -->
-  <header>
-    <a href="/" aria-label="Ir a inicio">
-      <img src="images/LOGO3.png" alt="Logo del Semillero" width="300" height="150">
-    </a>
-    <h1>CIENCIAS BÁSICAS APLICADAS A INGENIERÍAS</h1>
-
-    <!-- Menú de navegación -->
-    <nav>
-      <a href="/">Inicio</a>
-      <div class="nav-item">
-        <a href="#cursos" aria-expanded="false" aria-controls="submenu-cursos">Cursos</a>
-        <div class="submenu" id="submenu-cursos">
-          <a href="#quimica" data-modal="modal-quimica-detalle">Química</a>
-          <a href="#fisica" data-modal="modal-fisica-detalle">Física</a>
-          <a href="#matematica" data-modal="modal-matematica-detalle">Matemática</a>
-          <a href="#ciencia-datos" data-modal="modal-ciencia-datos-detalle">Ciencia de Datos</a>
-          <a href="#programacion" data-modal="modal-programacion-detalle">Programación</a>
+    <!-- Cabecera -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Portal de Química</div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#cursos">Cursos</a></li>
+                    <li><a href="#materiales">Materiales</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#eventos">Eventos</a>
-      <a href="#noticias">Noticias</a>
-    </nav>
+    </header>
 
-    <!-- Botón menú móvil -->
-    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-    </button>
-  </header>
-
-  <!-- ======= Contenido Principal ======= -->
-  <main>
-    <!-- Equipo de trabajo -->
-    <section id="investigadores">
-      <h2>Nuestro Equipo de Trabajo</h2>
-      <p>Conoce a los investigadores que lideran este semillero.</p>
-
-      <div id="investigadores-container">
-        <!-- Investigador 1 -->
-        <div class="investigador">
-          <div class="foto-perfil">
-            <img loading="lazy" src="images/miguelmolano.png" alt="Miguel Fernando Molano" width="100" height="100">
-          </div>
-          <div class="investigador-info">
-            <h3>Miguel Fernando Molano Cabrejo</h3>
-            <p class="cargo">Líder del Semillero</p>
-            <p class="descripcion">Químico con experiencia en formulación y ejecución de proyectos científicos.</p>
-          </div>
+    <!-- Sección de bienvenida -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>Bienvenido al Portal Educativo de Química</h1>
+            <p>Espacio dedicado a compartir conocimientos, materiales educativos y recursos para el aprendizaje de la química.</p>
         </div>
-
-        <!-- Investigador 2 -->
-        <div class="investigador">
-          <div class="foto-perfil">
-            <img loading="lazy" src="images/josedavid.png" alt="José David Tamara" width="100" height="100">
-          </div>
-          <div class="investigador-info">
-            <h3>José David Tamara Jaramillo</h3>
-            <p class="cargo">Coordinador de Proyectos</p>
-            <p class="descripcion">Físico con amplia trayectoria en gestión y seguimiento de proyectos.</p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Sección Proyectos -->
-    <section id="proyectos">
-      <h2>Nuestros Proyectos</h2>
-      <div id="proyectos-lista">
-        <!-- Aquí puedes mantener los proyectos como estaban -->
-      </div>
-    </section>
-
-    <!-- Sección Cursos -->
-    <section id="cursos">
-      <h2>Nuestros Cursos</h2>
-      <div id="cursos-tematicas">
-        <!-- Cursos con acceso a modales -->
-        <div class="curso-tema" data-modal="modal-quimica-detalle">
-          <img src="images/quimica.avif" alt="Química">
-          <h3>Química</h3>
-          <p>Fundamentos de la química aplicados a la ingeniería.</p>
+    <!-- Sistema de pestañas para materias -->
+    <section id="cursos" class="container tabs">
+        <h2>Materias y Cursos</h2>
+        <div class="tab-header">
+            <div class="tab-link active" onclick="openTab(event, 'quimica-general')">Química General</div>
+            <div class="tab-link" onclick="openTab(event, 'quimica-organica')">Química Orgánica</div>
+            <div class="tab-link" onclick="openTab(event, 'bioquimica')">Bioquímica</div>
+            <div class="tab-link" onclick="openTab(event, 'fisicoquimica')">Fisicoquímica</div>
+            <!-- AÑADIR NUEVAS MATERIAS AQUÍ -->
         </div>
-        <div class="curso-tema" data-modal="modal-programacion-detalle">
-          <img src="images/programacion.avif" alt="Programación">
-          <h3>Programación</h3>
-          <p>Aprende a desarrollar software y automatizar procesos.</p>
+
+        <!-- Contenido de pestañas -->
+        <div id="quimica-general" class="tab-content active">
+            <h3>Química General</h3>
+            <p>Introducción a los conceptos fundamentales de la química. Esta materia sienta las bases para el estudio de las demás áreas de la química.</p>
+            
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="card-content">
+                        <h3>Tabla Periódica Interactiva</h3>
+                        <p>Recurso interactivo para explorar los elementos y sus propiedades.</p>
+                        <a href="#" class="btn">Acceder</a>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="card-content">
+                        <h3>Guía de Nomenclatura</h3>
+                        <p>Reglas y ejercicios para nombrar compuestos químicos.</p>
+                        <a href="#" class="btn">Descargar</a>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="card-content">
+                        <h3>Laboratorio Virtual</h3>
+                        <p>Simulaciones de prácticas de laboratorio seguro.</p>
+                        <a href="#" class="btn">Experimentar</a>
+                    </div>
+                </div>
+                <!-- AÑADIR NUEVOS MATERIALES AQUÍ -->
+            </div>
         </div>
-      </div>
+
+        <div id="quimica-organica" class="tab-content">
+            <h3>Química Orgánica</h3>
+            <p>Estudio de los compuestos de carbono y sus reacciones. Incluye hidrocarburos, grupos funcionales y biomoléculas.</p>
+            
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="card-content">
+                        <h3>Guía de Grupos Funcionales</h3>
+                        <p>Resumen de los principales grupos funcionales en química orgánica.</p>
+                        <a href="#" class="btn">Acceder</a>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="card-content">
+                        <h3>Reacciones Orgánicas</h3>
+                        <p>Catálogo de las reacciones más importantes con mecanismos detallados.</p>
+                        <a href="#" class="btn">Descargar</a>
+                    </div>
+                </div>
+                <!-- AÑADIR NUEVOS MATERIALES AQUÍ -->
+            </div>
+        </div>
+
+        <div id="bioquimica" class="tab-content">
+            <h3>Bioquímica</h3>
+            <p>Estudio de los procesos químicos en los seres vivos, incluyendo metabolismo, enzimas y estructura de biomoléculas.</p>
+            
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="card-content">
+                        <h3>Rutas Metabólicas</h3>
+                        <p>Mapa interactivo de las principales rutas metabólicas.</p>
+                        <a href="#" class="btn">Acceder</a>
+                    </div>
+                </div>
+                <!-- AÑADIR NUEVOS MATERIALES AQUÍ -->
+            </div>
+        </div>
+
+        <div id="fisicoquimica" class="tab-content">
+            <h3>Fisicoquímica</h3>
+            <p>Estudio de los principios físicos que gobiernan los sistemas y procesos químicos.</p>
+            
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="card-content">
+                        <h3>Termodinámica Química</h3>
+                        <p>Apuntes y ejercicios sobre las leyes de la termodinámica aplicadas a sistemas químicos.</p>
+                        <a href="#" class="btn">Descargar</a>
+                    </div>
+                </div>
+                <!-- AÑADIR NUEVOS MATERIALES AQUÍ -->
+            </div>
+        </div>
+        
+        <!-- AÑADIR NUEVAS PESTAÑAS DE MATERIAS AQUÍ -->
     </section>
 
-    <!-- Eventos -->
-    <section id="eventos">
-      <h2>Eventos</h2>
-    </section>
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: profesor@ejemplo.com</p>
+                <p>Despacho: Edificio de Ciencias, Oficina 304</p>
+                <p>Horario de atención: Lunes y Miércoles 10:00-12:00</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces rápidos</h3>
+                <p><a href="#inicio">Inicio</a></p>
+                <p><a href="#cursos">Cursos</a></p>
+                <p><a href="#materiales">Materiales</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Recursos externos</h3>
+                <p><a href="#">Sociedad de Química</a></p>
+                <p><a href="#">Revistas especializadas</a></p>
+                <p><a href="#">Base de datos de compuestos</a></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Portal Educativo de Química. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
-    <!-- Noticias -->
-    <section id="noticias">
-      <h2>Noticias</h2>
-    </section>
-  </main>
-
-  <!-- ======= Pie de página ======= -->
-  <footer>
-    <p>&copy; 2025 Semillero de Ciencias Básicas Aplicadas</p>
-  </footer>
-
-  <!-- Script JS principal -->
-  <script src="script.js"></script>
+    <script>
+        // Función para el sistema de pestañas
+        function openTab(evt, tabName) {
+            var i, tabContent, tabLinks;
+            
+            // Ocultar todos los contenidos de pestañas
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            
+            // Desactivar todos los botones de pestañas
+            tabLinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+            
+            // Mostrar la pestaña actual y activar el botón
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
